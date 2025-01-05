@@ -100,12 +100,50 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>本文主要演示了Heasoft和CIAO部分功能的使用，涉及数据获取、彩图合成、光变曲线提取与光谱提取（X-ray方面）</p>
-<h1 id="Step1-数据获取"><a href="#Step1-数据获取" class="headerlink" title="Step1.数据获取"></a>Step1.数据获取</h1><p>数据获取网址：<a target="_blank" rel="noopener" href="https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3browse.pl">https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3browse.pl</a> <a target="_blank" rel="noopener" href="https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3browse.pl">$click_here$</a></p>
+<h1 id="Step1-数据获取"><a href="#Step1-数据获取" class="headerlink" title="Step1.数据获取"></a>Step1.数据获取</h1><p>数据获取网址：<a target="_blank" rel="noopener" href="https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3browse.pl">https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3browse.pl</a></p>
+<img src="/2025/01/05/physicalastro2/web1.png" class="" title="web1">
+<p>记住这里的obsid编号，稍后需要使用，我们取4875为例子</p>
+<img src="/2025/01/05/physicalastro2/web2.png" class="" title="web2">
 
+<h2 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h2><p>进入Linux环境，打开终端，我们先创建一个工作目录并进入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> xray</span><br><span class="line"><span class="built_in">cd</span> xray/</span><br></pre></td></tr></table></figure>
+<p>先前下载好了heasoft软件包和CIAO软件包，CIAO软件包是专门为Chandra X-ray望远镜设计的一套软件包，建立好了进入环境的快捷指令，直接运行即可进入CIAO环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ciao</span><br></pre></td></tr></table></figure>
+
+<p>我们安装Mrk1210的光谱数据，在先前我们获取了Mrk1210的编号4875</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">download_chandra_obsid 4875 <span class="comment">#安装指令，下载到当前工作目录</span></span><br><span class="line">chandra_repro 4875 outdir=<span class="string">&#x27;&#x27;</span> <span class="comment">#解压缩</span></span><br></pre></td></tr></table></figure>
+<p>包含蟹状星云数据在内，工作目录应该有红框内的文件夹</p>
+<img src="/2025/01/05/physicalastro2/web3.png" class="" title="web3">
+
+
+
+<h1 id="Step2-数据成像"><a href="#Step2-数据成像" class="headerlink" title="Step2.数据成像"></a>Step2.数据成像</h1><p>这一模块列举蟹状星云和Mrk1210的成像，截取了特定能量范围的光谱数据作为RGB三原色的FITS文件进行叠加，再通过色彩调整得到一幅伪彩色图。</p>
+<h2 id="Crab"><a href="#Crab" class="headerlink" title="Crab"></a>Crab</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 198/</span><br><span class="line"><span class="built_in">cd</span> primary/</span><br></pre></td></tr></table></figure>
+<p>我们可以看到有一个名称是<em>acisf00198N005_evt2.fits.gz</em>的压缩文件，无需解压，我们在终端命令行操作即可<br>提取不同能段的图像，由于X-ray能段并没有可见光那样的颜色，我们选取特定范围的X-ray作为不同的颜色，这样我们可以合成一张伪彩色的图片2</p>
+<ul>
+<li>soft:0.2-1.5keV 红色</li>
+<li>medium:1.5-2.5keV 绿色</li>
+<li>hard: 2.5-8keV 蓝色<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">punlearn dmcopy</span><br><span class="line"><span class="comment"># 提取三种波段的fits</span></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf00198N005_evt2.fits[energy=200:1500]&#x27;</span> outfile=<span class="string">&#x27;red_198.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf00198N005_evt2.fits[energy=1500:2500]&#x27;</span> outfile=<span class="string">&#x27;green_198.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf00198N005_evt2.fits[energy=2500:8000]&#x27;</span> outfile=<span class="string">&#x27;blue_198.fits&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RGB合并</span></span><br><span class="line">heasoft <span class="comment">#进入heasoft环境,ds9是heasoft里的一个图像显示的软件</span></span><br><span class="line">ds9 -rgb -red red_198.fits -green green_198.fits -blue blue_198.fits</span><br></pre></td></tr></table></figure>
+效果如图：<img src="/2025/01/05/physicalastro2/ds91.png" class="" title="ds9"></li>
+</ul>
+<h3 id="调色"><a href="#调色" class="headerlink" title="调色"></a>调色</h3><p>我们在左侧工具框中选择Lock，选中<em>色阶图例</em>和<em>Smooth</em>，然后按住鼠标右键在图上拖动，使颜色鲜艳，还可以在‘色阶’功能选择合适的颜色，或者在<em>分析</em>功能中选择<em>Smooth Parameters</em>进行调整  </p>
+<img src="/2025/01/05/physicalastro2/ds92.png" class="" title="ds9">
+
+<h3 id="增加图例坐标轴"><a href="#增加图例坐标轴" class="headerlink" title="增加图例坐标轴"></a>增加图例坐标轴</h3><p>在<em>分析</em>工具中，我们选择<em>坐标格线参数</em>，<em>Type</em>一栏中，选中<em>分析</em>和两个<em>Exterior Axes</em>,在<em>Grid</em>中取消显示网格线  </p>
+<img src="/2025/01/05/physicalastro2/ds93.png" class="" title="ds9">
+
+<h3 id="添加其他望远镜图样"><a href="#添加其他望远镜图样" class="headerlink" title="添加其他望远镜图样"></a>添加其他望远镜图样</h3><p>回到主菜单,选择<em>影像视窗</em>的<em>合重</em>，这样可以显示多个图像，选择空白图像，我们在<em>分析</em>一栏的<em>Archive</em>选择一个望远镜，输入目标名称，选择其中一个图像载入即可</p>
+<img src="/2025/01/05/physicalastro2/ds94.png" class="" title="ds9">
+
+<h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><img src="/2025/01/05/physicalastro2/crab.png" class="" title="ds9">
+<hr>
+<h2 id="Mrk1210"><a href="#Mrk1210" class="headerlink" title="Mrk1210"></a>Mrk1210</h2><p>处理流程类似蟹状星云，仅展示最终效果图</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">cd</span> ./xray/4875/primary/</span><br><span class="line">punlearn dmcopy</span><br><span class="line"><span class="comment"># 提取三种波段的fits</span></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf04875N004_evt2.fits[energy=200:1500]&#x27;</span> outfile=<span class="string">&#x27;red_4875.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf04875N004_evt2.fits[energy=1500:2500]&#x27;</span> outfile=<span class="string">&#x27;green_4875.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf04875N004_evt2.fits[energy=2500:8000]&#x27;</span> outfile=<span class="string">&#x27;blue_4875.fits&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RGB合并</span></span><br><span class="line">heasoft <span class="comment">#进入heasoft环境,ds9是heasoft里的一个图像显示的软件</span></span><br><span class="line">ds9 -rgb -red red_4875.fits -green green_4875.fits -blue blue_4875.fits</span><br></pre></td></tr></table></figure>
+<img src="/2025/01/05/physicalastro2/mrk1210.png" class="" title="ds9">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2025/01/05/physicalastro2/" data-id="cm5jfxl3o000kvsur54zc5h6x" data-title="Heasoft使用与CIAO软件包使用（一）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2025/01/05/physicalastro2/" data-id="cm5ji45fx000uc0urg8a33ffw" data-title="Heasoft使用与CIAO软件包使用（一）" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -160,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/27/xray/" data-id="cm5jfxl3v0012vsur6tqo6x2k" data-title="xray" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/27/xray/" data-id="cm5ji45fz000yc0ure8pg07u6" data-title="xray" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -228,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/26/theoretical-mechanics-test/" data-id="cm5jfxl3v0011vsur2tpfdm4j" data-title="理论力学考试题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/26/theoretical-mechanics-test/" data-id="cm5ji45fy000xc0ur23p12b6i" data-title="理论力学考试题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -282,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/07/gildassoft/" data-id="cm5jfxl3k000bvsurhf7rda67" data-title="Gildas_soft" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/07/gildassoft/" data-id="cm5ji45fm000ec0urev5i3m9r" data-title="Gildas_soft" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -325,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/06/physical-astro/" data-id="cm5jfxl3o000jvsur84s154sb" data-title="physical_astro" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/06/physical-astro/" data-id="cm5ji45fm000fc0ur92sxhgx7" data-title="physical_astro" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -397,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/05/Logical-Regression/" data-id="cm5jfxl3g0005vsur1kw8h4cd" data-title="Logical_Regression" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/05/Logical-Regression/" data-id="cm5ji45fd0001c0urgu6f7e40" data-title="Logical_Regression" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -445,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/02/computephy/" data-id="cm5jfxl3l000evsur1vksb7cy" data-title="computephy" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/02/computephy/" data-id="cm5ji45fk0009c0urd2vj3jwy" data-title="computephy" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -508,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/11/29/Planets-photo/" data-id="cm5jfxl3c0004vsurco8ffnn0" data-title="太阳系内行星拍摄和数据处理" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/11/29/Planets-photo/" data-id="cm5ji45fi0006c0ur527f9ss7" data-title="太阳系内行星拍摄和数据处理" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -563,12 +601,12 @@
 <p>GitHub：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
 <p>Gitte：<a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com/</a></p>
 <p>常用LaTex：<a target="_blank" rel="noopener" href="https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30">https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30</a></p>
-<h2 id="神秘邮箱（梯）"><a href="#神秘邮箱（梯）" class="headerlink" title="神秘邮箱（梯）"></a>神秘邮箱（梯）</h2><p><a href="mailto:&#102;&#105;&#110;&#x64;&#x40;&#x69;&#x6b;&#x75;&#x75;&#x75;&#x2e;&#x70;&#114;&#111;">&#102;&#105;&#110;&#x64;&#x40;&#x69;&#x6b;&#x75;&#x75;&#x75;&#x2e;&#x70;&#114;&#111;</a>(发送任意邮件到此邮箱，将会收到最新官网地址（自动回复）)</p>
+<h2 id="神秘邮箱（梯）"><a href="#神秘邮箱（梯）" class="headerlink" title="神秘邮箱（梯）"></a>神秘邮箱（梯）</h2><p><a href="mailto:&#102;&#105;&#110;&#100;&#64;&#x69;&#x6b;&#x75;&#x75;&#x75;&#x2e;&#112;&#x72;&#111;">&#102;&#105;&#110;&#100;&#64;&#x69;&#x6b;&#x75;&#x75;&#x75;&#x2e;&#112;&#x72;&#111;</a>(发送任意邮件到此邮箱，将会收到最新官网地址（自动回复）)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/11/28/some-web/" data-id="cm5jfxl3p000nvsurgsqzh5o7" data-title="some_web" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/11/28/some-web/" data-id="cm5ji45fy000vc0ur00yvgibf" data-title="some_web" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -614,7 +652,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/11/28/baiduwangpan/" data-id="cm5jfxl3j0009vsur9a5qhrke" data-title="各类网盘" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/11/28/baiduwangpan/" data-id="cm5ji45fk0008c0ur0zrf4zxk" data-title="各类网盘" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
