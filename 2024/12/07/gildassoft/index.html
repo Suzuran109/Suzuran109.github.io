@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Gildas_soft | 狐狸の学习小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Gildas是一个具有强大功能的天文数据处理软件包，可以处理单张光谱，批量处理光谱，抑或是输出FITS图像文件   开始前，我们首先进入文件的文件夹作为工作目录 1cd radio&#x2F; #your_folder_name&#x2F;  然后启动gildas 1class #直接输入class即可直接进入Gildas环境 Step1.单个谱线数据处理1234567891011121314151617181920">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gildas_soft">
+<meta property="og:url" content="https://suzuran109.github.io/2024/12/07/gildassoft/index.html">
+<meta property="og:site_name" content="狐狸の学习小窝">
+<meta property="og:description" content="Gildas是一个具有强大功能的天文数据处理软件包，可以处理单张光谱，批量处理光谱，抑或是输出FITS图像文件   开始前，我们首先进入文件的文件夹作为工作目录 1cd radio&#x2F; #your_folder_name&#x2F;  然后启动gildas 1class #直接输入class即可直接进入Gildas环境 Step1.单个谱线数据处理1234567891011121314151617181920">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://suzuran109.github.io/2024/12/07/gildassoft/spec1.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2024/12/07/gildassoft/spec2.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2024/12/07/gildassoft/spec3.jpg">
+<meta property="article:published_time" content="2024-12-07T08:03:03.000Z">
+<meta property="article:modified_time" content="2025-01-05T03:05:51.741Z">
+<meta property="article:author" content="Jianhong Cao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suzuran109.github.io/2024/12/07/gildassoft/spec1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸の学习小窝" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸の学习小窝</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://suzuran109.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-gildassoft" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/gildassoft/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T08:03:03.000Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Astro/">Astro</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Gildas_soft
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><em>Gildas是一个具有强大功能的天文数据处理软件包，可以处理单张光谱，批量处理光谱，抑或是输出FITS图像文件</em>  </p>
+<p><u>开始前，我们首先进入文件的文件夹作为工作目录</u></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> radio/ <span class="comment">#your_folder_name/ </span></span><br></pre></td></tr></table></figure>
+<p>然后启动gildas</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class <span class="comment">#直接输入class即可直接进入Gildas环境</span></span><br></pre></td></tr></table></figure>
+<h1 id="Step1-单个谱线数据处理"><a href="#Step1-单个谱线数据处理" class="headerlink" title="Step1.单个谱线数据处理"></a>Step1.单个谱线数据处理</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">file <span class="keyword">in</span> G000.31.30m <span class="comment">#输入谱线文件，由于G000.31.30m就在当前工作目录，相对路径即可</span></span><br><span class="line">find <span class="comment">#将G000.31.30m文件内所存储的数据输入缓存</span></span><br><span class="line">list <span class="comment">#将缓存中的内容列表输出</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> tele *e0*li* <span class="comment">#只读取带有e0的字符串，这是读取特定望远镜的数据</span></span><br><span class="line">find <span class="comment">#存入新筛选的数据，替换原来缓存的数据</span></span><br><span class="line">list <span class="comment">#查看</span></span><br><span class="line">ave <span class="comment">#将新选出的数据做平均处理</span></span><br><span class="line"></span><br><span class="line">mod f 97980.953 <span class="comment">#选定中心频率</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图标坐标显示及画图</span></span><br><span class="line"><span class="built_in">set</span> unit v f <span class="comment">#设置x轴显示速度和频率</span></span><br><span class="line"><span class="built_in">set</span> unit v <span class="comment">#设置x轴仅显示速度</span></span><br><span class="line"><span class="comment"># set unit y t </span></span><br><span class="line"><span class="built_in">set</span> mod x -25 75 <span class="comment">#设置坐标起始点和终点</span></span><br><span class="line"><span class="built_in">set</span> win -20 70</span><br><span class="line">ba <span class="comment">#拟合</span></span><br><span class="line">plot <span class="comment">#绘制谱线，可简写p</span></span><br><span class="line">mod line C32S(2-1) <span class="comment">#更改图像名称</span></span><br><span class="line">label <span class="string">&quot;T\dM\dB(K)&quot;</span> /Y <span class="comment">#给予y轴标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 拟合曲线</span></span><br><span class="line">line 2 <span class="comment">#选定成分数量，然后在谱线图上选择对应成分分布范围</span></span><br><span class="line">min <span class="comment">#进行Gauss拟合</span></span><br><span class="line">view <span class="comment">#查看拟合曲线，简写v</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存图像</span></span><br><span class="line">hardcopy C32S21.eps <span class="comment">#存储图像为C32S21.eps</span></span><br></pre></td></tr></table></figure>
+<h3 id="效果如图"><a href="#效果如图" class="headerlink" title="效果如图"></a><em>效果如图</em></h3><img src="/2024/12/07/gildassoft/spec1.jpg" class="" title="spec1">
+<hr>
+<h1 id="Step2-批量处理谱线"><a href="#Step2-批量处理谱线" class="headerlink" title="Step2.批量处理谱线"></a>Step2.批量处理谱线</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">file <span class="keyword">in</span> G000.31.30m <span class="comment">#打开数据文件</span></span><br><span class="line">find <span class="comment">#读入</span></span><br><span class="line"><span class="built_in">set</span> tele <span class="comment">#设置所有望远镜数据</span></span><br><span class="line">find <span class="comment">#读入</span></span><br><span class="line"><span class="built_in">set</span> character 0.6 <span class="comment">#设置字体大小</span></span><br><span class="line"><span class="built_in">set</span> unit v f <span class="comment">#同Step1设置坐标标签</span></span><br><span class="line"><span class="built_in">set</span> unit v</span><br><span class="line"><span class="built_in">set</span> mod y t </span><br><span class="line"><span class="built_in">set</span> mod x -50 50 <span class="comment">#同Step1</span></span><br><span class="line"><span class="built_in">set</span> win -45 45</span><br><span class="line"><span class="built_in">set</span> tele *e0*li* <span class="comment">#选取数据</span></span><br><span class="line">find</span><br><span class="line">ave <span class="comment">#同Step1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 谱线97980.953</span></span><br><span class="line">mod f 97980.953 <span class="comment">#选定中心谱线</span></span><br><span class="line">ba</span><br><span class="line"><span class="comment"># clear 若之前的图未清除可以使用clear清除</span></span><br><span class="line"><span class="built_in">set</span> view 0.3 0.7 0.7 0.9 <span class="comment">#设置图像放置的位置，前两项数字为大小，后两项数字为位置</span></span><br><span class="line">box n o <span class="comment">#让box不绘制标签</span></span><br><span class="line">spec <span class="comment">#作图</span></span><br><span class="line">line 1 <span class="comment">#同Step1</span></span><br><span class="line">min <span class="comment">#做Gauss拟合</span></span><br><span class="line">v /pen 1 <span class="comment">#查看同时改变画笔颜色为红色</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#谱线97172.063</span></span><br><span class="line"><span class="comment">## 步骤与97980.953相同</span></span><br><span class="line">mod f 97172.063</span><br><span class="line">ba </span><br><span class="line"><span class="built_in">set</span> view 0.3 0.7 0.5 0.7 <span class="comment">#注意要将第二幅图往下画</span></span><br><span class="line">box n o</span><br><span class="line">spec</span><br><span class="line">line 1 </span><br><span class="line">min</span><br><span class="line">v /pen 1</span><br><span class="line"></span><br><span class="line"><span class="comment">#谱线96412.95</span></span><br><span class="line"><span class="comment">## 步骤与97980.953相同</span></span><br><span class="line">mod f 96412.95</span><br><span class="line">ba</span><br><span class="line"><span class="built_in">set</span> view 0.3 0.7 0.3 0.5 <span class="comment">#注意要将第三幅图往下画</span></span><br><span class="line">box n o</span><br><span class="line">spec</span><br><span class="line">line 1</span><br><span class="line">min</span><br><span class="line">ba /pen 1</span><br><span class="line"></span><br><span class="line"><span class="comment">#谱线92494.308</span></span><br><span class="line"><span class="built_in">set</span> tele *e0*lo* <span class="comment">#谱线92494.308并不在上述的望远镜数据中，在另一个数据里，要进行切换</span></span><br><span class="line">find</span><br><span class="line">ave</span><br><span class="line">list</span><br><span class="line">ave</span><br><span class="line">mod f 92494.308</span><br><span class="line">ba</span><br><span class="line"><span class="built_in">set</span> view 0.3 0.7 0.1 0.3 <span class="comment">#最后一幅图像</span></span><br><span class="line">box <span class="comment">#由于是最后一幅图，所以不需要隐藏坐标标签</span></span><br><span class="line">line 1</span><br><span class="line">min</span><br><span class="line">v /pen 1</span><br><span class="line"></span><br><span class="line"><span class="comment">#补充说明</span></span><br><span class="line"><span class="built_in">set</span> character 0.6</span><br><span class="line">draw text 10 18 G000.31 <span class="comment"># 总谱线名称</span></span><br><span class="line">draw text 17 18 <span class="string">&quot;CS(2-1)&quot;</span> <span class="comment"># 谱线97980.953名称</span></span><br><span class="line">draw text 17 13.7 <span class="string">&quot;C\u3\u3S(2-1)&quot;</span> <span class="comment"># 谱线97172.063名称</span></span><br><span class="line">draw text 17 9.5 <span class="string">&quot;C\u3\u4S(2-1)&quot;</span> <span class="comment"># 谱线96412.95名称</span></span><br><span class="line">draw text 17 5.2 <span class="string">&quot;\u1\u3CS(2-1)&quot;</span> <span class="comment"># 谱线92494.308名称</span></span><br><span class="line"><span class="built_in">set</span> view 0.3 0.35 0.48 0.58</span><br><span class="line">label <span class="string">&quot;T\dM\dB(K)&quot;</span> /Y <span class="comment">#y轴坐标标签</span></span><br><span class="line">\sic dele g000.31.eps <span class="comment">#若先前已经有这个文件则删除</span></span><br><span class="line">hardcopy g000.31.eps <span class="comment">#生成文件</span></span><br></pre></td></tr></table></figure>
+<h3 id="效果如图-1"><a href="#效果如图-1" class="headerlink" title="效果如图"></a><em>效果如图</em></h3><img src="/2024/12/07/gildassoft/spec2.jpg" class="" title="spec2">
+<hr>
+<h1 id="Step3-FITS彩图绘制"><a href="#Step3-FITS彩图绘制" class="headerlink" title="Step3.FITS彩图绘制"></a>Step3.FITS彩图绘制</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">fil out test.bur single <span class="comment">#创建一个test.bur</span></span><br><span class="line">lmv OrionA_20171031L.fits <span class="comment">#输入fits文件并转换</span></span><br><span class="line">file <span class="keyword">in</span> test.bur <span class="comment">#将转换后的fits文件数据读入test.bur</span></span><br><span class="line">list</span><br><span class="line">find</span><br><span class="line">list</span><br><span class="line"><span class="built_in">set</span> off 0 0 <span class="comment">#设置中心位置</span></span><br><span class="line">find</span><br><span class="line"><span class="built_in">set</span> unit v f</span><br><span class="line">get f <span class="comment">#选取中心位置的第一个scan</span></span><br><span class="line">p</span><br><span class="line"><span class="built_in">set</span> mod x -50 50</span><br><span class="line">p</span><br><span class="line"><span class="built_in">set</span> win -35 35</span><br><span class="line">ba 1;p <span class="comment">#基线拟合，数字表示基线拟合阶数</span></span><br><span class="line"><span class="built_in">set</span> off</span><br><span class="line"><span class="built_in">set</span> ang min</span><br><span class="line">find</span><br><span class="line">file out test.bas s <span class="comment">#创建批量保存的数据文件</span></span><br><span class="line">find</span><br><span class="line">get n</span><br><span class="line"><span class="keyword">for</span> i 1 to found <span class="comment">#对数据进行遍历</span></span><br><span class="line">get n</span><br><span class="line">bas 1 <span class="comment">#即ba 1</span></span><br><span class="line">write <span class="comment">#写入数据</span></span><br><span class="line">next <span class="comment">#退出循环</span></span><br><span class="line"><span class="comment"># las\get n</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#谱线绘制</span></span><br><span class="line">file <span class="keyword">in</span> test.bas</span><br><span class="line">find</span><br><span class="line">list</span><br><span class="line"><span class="built_in">set</span> mod y -0.2 1.5 <span class="comment">#看谱线定值，X或Y必须给一个值，一般选择Y</span></span><br><span class="line">clear <span class="comment">#清除先前绘制查看的全谱线图</span></span><br><span class="line">map /gr <span class="comment">#画图</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输出data文件</span></span><br><span class="line">file <span class="keyword">in</span> test.bas</span><br><span class="line">find</span><br><span class="line">list</span><br><span class="line">sic dele test.dat</span><br><span class="line"><span class="built_in">print</span> area -35 35 /output test.dat</span><br><span class="line"><span class="built_in">exit</span> <span class="comment">#退出class</span></span><br><span class="line"></span><br><span class="line">greg <span class="comment">#进入greg环境，角分画图，使用相对路径</span></span><br><span class="line">col x 2 y 3 z 4 /file test.dat <span class="comment">#选定坐标轴</span></span><br><span class="line"><span class="built_in">set</span> box m <span class="comment">#定义画框</span></span><br><span class="line">lev 1 to 10 <span class="comment">#强度划分</span></span><br><span class="line">lim /rev x</span><br><span class="line">rand 100 /blank -1 -1</span><br><span class="line">box</span><br><span class="line">lab <span class="string">&quot;\gDL (arcmin)&quot;</span> /x <span class="comment">#x轴标签</span></span><br><span class="line">lab <span class="string">&quot;\gDB (arcmin)&quot;</span> /y <span class="comment">#y轴标签</span></span><br><span class="line"><span class="built_in">set</span> mar 3 2 0.2</span><br><span class="line">plot /scalin lin -2 10</span><br><span class="line">rgmap /per 10 <span class="comment">#上色</span></span><br><span class="line">wedge <span class="comment">#强度分布栏</span></span><br><span class="line"></span><br><span class="line">hardcopy H(41).eps /dev ps color <span class="comment">#输出图像文件</span></span><br></pre></td></tr></table></figure>
+<h3 id="效果如图-2"><a href="#效果如图-2" class="headerlink" title="效果如图"></a><em>效果如图</em></h3><img src="/2024/12/07/gildassoft/spec3.jpg" class="" title="spec3">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://suzuran109.github.io/2024/12/07/gildassoft/" data-id="cm5ys98qz000gdgur8arr0vuo" data-title="Gildas_soft" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/12/26/theoretical-mechanics-test/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          理论力学考试题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/06/physical-astro/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">physical_astro</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Astro/">Astro</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Hexo学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/">理论力学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-ray/" rel="tag">X-ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/X-ray/" style="font-size: 10px;">X-ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/15/Markdown2/">Markdown进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/05/physicalastro2/">Heasoft使用与CIAO软件包使用（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/27/xray/">xray</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/26/theoretical-mechanics-test/">理论力学考试题</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/gildassoft/">Gildas_soft</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Jianhong Cao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

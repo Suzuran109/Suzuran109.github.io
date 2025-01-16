@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Logical_Regression | 狐狸の学习小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前置课程：KNN （K值选择）LinearRegression线性回归 vs 逻辑回归（e.g. Boston房价的一个量）模型的建立与求解——理解逻辑回归分类（classification） 通过目标函数来刻画预测标签与真实标签之间的差距 示例：sklearn -&gt; LogisticRegression 多变量与多分类——理解多变量一个样本点有多个特征属性 多变量与多分类——理解多分类On">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logical_Regression">
+<meta property="og:url" content="https://suzuran109.github.io/2024/12/05/Logical-Regression/index.html">
+<meta property="og:site_name" content="狐狸の学习小窝">
+<meta property="og:description" content="前置课程：KNN （K值选择）LinearRegression线性回归 vs 逻辑回归（e.g. Boston房价的一个量）模型的建立与求解——理解逻辑回归分类（classification） 通过目标函数来刻画预测标签与真实标签之间的差距 示例：sklearn -&gt; LogisticRegression 多变量与多分类——理解多变量一个样本点有多个特征属性 多变量与多分类——理解多分类On">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-05T05:51:02.000Z">
+<meta property="article:modified_time" content="2024-12-19T08:22:57.018Z">
+<meta property="article:author" content="Jianhong Cao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸の学习小窝" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸の学习小窝</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://suzuran109.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Logical-Regression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/05/Logical-Regression/" class="article-date">
+  <time class="dt-published" datetime="2024-12-05T05:51:02.000Z" itemprop="datePublished">2024-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Logical_Regression
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前置课程：KNN-（K值选择）"><a href="#前置课程：KNN-（K值选择）" class="headerlink" title="前置课程：KNN （K值选择）"></a>前置课程：KNN （K值选择）</h1><h1 id="LinearRegression"><a href="#LinearRegression" class="headerlink" title="LinearRegression"></a>LinearRegression</h1><h2 id="线性回归-vs-逻辑回归（e-g-Boston房价的一个量）"><a href="#线性回归-vs-逻辑回归（e-g-Boston房价的一个量）" class="headerlink" title="线性回归 vs 逻辑回归（e.g. Boston房价的一个量）"></a>线性回归 vs 逻辑回归（e.g. Boston房价的一个量）</h2><h3 id="模型的建立与求解——理解逻辑回归"><a href="#模型的建立与求解——理解逻辑回归" class="headerlink" title="模型的建立与求解——理解逻辑回归"></a>模型的建立与求解——理解逻辑回归</h3><p>分类（classification）</p>
+<p>通过目标函数来刻画预测标签与真实标签之间的差距</p>
+<p>示例：<br>sklearn -&gt; LogisticRegression</p>
+<h3 id="多变量与多分类——理解多变量"><a href="#多变量与多分类——理解多变量" class="headerlink" title="多变量与多分类——理解多变量"></a>多变量与多分类——理解多变量</h3><p>一个样本点有多个特征属性</p>
+<h3 id="多变量与多分类——理解多分类"><a href="#多变量与多分类——理解多分类" class="headerlink" title="多变量与多分类——理解多分类"></a>多变量与多分类——理解多分类</h3><p>One-vs-all   VOA策略</p>
+<p>示例：<br>LogisticRegression中的multi_class &#x3D; ‘ovr’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def train(x,y):</span><br><span class="line">    model = LogisticRegression(...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="分类模型的评估"><a href="#分类模型的评估" class="headerlink" title="分类模型的评估"></a>分类模型的评估</h3><p>评价指标：准确率、精确率、召回率（TP、FN、FP、TN）</p>
+<p>召回率越高该模型寻找正样本的能力越强</p>
+<p>整体评估值：算术平均、加权平均</p>
+<p>混淆矩阵：对角线上的值代表正确的量</p>
+<p>示例：sklearn —— classification_report</p>
+<h3 id="逻辑回归求解"><a href="#逻辑回归求解" class="headerlink" title="逻辑回归求解"></a>逻辑回归求解</h3><p>正则化：目的是为了防止过拟合</p>
+<p>Sigmoid函数<br>$\beta_0$:截距 </p>
+<h3 id="——————-分隔符———————–"><a href="#——————-分隔符———————–" class="headerlink" title="——————-分隔符———————–"></a>——————-分隔符———————–</h3><h1 id="20241212"><a href="#20241212" class="headerlink" title="20241212"></a>20241212</h1><h1 id="机器学习算法之决策树"><a href="#机器学习算法之决策树" class="headerlink" title="机器学习算法之决策树"></a>机器学习算法之决策树</h1><h2 id="什么是决策树"><a href="#什么是决策树" class="headerlink" title="什么是决策树"></a>什么是决策树</h2><h3 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h3><p>根节点、父节点、子节点、决策路径、分裂属性、叶子节点</p>
+<p>根节点 -&gt; 父节点 -&gt; 子节点</p>
+<h3 id="节点的“不纯度”"><a href="#节点的“不纯度”" class="headerlink" title="节点的“不纯度”"></a>节点的“不纯度”</h3><p>节点内尽量都是“同类”的数据</p>
+<p>用“不纯度”来度量</p>
+<p>两个指标度量：1、entropy熵；2、Gini系数</p>
+<p>$GINI &#x3D; 1 - $ $\Sigma$ $p(i)^2$</p>
+<p>$Entropy &#x3D; -$ $\Sigma$ $p(i)log p(i)$</p>
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>信息增益Gain</p>
+<hr>
+<h1 id="20241219"><a href="#20241219" class="headerlink" title="20241219"></a>20241219</h1><h1 id="降维：PCA"><a href="#降维：PCA" class="headerlink" title="降维：PCA"></a>降维：PCA</h1><h2 id="why-to-do-PCA"><a href="#why-to-do-PCA" class="headerlink" title="why to do PCA"></a>why to do PCA</h2><p>机器学习算法的复杂度和数据的维数有着密切关系，甚至呈现指数级关联<br>实际机器学习中处理成千上万甚至几十万维的情况也并不罕见，但机器学习的资源消耗是不可接受的，必须对数据进行降维<br>降维当然意味着信息的丢失，要减少丢失的信息</p>
+<h2 id="PCA基本思想"><a href="#PCA基本思想" class="headerlink" title="PCA基本思想"></a>PCA基本思想</h2><p>在降维的同时将信息的损失尽量降低  </p>
+<h2 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h2><h3 id="主成分的特点"><a href="#主成分的特点" class="headerlink" title="主成分的特点"></a>主成分的特点</h3><ul>
+<li>主成分是原变量的线性组合  </li>
+<li>各个主成分之间互不相关，不同的主成分轴之间相互正交  </li>
+<li>主成分按照方差的大小依次排列，第一主成分对应最大的方差（特征值）  </li>
+<li>每个主成分的均值为0</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;./iris.csv&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(data.head())</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://suzuran109.github.io/2024/12/05/Logical-Regression/" data-id="cm5ys98qt0005dgur94myhav6" data-title="Logical_Regression" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/12/06/physical-astro/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          physical_astro
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/02/computephy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">computephy</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Astro/">Astro</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Hexo学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/">理论力学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-ray/" rel="tag">X-ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/X-ray/" style="font-size: 10px;">X-ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/15/Markdown2/">Markdown进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/05/physicalastro2/">Heasoft使用与CIAO软件包使用（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/27/xray/">xray</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/26/theoretical-mechanics-test/">理论力学考试题</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/gildassoft/">Gildas_soft</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Jianhong Cao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

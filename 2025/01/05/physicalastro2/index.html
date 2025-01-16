@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Heasoft使用与CIAO软件包使用（一） | 狐狸の学习小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文主要演示了Heasoft和CIAO部分功能的使用，涉及数据获取、彩图合成、光变曲线提取与光谱提取（X-ray方面） Step1.数据获取数据获取网址：https:&#x2F;&#x2F;heasarc.gsfc.nasa.gov&#x2F;cgi-bin&#x2F;W3Browse&#x2F;w3browse.pl  记住这里的obsid编号，稍后需要使用，我们取4875为例子   数据下载进入Linux环境，打开终端，我们先创建一个工作目录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Heasoft使用与CIAO软件包使用（一）">
+<meta property="og:url" content="https://suzuran109.github.io/2025/01/05/physicalastro2/index.html">
+<meta property="og:site_name" content="狐狸の学习小窝">
+<meta property="og:description" content="本文主要演示了Heasoft和CIAO部分功能的使用，涉及数据获取、彩图合成、光变曲线提取与光谱提取（X-ray方面） Step1.数据获取数据获取网址：https:&#x2F;&#x2F;heasarc.gsfc.nasa.gov&#x2F;cgi-bin&#x2F;W3Browse&#x2F;w3browse.pl  记住这里的obsid编号，稍后需要使用，我们取4875为例子   数据下载进入Linux环境，打开终端，我们先创建一个工作目录">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/web1.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/web2.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/web3.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/ds91.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/ds92.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/ds93.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/ds94.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/crab.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/mrk1210.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/ds95.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/ds96.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/mrk1210lc.png">
+<meta property="og:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/mrk1210spec.png">
+<meta property="article:published_time" content="2025-01-05T02:54:57.000Z">
+<meta property="article:modified_time" content="2025-01-05T14:45:03.205Z">
+<meta property="article:author" content="Jianhong Cao">
+<meta property="article:tag" content="X-ray">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suzuran109.github.io/2025/01/05/physicalastro2/web1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸の学习小窝" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸の学习小窝</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://suzuran109.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-physicalastro2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/05/physicalastro2/" class="article-date">
+  <time class="dt-published" datetime="2025-01-05T02:54:57.000Z" itemprop="datePublished">2025-01-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Astro/">Astro</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Heasoft使用与CIAO软件包使用（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>本文主要演示了Heasoft和CIAO部分功能的使用，涉及数据获取、彩图合成、光变曲线提取与光谱提取（X-ray方面）</p>
+<h1 id="Step1-数据获取"><a href="#Step1-数据获取" class="headerlink" title="Step1.数据获取"></a>Step1.数据获取</h1><p>数据获取网址：<a target="_blank" rel="noopener" href="https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3browse.pl">https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3browse.pl</a></p>
+<img src="/2025/01/05/physicalastro2/web1.png" class="" title="web1">
+<p>记住这里的obsid编号，稍后需要使用，我们取4875为例子</p>
+<img src="/2025/01/05/physicalastro2/web2.png" class="" title="web2">
+
+<h2 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h2><p>进入Linux环境，打开终端，我们先创建一个工作目录并进入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> xray</span><br><span class="line"><span class="built_in">cd</span> xray/</span><br></pre></td></tr></table></figure>
+<p>先前下载好了heasoft软件包和CIAO软件包，CIAO软件包是专门为Chandra X-ray望远镜设计的一套软件包，建立好了进入环境的快捷指令，直接运行即可进入CIAO环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ciao</span><br></pre></td></tr></table></figure>
+
+<p>我们安装Mrk1210的光谱数据，在先前我们获取了Mrk1210的编号4875</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">download_chandra_obsid 4875 <span class="comment">#安装指令，下载到当前工作目录</span></span><br><span class="line">chandra_repro 4875 outdir=<span class="string">&#x27;&#x27;</span> <span class="comment">#解压缩</span></span><br></pre></td></tr></table></figure>
+<p>包含蟹状星云数据在内，工作目录应该有红框内的文件夹</p>
+<img src="/2025/01/05/physicalastro2/web3.png" class="" title="web3">
+
+
+
+<h1 id="Step2-数据成像"><a href="#Step2-数据成像" class="headerlink" title="Step2.数据成像"></a>Step2.数据成像</h1><p>这一模块列举蟹状星云和Mrk1210的成像，截取了特定能量范围的光谱数据作为RGB三原色的FITS文件进行叠加，再通过色彩调整得到一幅伪彩色图。</p>
+<h2 id="Crab"><a href="#Crab" class="headerlink" title="Crab"></a>Crab</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 198/</span><br><span class="line"><span class="built_in">cd</span> primary/</span><br></pre></td></tr></table></figure>
+<p>我们可以看到有一个名称是<em>acisf00198N005_evt2.fits.gz</em>的压缩文件，无需解压，我们在终端命令行操作即可<br>提取不同能段的图像，由于X-ray能段并没有可见光那样的颜色，我们选取特定范围的X-ray作为不同的颜色，这样我们可以合成一张伪彩色的图片2</p>
+<ul>
+<li>soft:0.2-1.5keV 红色</li>
+<li>medium:1.5-2.5keV 绿色</li>
+<li>hard: 2.5-8keV 蓝色<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">punlearn dmcopy</span><br><span class="line"><span class="comment"># 提取三种波段的fits</span></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf00198N005_evt2.fits[energy=200:1500]&#x27;</span> outfile=<span class="string">&#x27;red_198.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf00198N005_evt2.fits[energy=1500:2500]&#x27;</span> outfile=<span class="string">&#x27;green_198.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf00198N005_evt2.fits[energy=2500:8000]&#x27;</span> outfile=<span class="string">&#x27;blue_198.fits&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RGB合并</span></span><br><span class="line">heasoft <span class="comment">#进入heasoft环境,ds9是heasoft里的一个图像显示的软件</span></span><br><span class="line">ds9 -rgb -red red_198.fits -green green_198.fits -blue blue_198.fits</span><br></pre></td></tr></table></figure>
+效果如图：<img src="/2025/01/05/physicalastro2/ds91.png" class="" title="ds9"></li>
+</ul>
+<h3 id="调色"><a href="#调色" class="headerlink" title="调色"></a>调色</h3><p>我们在左侧工具框中选择Lock，选中<em>色阶图例</em>和<em>Smooth</em>，然后按住鼠标右键在图上拖动，使颜色鲜艳，还可以在‘色阶’功能选择合适的颜色，或者在<em>分析</em>功能中选择<em>Smooth Parameters</em>进行调整  </p>
+<img src="/2025/01/05/physicalastro2/ds92.png" class="" title="ds9">
+
+<h3 id="增加图例坐标轴"><a href="#增加图例坐标轴" class="headerlink" title="增加图例坐标轴"></a>增加图例坐标轴</h3><p>在<em>分析</em>工具中，我们选择<em>坐标格线参数</em>，<em>Type</em>一栏中，选中<em>分析</em>和两个<em>Exterior Axes</em>,在<em>Grid</em>中取消显示网格线  </p>
+<img src="/2025/01/05/physicalastro2/ds93.png" class="" title="ds9">
+
+<h3 id="添加其他望远镜图样"><a href="#添加其他望远镜图样" class="headerlink" title="添加其他望远镜图样"></a>添加其他望远镜图样</h3><p>回到主菜单,选择<em>影像视窗</em>的<em>合重</em>，这样可以显示多个图像，选择空白图像，我们在<em>分析</em>一栏的<em>Archive</em>选择一个望远镜，输入目标名称，选择其中一个图像载入即可</p>
+<img src="/2025/01/05/physicalastro2/ds94.png" class="" title="ds9">
+
+<h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><img src="/2025/01/05/physicalastro2/crab.png" class="" title="ds9">
+<hr>
+<h2 id="Mrk1210"><a href="#Mrk1210" class="headerlink" title="Mrk1210"></a>Mrk1210</h2><p>处理流程类似蟹状星云，仅展示最终效果图</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">cd</span> ./xray/4875/primary/</span><br><span class="line">punlearn dmcopy</span><br><span class="line"><span class="comment"># 提取三种波段的fits</span></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf04875N004_evt2.fits[energy=200:1500]&#x27;</span> outfile=<span class="string">&#x27;red_4875.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf04875N004_evt2.fits[energy=1500:2500]&#x27;</span> outfile=<span class="string">&#x27;green_4875.fits&#x27;</span></span><br><span class="line"></span><br><span class="line">dmcopy infile=<span class="string">&#x27;acisf04875N004_evt2.fits[energy=2500:8000]&#x27;</span> outfile=<span class="string">&#x27;blue_4875.fits&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RGB合并</span></span><br><span class="line">heasoft <span class="comment">#进入heasoft环境,ds9是heasoft里的一个图像显示的软件</span></span><br><span class="line">ds9 -rgb -red red_4875.fits -green green_4875.fits -blue blue_4875.fits</span><br></pre></td></tr></table></figure>
+<img src="/2025/01/05/physicalastro2/mrk1210.png" class="" title="ds9">
+
+<h1 id="Step3-光变曲线提取"><a href="#Step3-光变曲线提取" class="headerlink" title="Step3.光变曲线提取"></a>Step3.光变曲线提取</h1><p>能谱和光变曲线都能够从<em>acisf04875_repro_evt2.fits</em>提取出来。CIAO提供了一个很方便的教程<a target="_blank" rel="noopener" href="https://cxc.harvard.edu/ciao/threads/lightcurve/">Click_Here</a></p>
+<h2 id="选取目标源和背景区域范围"><a href="#选取目标源和背景区域范围" class="headerlink" title="选取目标源和背景区域范围"></a>选取目标源和背景区域范围</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> </span><br><span class="line"><span class="built_in">cd</span> ./xray/4875/repro/</span><br><span class="line">ds9 acisf04875_repro_evt2.fits </span><br></pre></td></tr></table></figure>
+
+<p>打开ds9后选择<em>编辑</em>的<em>区域</em>，选中源的位置，适当调整大小保证目标在圆圈内，然后选择<em>区域</em>功能的<em>Save Selection</em>，保存为<em>src.reg</em>，选择格式为CIAO。</p>
+<img src="/2025/01/05/physicalastro2/ds95.png" class="" title="ds9">
+
+<p>在源周围再选定一个框，但不可覆盖源,重复上述步骤，保存为<em>bkg.reg</em></p>
+<img src="/2025/01/05/physicalastro2/ds96.png" class="" title="ds9">
+
+<h2 id="提取lc"><a href="#提取lc" class="headerlink" title="提取lc"></a>提取lc</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查相机id，确认我们选取的源和背景的范围是在那个CCD芯片上（芯片的序号）</span></span><br><span class="line">punlearn dmstat</span><br><span class="line">dmstat <span class="string">&quot;acisf04875_evt2.fits[sky=region(src.reg)][cols ccd_id]&quot;</span></span><br><span class="line"><span class="comment">### 检查id为7</span></span><br><span class="line"></span><br><span class="line">dmlist acisf04875_evt2.fits <span class="comment">#查看时间范围，选取</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#提取减掉背景信号的源的光变曲线</span></span><br><span class="line">punlearn dmextract</span><br><span class="line">pset dmextract infile=<span class="string">&quot;acisf04875_evt2.fits[ccd_id=7,sky=region(src.reg)][bin time=194800731.1376200020:194801731.1376200020:20]&quot;</span> <span class="comment">#起始时间:最终时间:分bin时间</span></span><br><span class="line">pset dmextract outfile=<span class="string">&quot;src_sub_lc.fits&quot;</span> <span class="comment">#输出文件名称</span></span><br><span class="line">pset dmextract bkg=<span class="string">&quot;acisf04875_evt2.fits[ccd_id=7,sky=region(bkg.reg)]&quot;</span> <span class="comment">#引入背景</span></span><br><span class="line">pset dmextract opt=<span class="string">&quot;ltc1&quot;</span> <span class="comment">#光变曲线文件格式</span></span><br><span class="line">dmextract <span class="comment">#执行</span></span><br><span class="line"></span><br><span class="line">dmlist src_sub_lc.fits cols <span class="comment">#检查生成文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#画图，使用heasoft的lcurve</span></span><br><span class="line">heasoft <span class="comment">#进入环境</span></span><br><span class="line">lcurve 1 src_sub_lc.fits</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行信息，rebinning和interval的乘积就是选定的时间区间</span></span><br><span class="line">$ Name of the window file (<span class="string">&#x27;-&#x27;</span> <span class="keyword">for</span> default window)    <span class="comment">##默认回车可看到一些时间等信息</span></span><br><span class="line">$ Newbin Time or negative rebinning  20   <span class="comment">##输入重新并合的时间bin大小</span></span><br><span class="line">$ Number of Newbins/Interval  50   <span class="comment">##输入时间重新bin后可用的通道数</span></span><br><span class="line">$ Name of output file     <span class="comment">##输入输出文件名或默认回车</span></span><br><span class="line">$ Do you want to plot your results?  <span class="comment">##输入yes或回车</span></span><br><span class="line">$ Enter PGPLOT device    <span class="comment">##默认回车或输入 /xw</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#修改文件头</span></span><br><span class="line">punlearn dmhedit</span><br><span class="line">dmhedit src_sub_lc.fits filelist=<span class="string">&#x27;&#x27;</span> operation=add key=object value=JHCao_mrk1210</span><br><span class="line"></span><br><span class="line"><span class="comment">#保存</span></span><br><span class="line">hardcopy</span><br></pre></td></tr></table></figure>
+<h3 id="最终成图"><a href="#最终成图" class="headerlink" title="最终成图"></a>最终成图</h3><img src="/2025/01/05/physicalastro2/mrk1210lc.png" class="" title="lc">
+
+
+
+<h1 id="Step4-能谱拟合"><a href="#Step4-能谱拟合" class="headerlink" title="Step4.能谱拟合"></a>Step4.能谱拟合</h1><p>工作目录依然是repro，因此不需要其他操作</p>
+<h2 id="方法一：一步提取点光源"><a href="#方法一：一步提取点光源" class="headerlink" title="方法一：一步提取点光源"></a>方法一：一步提取点光源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">CIAO <span class="comment">#进入环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#提取点源光谱</span></span><br><span class="line"><span class="comment">#specextract 可以从事件文件的头文件中确定辅助文件（宽高比解决方案、坏像素、掩码），这意味着只需提供源文件、输出目录和可能的背景文件即可： </span></span><br><span class="line">punlearn specextract</span><br><span class="line">pset specextract infile=<span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(src.reg)]&quot;</span> <span class="comment">#src.reg和bkg.reg都是刚才使用ds9提取的点源和背景文件</span></span><br><span class="line">pset specextract bkgfile=<span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(bkg.reg)]&quot;</span></span><br><span class="line">pset specextract outroot=mrk1210</span><br><span class="line">pset specextract correctpsf=<span class="built_in">yes</span></span><br><span class="line">pset specextract weight=no</span><br><span class="line"><span class="comment"># weight 参数设置为 “no ”是为了告诉脚本做一个点样的 ARF，而 correctpsf 参数设置为 “yes ”是为了运行 arfcorr 来修正 ARF。这些参数必须更改，因为默认行为是 weight=yes 和 correctpsf=no。</span></span><br><span class="line">specextract <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line">dmstat <span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(src.reg)][bin sky=2]&quot;</span></span><br><span class="line">pget dmstat out_max_loc <span class="comment">#确定中心点</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># specextract步骤生成的文件应该有：</span></span><br><span class="line">$ mrk1210.pi            ：ungrouped <span class="built_in">source</span> spectrum</span><br><span class="line">$ mrk1210.arf           ：<span class="built_in">source</span> ARF, no PSF corrections</span><br><span class="line">$ mrk1210.corr.arf      ：<span class="built_in">source</span> ARF, with PSF corrections applied</span><br><span class="line">$ mrk1210.rmf           ：<span class="built_in">source</span> RMF</span><br><span class="line">$ mrk1210_grp.pi        ：grouped <span class="built_in">source</span> spectrum</span><br><span class="line"></span><br><span class="line">$ mrk1210_bkg.pi        ：background spectrum</span><br><span class="line">$ mrk1210_bkg.arf       ：background ARF</span><br><span class="line">$ mrk1210_bkg.rmf       ：background RMF</span><br></pre></td></tr></table></figure>
+<p><em>mrk1210_grp.pi</em>就是我们最终需要的光谱文件</p>
+<h2 id="方法二：step-by-step"><a href="#方法二：step-by-step" class="headerlink" title="方法二：step by step"></a>方法二：step by step</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#提取源光谱</span></span><br><span class="line"><span class="comment">#我们提取标准脉冲不变（PI）通道的光谱。这样就绘制出了计数数与 PI 信道的直方图： </span></span><br><span class="line">pset dmextract infile=<span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(src.reg)][bin pi]&quot;</span></span><br><span class="line">pset dmextract outfile=step_by_step.pi  <span class="comment">#生成文件</span></span><br><span class="line">pset dmextract op=pha1 <span class="comment">#格式</span></span><br><span class="line">dmextract <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置 ardlib.par (acis_set_ardlib)</span></span><br><span class="line"><span class="comment">#坏像素和坏列信息存储在 bpix1.fits 文件中。该文件被多个工具使用，可通过 ardlib.par 参数文件访问。在处理单个数据集时，chandra_repro 默认会用正确的坏像素文件自动设置 ardlib.par 文件。但是，如果其他观测数据已经过重新校准，则 ardlib.par 文件可能无法指向正确的文件。</span></span><br><span class="line">punlearn ardlib</span><br><span class="line">acis_set_ardlib acisf04875_repro_bpix1.fits absolute=no</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#定位中心点（dmstat 和 dmcoords）</span></span><br><span class="line"><span class="comment">#由于各芯片的校准情况不尽相同，我们需要找到源的中心点（以芯片坐标为单位）。创建 ARFs 和选择使用 mkrmf 计算 RMFs 的 FEF（FITS 嵌入函数）时都需要这一信息。</span></span><br><span class="line">dmstat <span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(src.reg)][bin sky=1]&quot;</span> centroid=<span class="built_in">yes</span></span><br><span class="line"><span class="comment"># 输出得到中心点坐标x=4064.3547562，y=4150.6423499 重要！！！</span></span><br><span class="line"></span><br><span class="line">punlearn dmcoords <span class="comment">#然后将其转换为 CHIP 坐标</span></span><br><span class="line">dmcoords acisf13858_repro_evt2.fits op=sky x=4064.3547562 y=4150.6423499 <span class="comment">#使用刚才得到的坐标</span></span><br><span class="line">pget dmcoords chip_id chipx chipy</span><br><span class="line"><span class="comment">#输出：7 272.6542441495169 496.3159845780768 近似为272和496</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算 RMFs</span></span><br><span class="line"><span class="comment">#望远镜使用的观测数据是在 -120 摄氏度焦平面温度下拍摄的，光源位于 ACIS-7 上，是一个背照式芯片。因此，可以使用 mkacisrmf 创建 RMF 文件。</span></span><br><span class="line">pset mkacisrmf infile=CALDB</span><br><span class="line">pset mkacisrmf wmap=none</span><br><span class="line">pset mkacisrmf obsfile=acisf04875_repro_evt2.fits</span><br><span class="line">pset mkacisrmf ccd_id=7 chipx=272 chipy=496</span><br><span class="line">pset mkacisrmf chantype=PI channel=1:1024:1 energy=0.3:11.0:0.01</span><br><span class="line">pset mkacisrmf outfile=step_by_step.rmf </span><br><span class="line">mkacisrmf <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#使用 mkrmf（acis_fef_lookup、mkrmf）首先需要 acis_fef_lookup 来确定正确的输入校准文件，即 FITS 嵌入函数或 FEF。</span></span><br><span class="line">pset acis_fef_lookup infile=acisf04875_repro_evt2.fits </span><br><span class="line">pset acis_fef_lookup chipid=7 chipx=272 chipy=496</span><br><span class="line">acis_fef_lookup</span><br><span class="line">pset mkrmf infile=<span class="string">&quot;)acis_fef_lookup.outfile&quot;</span> </span><br><span class="line">pset mkrmf axis1=energy=0.3:11.0:0.01</span><br><span class="line">pset mkrmf axis2=pi=1:1024:1</span><br><span class="line">pset mkrmf outfile=step_by_step_fef.rmf</span><br><span class="line">mkrmf <span class="comment"># 运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算ARFs</span></span><br><span class="line"><span class="comment">#计算高宽比直方图（asphist）现在我们需要创建高宽比直方图，它是观测过程中高宽比运动的分档表示。</span></span><br><span class="line"><span class="comment">#高宽比直方图使用事件文件中的 “良好时间间隔”（GTI）信息。由于有多个 GTI，每个 CCD_ID 都有一组，因此我们需要用正确的 CCD_ID 过滤器过滤事件文件，以选择正确的 GTI。</span></span><br><span class="line">pset asphist infile=pcadf04875_001N001_asol1.fits</span><br><span class="line">pset asphist evtfile=<span class="string">&quot;acisf04875_repro_evt2.fits[ccd_id=7]&quot;</span> </span><br><span class="line">pset asphist outfile=asp7.hist</span><br><span class="line">asphist <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#制作ARFs</span></span><br><span class="line">punlearn mkarf</span><br><span class="line">pset mkarf asphistfile=asp7.hist</span><br><span class="line">pset mkarf sourcepixelx=4064.3547562 sourcepixely=4150.6423499 <span class="comment">#中心点坐标</span></span><br><span class="line">pset mkarf engrid=0.3:11.0:0.01</span><br><span class="line">pset mkarf obsfile=acisf04875_repro_evt2.fits</span><br><span class="line">pset mkarf detsubsys=<span class="string">&quot;ACIS-7&quot;</span></span><br><span class="line">pset mkarf maskfile=acisf04875_001N004_msk1.fits</span><br><span class="line">pset mkarf outfile=step_by_step_mkarf.arf</span><br><span class="line">mkarf <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#修正源 ARF (arfcorr)</span></span><br><span class="line"><span class="comment">#arfcorr 计算源的能量相关点源孔径校正（PSF 分数），并将校正结果应用于 ARF 文件。运行 mkarf 时使用的 (x,y) 位置会输入到 arfcorr，源光谱使用的提取区域也是如此。需要输入图像来设置将要生成的 PSF 图像的大小和比例。</span></span><br><span class="line">pset arfcorr infile=<span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(src.reg)][bin sky]&quot;</span></span><br><span class="line">pset arfcorr region=<span class="string">&quot;region(src.reg)&quot;</span></span><br><span class="line">pset arfcorr x=4064.3547562 y=4150.6423499 <span class="comment">#中心点坐标</span></span><br><span class="line">pset arfcorr arf=step_by_step_mkarf.arf</span><br><span class="line">pset arfcorr outfile=step_by_step_corrected.arf <span class="comment">#输出</span></span><br><span class="line">arfcorr <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#打包点源光谱</span></span><br><span class="line">punlearn dmgroup</span><br><span class="line">pset dmgroup infile=step_by_step.pi</span><br><span class="line">pset dmgroup outfile=step_by_step_grp.pi</span><br><span class="line">pset dmgroup grouptype=NUM_CTS </span><br><span class="line">pset dmgroup grouptypeval=15</span><br><span class="line">pset dmgroup xcolumn=channel</span><br><span class="line">pset dmgroup ycolumn=counts</span><br><span class="line">dmgroup</span><br><span class="line"><span class="comment">#更新头文件</span></span><br><span class="line">punlearn dmhedit</span><br><span class="line">dmhedit step_by_step.pi filelist=<span class="string">&quot;&quot;</span> operation=add key=ANCRFILE value=step_by_step_corrected.arf </span><br><span class="line">dmhedit step_by_step.pi filelist=<span class="string">&quot;&quot;</span> operation=add key=RESPFILE value=step_by_step.rmf</span><br><span class="line">dmhedit step_by_step_grp.pi filelist=<span class="string">&quot;&quot;</span> operation=add key=ANCRFILE value=step_by_step_corrected.arf</span><br><span class="line">dmhedit step_by_step_grp.pi filelist=<span class="string">&quot;&quot;</span> operation=add key=RESPFILE value=step_by_step.rmf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#提取背景光谱</span></span><br><span class="line">dmextract <span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(bkg.reg)][bin pi]&quot;</span> step_by_step_bkg.pi op=pha1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算背景ARFs，创建一个ARF的权重图</span></span><br><span class="line">pset sky2tdet asphist=asp7.hist </span><br><span class="line">pset sky2tdet infile=<span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(bkg.reg)][energy=300:2000][bin sky]&quot;</span> </span><br><span class="line">pset sky2tdet outfile=<span class="string">&quot;step_by_step_tdet_bkg.wmap[wmap]&quot;</span> </span><br><span class="line">sky2tdet <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#制作ARF</span></span><br><span class="line"><span class="comment">#输出文件中附加的 [wmap] 指定输出块名称应为 wmap。这样做是为了避免 mkwarf 发出一些非致命警告。</span></span><br><span class="line">pset mkwarf egrid=0.3:11.0:0.01</span><br><span class="line">pset mkwarf mskfile=acisf04875_001N004_msk1.fits</span><br><span class="line">pset mkwarf infile=step_by_step_tdet_bkg.wmap</span><br><span class="line">pset mkwarf outfile=step_by_step_bkg.warf</span><br><span class="line">pset mkwarf feffile=CALDB</span><br><span class="line">pset mkwarf weight=step_by_step_bkg.wghts</span><br><span class="line">mkwarf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#制作背景RMFs</span></span><br><span class="line"><span class="comment">#使用 mkacisrmf 创建加权 RMF 也需要 WMAP。不过，由于 RMF 并不是在与 ARF 相同的空间尺度上进行校准的，因此用户可以通过 mkacisrmf 使用分档更粗的 wmap。wmap 可以在使用 dmextract 提取光谱的同时创建，也可以像这里显示的那样即时计算：</span></span><br><span class="line">pset mkacisrmf infile=CALDB</span><br><span class="line">pset mkacisrmf wmap=<span class="string">&quot;acisf04875_repro_evt2.fits[sky=region(bkg.reg)][energy=300:2000][bin tdet=8]&quot;</span></span><br><span class="line">pset mkacisrmf obsfile=acisf04875_repro_evt2.fits</span><br><span class="line">pset mkacisrmf ccd_id=7 chipx=272 chipy=496   <span class="comment"># these parameter value are required by not used</span></span><br><span class="line">pset mkacisrmf chantype=PI channel=1:1024:1 energy=0.3:11.0:0.01</span><br><span class="line">pset mkacisrmf outfile=step_by_step_bkg.rmf </span><br><span class="line">mkacisrmf <span class="comment">#运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#打包背景光谱</span></span><br><span class="line">pset mkrmf infile=CALDB</span><br><span class="line">pset mkrmf weight=step_by_step_bkg.wghts</span><br><span class="line">pset mkrmf axis1=energy=0.3:11.0:0.01</span><br><span class="line">pset mkrmf axis2=pi=1:1024:1</span><br><span class="line">pset mkrmf outfile=step_by_step_fef_bkg.rmf</span><br><span class="line">mkrmf</span><br><span class="line"></span><br><span class="line">pset dmgroup infile=step_by_step_bkg.pi</span><br><span class="line">pset dmgroup outfile=step_by_step_bkg_grp.pi</span><br><span class="line">pset dmgroup grouptype=BIN</span><br><span class="line">pset dmgroup binspec=1:1024:20</span><br><span class="line">pset dmgroup xcolumn=channel</span><br><span class="line">pset dmgroup ycolumn=counts</span><br><span class="line">dmgroup <span class="comment">#运行</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制能谱"><a href="#绘制能谱" class="headerlink" title="绘制能谱"></a>绘制能谱</h2><p>使用heasoft的Xspec对刚才输出的光谱进行能谱拟合</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">heasoft <span class="comment">#进入环境</span></span><br><span class="line">xspec <span class="comment">#快捷指令进入xspec模块</span></span><br><span class="line">cpd /xw <span class="comment">#打开画板</span></span><br><span class="line">data step_by_step_grp.pi <span class="comment">#读取光谱文件</span></span><br><span class="line">plot ldata <span class="comment">#画出光谱</span></span><br><span class="line">setplot energy   <span class="comment">#设置很坐标为energy，默认为channel</span></span><br><span class="line">plot ldata       <span class="comment">##重新画出光谱</span></span><br><span class="line">setplot <span class="built_in">command</span> rescale y 0.001 0.2    <span class="comment">#后两位为纵坐标的上下范围</span></span><br><span class="line">setplot <span class="built_in">command</span> rescale x 0.4 9    <span class="comment">#后两位为横坐标的上下范围</span></span><br><span class="line">setplot <span class="built_in">command</span> lab top caojh_mrk1210    <span class="comment">#设置光谱图上方的显示字样，自定义名称</span></span><br><span class="line">setplot add         <span class="comment">#设置显示模型成分，默认为noadd不显示</span></span><br><span class="line">model phabs(mekal+pow+zphabs(pow+gau))   <span class="comment">##利用模型拟合，回车后，要求输入红移的，输入红移值，第一个phabs的参数值，可以在高能网站查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询得到红移量为0.013496，nH为3.85E+20，此处nH单位是10^22因此换算为3.85E-02</span></span><br><span class="line"></span><br><span class="line">fit    <span class="comment">#利用上面定义的模型去拟合</span></span><br><span class="line">plot ld res   <span class="comment">#画出拟合后的光谱和残差，如设置了显示模型成分，会同时显示模型成分，这里只显示可以相加的模型的成分，相乘的成分不显示</span></span><br><span class="line">hardcopy    <span class="comment">#保存画板中显示的内容</span></span><br></pre></td></tr></table></figure>
+<p>红移量查询网站 <a target="_blank" rel="noopener" href="https://ned.ipac.caltech.edu/">https://ned.ipac.caltech.edu/</a><br>nH查询网站 <a target="_blank" rel="noopener" href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/w3nh/w3nh.pl">https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/w3nh/w3nh.pl</a>  </p>
+<h2 id="最终成图-1"><a href="#最终成图-1" class="headerlink" title="最终成图"></a>最终成图</h2><img src="/2025/01/05/physicalastro2/mrk1210spec.png" class="" title="spec">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://suzuran109.github.io/2025/01/05/physicalastro2/" data-id="cm5ys98r2000pdgur2dd708yi" data-title="Heasoft使用与CIAO软件包使用（一）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/X-ray/" rel="tag">X-ray</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/15/Markdown2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Markdown进阶
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/27/xray/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">xray</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Astro/">Astro</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Hexo学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/">理论力学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-ray/" rel="tag">X-ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/X-ray/" style="font-size: 10px;">X-ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/15/Markdown2/">Markdown进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/05/physicalastro2/">Heasoft使用与CIAO软件包使用（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/27/xray/">xray</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/26/theoretical-mechanics-test/">理论力学考试题</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/gildassoft/">Gildas_soft</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Jianhong Cao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
