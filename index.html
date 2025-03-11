@@ -73,6 +73,271 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-manim-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/03/11/manim-1/" class="article-date">
+  <time class="dt-published" datetime="2025-03-11T13:30:32.000Z" itemprop="datePublished">2025-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Manim-Learning/">Manim_Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/03/11/manim-1/">manim_1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="本文章是基于bilibili-up：乐正垂星-的manim教学视频编写，仅为本人学习过程。"><a href="#本文章是基于bilibili-up：乐正垂星-的manim教学视频编写，仅为本人学习过程。" class="headerlink" title="本文章是基于bilibili up：乐正垂星 的manim教学视频编写，仅为本人学习过程。"></a>本文章是基于bilibili up：乐正垂星 的manim教学视频编写，仅为本人学习过程。</h2><h4 id="首先我们尝试一下这段代码"><a href="#首先我们尝试一下这段代码" class="headerlink" title="首先我们尝试一下这段代码"></a>首先我们尝试一下这段代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from manim import *</span><br><span class="line">class Try(Scene):  <span class="comment"># 继承自Scene的类</span></span><br><span class="line">    def construct(self):  <span class="comment"># 生成动画的代码</span></span><br><span class="line">        c = Circle(fill_opacity=1)  <span class="comment"># 定义圆，内部不透明度设置为1</span></span><br><span class="line">        s = Square(color=YELLOW , fill_opacity=1) <span class="comment"># 定义正方形，内部设置为黄色，内部不透明度为10</span></span><br><span class="line">        self.play(FadeIn(c)) <span class="comment"># 淡入输入圆形</span></span><br><span class="line">        self.wait()  <span class="comment"># 画面等待1秒钟</span></span><br><span class="line">        self.play(ReplacementTransform(c,s))  <span class="comment"># 把c转化为s</span></span><br><span class="line">        self.wait()  <span class="comment"># 等待1秒</span></span><br><span class="line">        self.play(FadeOut(s))  <span class="comment">#淡出</span></span><br><span class="line">        self.wait()</span><br></pre></td></tr></table></figure>
+
+
+<p>这里演示的是一段基于manim生成动画的代码，由这里我们可以看到三大类</p>
+<ul>
+<li><code>Scene</code>：给动画提供一个播放的场景</li>
+<li><code>Moject</code>：场景中的各种物体，如：圆、正方形等</li>
+<li><code>Animation</code>：作用在 <code>Moject</code> 之上，用这些物体制作一些动画</li>
+</ul>
+<p>[注]：命令行参数 <code>manim demo.py -p</code>，如果拥有多个 <code>Scene</code> 则可以把类的名字作为命令行参数，放在文件路径后面 <code>manim demo.py Try -p</code> ，若不想写类名则会询问渲染的 <code>Scene</code> 的序号 </p>
+<h2 id="1-Scene"><a href="#1-Scene" class="headerlink" title="1.Scene"></a>1.Scene</h2><p>Scene的几种用法：</p>
+<ul>
+<li>add ：针对 <code>Moject</code>  从场景中添加</li>
+<li>remove ：针对 <code>Moject</code> 从场景中移除</li>
+<li>play ：针对 <code>Animation</code> 播放一个或多个动画，同时传入多个可以同时播放</li>
+<li>wait ：让画面等待一段时间，默认是1秒，可传入参数改变等待的秒数</li>
+</ul>
+<h2 id="2-Animation"><a href="#2-Animation" class="headerlink" title="2.Animation"></a>2.Animation</h2><ul>
+<li>FadeIn()</li>
+<li>FadeOut()</li>
+<li>ReplaceTransform(a, b, run_time&#x3D;3, rate_func&#x3D;there_and_back) 若rate_func需要在FadeOut将参数改回a</li>
+</ul>
+<h2 id="3-Moject"><a href="#3-Moject" class="headerlink" title="3.Moject"></a>3.Moject</h2><p>可以设置很多参数，比如：</p>
+<ul>
+<li>Line(LEFT, RIGHT, path_arc&#x3D;0)</li>
+<li>Text(‘blue,red,yellow’, t2c&#x3D;{‘blue’:BLUE, ‘red’:RED, ‘yellow’:YELLOW})</li>
+<li>ParametricFunction(…)</li>
+<li>Circle(…)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://suzuran109.github.io/2025/03/11/manim-1/" data-id="cm84m0r4q000pt0ur2yw6as00" data-title="manim_1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ai" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/02/26/ai/" class="article-date">
+  <time class="dt-published" datetime="2025-02-26T05:57:56.000Z" itemprop="datePublished">2025-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/02/26/ai/">ai</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>TensorFlow - Google 工业界<br>Pytorch - Facebook</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://suzuran109.github.io/2025/02/26/ai/" data-id="cm84m0r4a000et0ura4d03i7b" data-title="ai" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Markdown3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/16/Markdown3/" class="article-date">
+  <time class="dt-published" datetime="2025-01-16T13:19:23.000Z" itemprop="datePublished">2025-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/16/Markdown3/">Markdown高级技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="14-支持的HTML元素"><a href="#14-支持的HTML元素" class="headerlink" title="14.支持的HTML元素"></a>14.支持的HTML元素</h1><p>不在Markdown语言涵盖范围之内的标签都可以直接在文档里面用HTML编写</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">文本居中</td>
+<td align="center"><code>&lt;centre&gt;</code></td>
+</tr>
+<tr>
+<td align="center">快捷键显示</td>
+<td align="center"><code>&lt;kbd&gt;</code></td>
+</tr>
+<tr>
+<td align="center">加粗</td>
+<td align="center"><code>&lt;b&gt;</code></td>
+</tr>
+<tr>
+<td align="center">倾斜</td>
+<td align="center"><code>&lt;i&gt;</code></td>
+</tr>
+<tr>
+<td align="center">上标</td>
+<td align="center"><code>&lt;sup&gt;</code></td>
+</tr>
+<tr>
+<td align="center">下标</td>
+<td align="center"><code>&lt;sub&gt;</code></td>
+</tr>
+<tr>
+<td align="center">填充的黑色箭头</td>
+<td align="center"><code>&amp;#x27A4;</code></td>
+</tr>
+<tr>
+<td align="center">右箭头</td>
+<td align="center"><code>@&gt;&gt;&gt;</code></td>
+</tr>
+<tr>
+<td align="center">……</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>更多见LATEX</p>
+<hr>
+<h1 id="15-转义"><a href="#15-转义" class="headerlink" title="15.转义"></a>15.转义</h1><p>在Markdown中为了避免部分符号与格式冲突，使用反斜杠<code>\</code>进行转义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**Markdown**</span><br><span class="line">\*\*Markdown\*\*</span><br></pre></td></tr></table></figure>
+<p>示例：<br><strong>Markdown</strong><br>**Markdown**  </p>
+<p>以下符号可以使用反斜杠转义使其能够显示</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">释义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\</td>
+<td align="center">反斜线</td>
+</tr>
+<tr>
+<td align="center">&#96;</td>
+<td align="center">反引号</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">星号</td>
+</tr>
+<tr>
+<td align="center">_</td>
+<td align="center">下划线</td>
+</tr>
+<tr>
+<td align="center">{}</td>
+<td align="center">花括号</td>
+</tr>
+<tr>
+<td align="center">[]</td>
+<td align="center">方括号</td>
+</tr>
+<tr>
+<td align="center">()</td>
+<td align="center">小括号</td>
+</tr>
+<tr>
+<td align="center">#</td>
+<td align="center">井字号</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">加号</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">减号</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">英文句点</td>
+</tr>
+<tr>
+<td align="center">!</td>
+<td align="center">感叹号</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="16。流程图"><a href="#16。流程图" class="headerlink" title="16。流程图"></a>16。流程图</h1><p>需要使用 <code>typora</code> 的源码，在VSCode看不到效果（-_-|）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[方形]==&gt;B(圆角)</span><br><span class="line">B==&gt;C&#123;条件a&#125;</span><br><span class="line">C--&gt;|a=1|D[结果1]</span><br><span class="line">C--&gt;|a=2|E[结果2]</span><br><span class="line">F[横向流程图]</span><br></pre></td></tr></table></figure>
+<p>流程图问题此处不做赘述，或许后续会添加</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://suzuran109.github.io/2025/01/16/Markdown3/" data-id="cm84m0r440006t0ur5puzaug0" data-title="Markdown高级技巧" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Markdown2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/15/Markdown2/" class="article-date">
@@ -241,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2025/01/15/Markdown2/" data-id="cm5yy9euo0009f0ura5h38k83" data-title="Markdown进阶" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2025/01/15/Markdown2/" data-id="cm84m0r400004t0uravxfcl55" data-title="Markdown进阶" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -349,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2025/01/05/physicalastro2/" data-id="cm5yy9euv000qf0urcahm170b" data-title="Heasoft使用与CIAO软件包使用（一）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2025/01/05/physicalastro2/" data-id="cm84m0r4x0010t0ur7jghhcow" data-title="Heasoft使用与CIAO软件包使用（一）" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -404,7 +669,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/27/xray/" data-id="cm5yy9ev90017f0ureuf65os3" data-title="xray" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/27/xray/" data-id="cm84m0r57001jt0ur8dvsepvi" data-title="xray" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -472,7 +737,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/26/theoretical-mechanics-test/" data-id="cm5yy9ev80016f0ur1juxh6k7" data-title="理论力学考试题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/26/theoretical-mechanics-test/" data-id="cm84m0r4u000zt0ur4w2g1u6w" data-title="理论力学考试题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -526,7 +791,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/07/gildassoft/" data-id="cm5yy9euq000ff0ur38k45ikq" data-title="Gildas_soft" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/07/gildassoft/" data-id="cm84m0r4r000ut0ur2d371a2j" data-title="Gildas_soft" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -569,7 +834,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/06/physical-astro/" data-id="cm5yy9euu000lf0ur94zafd92" data-title="physical_astro" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/06/physical-astro/" data-id="cm84m0r4r000rt0ur5kga6hcq" data-title="physical_astro" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -641,170 +906,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/05/Logical-Regression/" data-id="cm5yy9eug0001f0ur0czw5sye" data-title="Logical_Regression" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-computephy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/02/computephy/" class="article-date">
-  <time class="dt-published" datetime="2024-12-02T06:20:28.000Z" itemprop="datePublished">2024-12-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/software/">software</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/02/computephy/">computephy</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>add atoms</p>
-<p>options 选用坐标：笛卡尔坐标系,填写晶体晶格xyz坐标</p>
-<p>分数坐标：xyz变为abc   fractinal</p>
-<p>如何进行表面重构：</p>
-<p>先构造超胞，再切除表面cleave surface</p>
-<p>建立真空曾 build vacuum slab</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/12/02/computephy/" data-id="cm5yy9eup000ef0ur3abn9wis" data-title="computephy" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Planets-photo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/29/Planets-photo/" class="article-date">
-  <time class="dt-published" datetime="2024-11-29T09:31:02.000Z" itemprop="datePublished">2024-11-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/29/Planets-photo/">太阳系内行星拍摄和数据处理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>行星：</p>
-<p>质量大小：<br>迷你地球、亚地球、类地行星</p>
-<p>系内外（太阳系）：<br>水星、金星、地球、、、</p>
-<p>系外行星：已经认证5756颗系外行星</p>
-<p>搜寻方法：直接成像法、凌日法、视向速度法、微引力透镜法、脉冲星计时法</p>
-<p>目的：寻找宜居行星、寻找生命 寻找智慧文明</p>
-<p>spizter、Kepler、TESS、TMT、JWST。。。</p>
-<p>设备：C8</p>
-<p>实验目的：</p>
-<p>熟练掌握赤道式望远镜的安装和拆卸</p>
-<p>了解行星相关知识</p>
-<p>熟练掌握CMOS观测行星的拍摄方法</p>
-<p>熟练掌握行星观测数据的处理方法</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/11/29/Planets-photo/" data-id="cm5yy9eul0006f0urcq1q19h9" data-title="太阳系内行星拍摄和数据处理" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-some-web" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/28/some-web/" class="article-date">
-  <time class="dt-published" datetime="2024-11-28T11:58:03.000Z" itemprop="datePublished">2024-11-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/28/some-web/">some_web</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="科研自用"><a href="#科研自用" class="headerlink" title="科研自用"></a>科研自用</h2><p>Fermi时间转换妙妙小工具：<a target="_blank" rel="noopener" href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl">https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl</a></p>
-<p>SDSS斯隆官网：<a target="_blank" rel="noopener" href="https://www.sdss.org/">https://www.sdss.org/</a></p>
-<p>Fermi搜寻(Photons,events,Spacecraft)小工具：<a target="_blank" rel="noopener" href="https://fermi.gsfc.nasa.gov/cgi-bin/ssc/LAT/LATDataQuery.cgi">https://fermi.gsfc.nasa.gov/cgi-bin/ssc/LAT/LATDataQuery.cgi</a></p>
-<p>Fermi数据检索：<a target="_blank" rel="noopener" href="https://heasarc.gsfc.nasa.gov/db-perl/W3Browse/w3table.pl?tablehead=name=fermilpsc&Action=More+Options">https://heasarc.gsfc.nasa.gov/db-perl/W3Browse/w3table.pl?tablehead=name%3Dfermilpsc&amp;Action=More+Options</a></p>
-<p>CDS：<a target="_blank" rel="noopener" href="https://cds.unistra.fr/">https://cds.unistra.fr/</a></p>
-<p>NED：<a target="_blank" rel="noopener" href="https://ned.ipac.caltech.edu/forms/byname.html">https://ned.ipac.caltech.edu/forms/byname.html</a></p>
-<p>Overleaf论文编写小工具：<a target="_blank" rel="noopener" href="https://www.overleaf.com/project">https://www.overleaf.com/project</a></p>
-<p>神秘文献小网站arxiv：<a target="_blank" rel="noopener" href="https://arxiv.org/list/astro-ph/new">https://arxiv.org/list/astro-ph/new</a></p>
-<p>ADSABS：<a target="_blank" rel="noopener" href="https://ui.adsabs.harvard.edu/">https://ui.adsabs.harvard.edu/</a></p>
-<p>VLBI图像FITS：<a target="_blank" rel="noopener" href="https://astrogeo.org/vlbi_images/">https://astrogeo.org/vlbi_images/</a></p>
-<h2 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h2><p>风灵月影（神の一“叮”）：<a target="_blank" rel="noopener" href="https://flingtrainer.com/category/trainer/">https://flingtrainer.com/category/trainer/</a></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>sk-learn：<a target="_blank" rel="noopener" href="https://scikit-learn.org/1.5/index.html">https://scikit-learn.org/1.5/index.html</a></p>
-<p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/">https://www.runoob.com/</a></p>
-<p>LaTeX使用指南：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/597257202?utm_id=0">https://zhuanlan.zhihu.com/p/597257202?utm_id=0</a></p>
-<p>GitHub：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
-<p>Gitte：<a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com/</a></p>
-<p>常用LaTex：<a target="_blank" rel="noopener" href="https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30">https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30</a></p>
-<h2 id="神秘邮箱（梯）"><a href="#神秘邮箱（梯）" class="headerlink" title="神秘邮箱（梯）"></a>神秘邮箱（梯）</h2><p><a href="mailto:&#x66;&#105;&#x6e;&#100;&#64;&#105;&#x6b;&#x75;&#x75;&#117;&#46;&#112;&#114;&#111;">&#x66;&#105;&#x6e;&#100;&#64;&#105;&#x6b;&#x75;&#x75;&#117;&#46;&#112;&#114;&#111;</a>(发送任意邮件到此邮箱，将会收到最新官网地址（自动回复）)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2024/11/28/some-web/" data-id="cm5yy9euv000of0urgazwcnxv" data-title="some_web" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://suzuran109.github.io/2024/12/05/Logical-Regression/" data-id="cm84m0r3s0001t0ur5m6zfx5u" data-title="Logical_Regression" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -831,7 +933,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Astro/">Astro</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Hexo学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/">理论力学</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Astro/">Astro</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Hexo学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manim-Learning/">Manim_Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/">理论力学</a></li></ul>
     </div>
   </div>
 
@@ -860,7 +962,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
     </div>
   </div>
 
@@ -873,23 +975,23 @@
       <ul>
         
           <li>
+            <a href="/2025/03/11/manim-1/">manim_1</a>
+          </li>
+        
+          <li>
+            <a href="/2025/02/26/ai/">ai</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/16/Markdown3/">Markdown高级技巧</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/15/Markdown2/">Markdown进阶</a>
           </li>
         
           <li>
             <a href="/2025/01/05/physicalastro2/">Heasoft使用与CIAO软件包使用（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2024/12/27/xray/">xray</a>
-          </li>
-        
-          <li>
-            <a href="/2024/12/26/theoretical-mechanics-test/">理论力学考试题</a>
-          </li>
-        
-          <li>
-            <a href="/2024/12/07/gildassoft/">Gildas_soft</a>
           </li>
         
       </ul>
