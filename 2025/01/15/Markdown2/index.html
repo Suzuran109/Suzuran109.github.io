@@ -1,110 +1,216 @@
-<!DOCTYPE html>
-<html>
-<head>
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="true"
+  >
+  <head>
   <meta charset="utf-8">
   
   
-  <title>Markdown进阶 | 狐狸の学习小窝</title>
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_ex15nbittbh';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://suzuran109.github.io';window.REIMU_CONFIG.relative = '/';</script>
+  <title>
+    Markdown进阶 | 狐狸の学习小窝
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="8.Markdown列表Markdown 支持有序列表和无序列表，列表之间可以嵌套所谓有序列表是指以数字为开头的，而无序列表是以符号为前缀标志补充：还有一类任务列表，但目前对笔者用处不大、、、 有序列表有序列表和Word的编号功能类似，以数字为前缀，格式为：数字+. 比如 1231. 第一项2. 第二项3. 第三项 示例：  第一项 第二项 第三项  无序列表无序列表以星号*，加号+或减号-为前缀">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_ex15nbittbh.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="8.Markdown列表 Markdown 支持有序列表和无序列表，列表之间可以嵌套 所谓有序列表是指以数字为开头的，而无序列表是以符号为前缀标志 补充：还有一类任务列表，但目前对笔者用处不大、、、  有序列表 有序列表和Word的编号功能类似，以数字为前缀，格式为：数字+. 比如 1231. 第一项2. 第二项3. 第三项 示例：  第一项 第二项 第三项   无序列表 无序列表以星号*，加号">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown进阶">
 <meta property="og:url" content="https://suzuran109.github.io/2025/01/15/Markdown2/index.html">
 <meta property="og:site_name" content="狐狸の学习小窝">
-<meta property="og:description" content="8.Markdown列表Markdown 支持有序列表和无序列表，列表之间可以嵌套所谓有序列表是指以数字为开头的，而无序列表是以符号为前缀标志补充：还有一类任务列表，但目前对笔者用处不大、、、 有序列表有序列表和Word的编号功能类似，以数字为前缀，格式为：数字+. 比如 1231. 第一项2. 第二项3. 第三项 示例：  第一项 第二项 第三项  无序列表无序列表以星号*，加号+或减号-为前缀">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="8.Markdown列表 Markdown 支持有序列表和无序列表，列表之间可以嵌套 所谓有序列表是指以数字为开头的，而无序列表是以符号为前缀标志 补充：还有一类任务列表，但目前对笔者用处不大、、、  有序列表 有序列表和Word的编号功能类似，以数字为前缀，格式为：数字+. 比如 1231. 第一项2. 第二项3. 第三项 示例：  第一项 第二项 第三项   无序列表 无序列表以星号*，加号">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://suzuran109.github.io/2025/01/15/Markdown2/2.png">
 <meta property="og:image" content="https://suzuran109.github.io/2025/01/15/Markdown2/Markdown2">
 <meta property="article:published_time" content="2025-01-15T14:12:45.000Z">
 <meta property="article:modified_time" content="2025-01-16T06:34:44.245Z">
-<meta property="article:author" content="Jianhong Cao">
+<meta property="article:author" content="Suzuran">
 <meta property="article:tag" content="Markdown">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://suzuran109.github.io/2025/01/15/Markdown2/2.png">
-  
-    <link rel="alternate" href="/atom.xml" title="狐狸の学习小窝" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+    <link rel="shortcut icon" href="/images/favicon.ico">
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+      <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/suzuran.css">
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">狐狸の学习小窝</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://suzuran109.github.io"></form>
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi ">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
       </div>
+      <div class="loading-word">加载中</div>
+    </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <span class="main-nav-link">首页</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/archives">
+          <span class="main-nav-link">归档</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/about">
+          <span class="main-nav-link">关于</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/friend">
+          <span class="main-nav-link">友链</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+      <picture>
+      </picture>
+        <img  fetchpriority="high" src="/images/banner.webp" alt="Markdown进阶">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">Markdown进阶</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
     </div>
   </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-Markdown2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/15/Markdown2/" class="article-date">
-  <time class="dt-published" datetime="2025-01-15T14:12:45.000Z" itemprop="datePublished">2025-01-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a>
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8markdown%E5%88%97%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text"> 8.Markdown列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text"> 有序列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text"> 无序列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="toc-number">1.3.</span> <span class="toc-text"> 任务列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">1.4.</span> <span class="toc-text"> 列表的嵌套</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9markdown%E5%8C%BA%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text"> 9.Markdown区块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E5%8F%8A%E5%85%B6%E5%B5%8C%E5%A5%97"><span class="toc-number">2.1.</span> <span class="toc-text"> 区块及其嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E5%92%8C%E5%88%97%E8%A1%A8%E5%B5%8C%E5%A5%97"><span class="toc-number">2.2.</span> <span class="toc-text"> 区块和列表嵌套</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10markdown%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text"> 10.Markdown代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text"> 代码区块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11markdown%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text"> 11.Markdown链接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%93%BE%E6%8E%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> 高级链接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12markdown%E5%9B%BE%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text"> 12.Markdown图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13markdown%E8%A1%A8%E6%A0%BC"><span class="toc-number">6.</span> <span class="toc-text"> 13.Markdown表格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text"> 对齐方式</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.png" data-sizes="auto" alt="Suzuran" class="lazyload">
+  <div class="sidebar-author-name">Suzuran</div>
+  <div class="sidebar-description">本网站仅用于记录本人学习过程中的笔记以及复习</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">19</div>
   </div>
-
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">9</div>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Markdown进阶
-    </h1>
-  
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Suzuran109 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
 
-      </header>
+          <section id="main" aria-label="Main content"><article id="post-Markdown2" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2025-01-15T14:12:45.000Z" itemprop="datePublished">2025-01-15</time>
+    <time style="display: none;" id="post-update-time">2025-01-16</time>
+  </span>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="8-Markdown列表"><a href="#8-Markdown列表" class="headerlink" title="8.Markdown列表"></a>8.Markdown列表</h1><p>Markdown 支持有序列表和无序列表，列表之间可以嵌套<br>所谓有序列表是指以数字为开头的，而无序列表是以符号为前缀标志<br>补充：还有一类任务列表，但目前对笔者用处不大、、、</p>
-<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><p>有序列表和Word的编号功能类似，以数字为前缀，格式为：数字<code>+</code>. 比如</p>
+        <h1 id="8markdown列表"><a class="markdownIt-Anchor" href="#8markdown列表"></a> 8.Markdown列表</h1>
+<p>Markdown 支持有序列表和无序列表，列表之间可以嵌套<br />
+所谓有序列表是指以数字为开头的，而无序列表是以符号为前缀标志<br />
+补充：还有一类任务列表，但目前对笔者用处不大、、、</p>
+<h2 id="有序列表"><a class="markdownIt-Anchor" href="#有序列表"></a> 有序列表</h2>
+<p>有序列表和Word的编号功能类似，以数字为前缀，格式为：数字<code>+</code>. 比如</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 第一项</span><br><span class="line">2. 第二项</span><br><span class="line">3. 第三项</span><br></pre></td></tr></table></figure>
 <p>示例：</p>
 <ol>
@@ -112,7 +218,8 @@
 <li>第二项</li>
 <li>第三项</li>
 </ol>
-<h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><p>无序列表以星号<code>*</code>，加号<code>+</code>或减号<code>-</code>为前缀，不需要英文句号，显示为句子前面有一个点 <code>·</code></p>
+<h2 id="无序列表"><a class="markdownIt-Anchor" href="#无序列表"></a> 无序列表</h2>
+<p>无序列表以星号<code>*</code>，加号<code>+</code>或减号<code>-</code>为前缀，不需要英文句号，显示为句子前面有一个点 <code>·</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 第一项</span><br><span class="line">+ 第二项</span><br><span class="line">- 第三项</span><br></pre></td></tr></table></figure>
 <p>示例：</p>
 <ul>
@@ -124,34 +231,40 @@
 <ul>
 <li>第三项</li>
 </ul>
-<h2 id="任务列表"><a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h2><p>任务列表是在<code>-</code>的基础上加一个空中括号，中括号中能够用<code>x</code>赋值，括号后跟随的是任务内容</p>
+<h2 id="任务列表"><a class="markdownIt-Anchor" href="#任务列表"></a> 任务列表</h2>
+<p>任务列表是在<code>-</code>的基础上加一个空中括号，中括号中能够用<code>x</code>赋值，括号后跟随的是任务内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- []  吃早餐</span><br><span class="line">- [x] 背单词</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><input disabled="" type="checkbox"> 吃早餐</li>
-<li><input checked="" disabled="" type="checkbox"> 背单词</li>
+<li>[ ] 吃早餐</li>
+<li>[x] 背单词</li>
 </ul>
-<h2 id="列表的嵌套"><a href="#列表的嵌套" class="headerlink" title="列表的嵌套"></a>列表的嵌套</h2><p>有序列表和无序列表可以成为彼此的嵌套，嵌套需要进行4个字符的缩进</p>
+<h2 id="列表的嵌套"><a class="markdownIt-Anchor" href="#列表的嵌套"></a> 列表的嵌套</h2>
+<p>有序列表和无序列表可以成为彼此的嵌套，嵌套需要进行4个字符的缩进</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 第一项</span><br><span class="line">    + 第二项</span><br><span class="line"></span><br><span class="line">- 第一项</span><br><span class="line">    1. 第二项</span><br><span class="line">        * 第三项</span><br></pre></td></tr></table></figure>
 <p>示例：</p>
 <ol>
-<li>第一项<ul>
+<li>第一项
+<ul>
 <li>第二项</li>
 </ul>
 </li>
 </ol>
 <ul>
-<li>第一项<ol>
-<li>第二项<ul>
+<li>第一项
+<ol>
+<li>第二项
+<ul>
 <li>第三项</li>
 </ul>
 </li>
 </ol>
 </li>
 </ul>
-<hr>
-<h1 id="9-Markdown区块"><a href="#9-Markdown区块" class="headerlink" title="9.Markdown区块"></a>9.Markdown区块</h1><p>Markdown 区块引用是在段落开头使用 <code>&gt;</code> 符号，然后后面紧跟一个空格符号，类似列表，同样可以采用嵌套，且区块和列表可以相互嵌套</p>
-<h2 id="区块及其嵌套"><a href="#区块及其嵌套" class="headerlink" title="区块及其嵌套"></a>区块及其嵌套</h2><p>区块的嵌套如果要重新区分为一个新的嵌套，相当于重新设置了一个新的区块，需要间隔一行</p>
+<hr />
+<h1 id="9markdown区块"><a class="markdownIt-Anchor" href="#9markdown区块"></a> 9.Markdown区块</h1>
+<p>Markdown 区块引用是在段落开头使用 <code>&gt;</code> 符号，然后后面紧跟一个空格符号，类似列表，同样可以采用嵌套，且区块和列表可以相互嵌套</p>
+<h2 id="区块及其嵌套"><a class="markdownIt-Anchor" href="#区块及其嵌套"></a> 区块及其嵌套</h2>
+<p>区块的嵌套如果要重新区分为一个新的嵌套，相当于重新设置了一个新的区块，需要间隔一行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 第一行</span><br><span class="line">&gt;&gt; 第二行</span><br><span class="line">&gt;&gt;&gt; 第三行</span><br><span class="line"></span><br><span class="line">&gt; 第四行</span><br></pre></td></tr></table></figure>
 <p>示例：</p>
 <blockquote>
@@ -166,7 +279,8 @@
 <blockquote>
 <p>第四行</p>
 </blockquote>
-<h2 id="区块和列表嵌套"><a href="#区块和列表嵌套" class="headerlink" title="区块和列表嵌套"></a>区块和列表嵌套</h2><p>区块内可以嵌套列表，列表中也能嵌套区块，但是同一区块内的列表需要关联该区块，在列表前添加<code>&gt;</code>即可，不需要缩进；<u>而列表内嵌套区块需要缩进4个字符</u></p>
+<h2 id="区块和列表嵌套"><a class="markdownIt-Anchor" href="#区块和列表嵌套"></a> 区块和列表嵌套</h2>
+<p>区块内可以嵌套列表，列表中也能嵌套区块，但是同一区块内的列表需要关联该区块，在列表前添加<code>&gt;</code>即可，不需要缩进；<u>而列表内嵌套区块需要缩进4个字符</u></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 第一行</span><br><span class="line">&gt; 1. 第二行</span><br><span class="line"></span><br><span class="line">* 第一行</span><br><span class="line">    &gt; 第二行</span><br></pre></td></tr></table></figure>
 <p>示例：</p>
 <blockquote>
@@ -176,38 +290,49 @@
 </ol>
 </blockquote>
 <ul>
-<li>第一行<blockquote>
+<li>第一行
+<blockquote>
 <p>第二行</p>
 </blockquote>
 </li>
 </ul>
 <p>（hexo显示和Vscode的Markdown功能显示的不太一样，hexo中显示的是居中的内容-_-.）</p>
-<hr>
-<h1 id="10-Markdown代码"><a href="#10-Markdown代码" class="headerlink" title="10.Markdown代码"></a>10.Markdown代码</h1><p>在 Markdown 中显示代码需要使用反引号 &#96; 括起来</p>
+<hr />
+<h1 id="10markdown代码"><a class="markdownIt-Anchor" href="#10markdown代码"></a> 10.Markdown代码</h1>
+<p>在 Markdown 中显示代码需要使用反引号 ` 括起来</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="built_in">print</span>()`</span><br></pre></td></tr></table></figure>
-<p>示例：<br><code>print()</code> </p>
-<h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><p>代码区块使用两次三反引号<code>```</code>包裹，第一个三反引号可以指定语言，当然也可以不指定，该文章中的代码区块都是使用 <code>bash</code> 注释</p>
+<p>示例：<br />
+<code>print()</code></p>
+<h2 id="代码区块"><a class="markdownIt-Anchor" href="#代码区块"></a> 代码区块</h2>
+<p>代码区块使用两次三反引号<code>```</code>包裹，第一个三反引号可以指定语言，当然也可以不指定，该文章中的代码区块都是使用 <code>bash</code> 注释</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```bash &lt;回车&gt; 代码内容 &lt;回车&gt; ```</span><br></pre></td></tr></table></figure>
 <p>指定语言还可以</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```python &lt;回车&gt; 代码内容 &lt;回车&gt; ```</span><br></pre></td></tr></table></figure>
 <p>即</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">代码内容</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="11-Markdown链接"><a href="#11-Markdown链接" class="headerlink" title="11.Markdown链接"></a>11.Markdown链接</h1><p>在 Markdown 中使用超链接需要使用中括号<code>[]</code>和小括号<code>()</code>，中括号中赋值名称，小括号中赋值网址；另外还有一种方法就是使用尖括号<code>&lt;&gt;</code>，尖括号则不需要给名字</p>
+<hr />
+<h1 id="11markdown链接"><a class="markdownIt-Anchor" href="#11markdown链接"></a> 11.Markdown链接</h1>
+<p>在 Markdown 中使用超链接需要使用中括号<code>[]</code>和小括号<code>()</code>，中括号中赋值名称，小括号中赋值网址；另外还有一种方法就是使用尖括号<code>&lt;&gt;</code>，尖括号则不需要给名字</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Bilibili](https://www.bilibili.com/)</span><br><span class="line">&lt;https://www.bilibili.com/&gt;</span><br></pre></td></tr></table></figure>
-<p>示例：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/">Bilibili</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/">https://www.bilibili.com/</a><br>（可能是因为Markdown链接和Markdown脚注格式冲突，目前如果使用脚注格式会解释为链接，因此Markdown_basic中的脚注部分会变成指向脚注内容的网址，自然是不存在这个网址的，除非脚注内容指向了网址）</p>
-<h2 id="高级链接"><a href="#高级链接" class="headerlink" title="高级链接"></a>高级链接</h2><p>对于链接我们还可以通过变量赋值来实现，变量赋值在文档末尾进行</p>
+<p>示例：<br />
+<a target="_blank" rel="noopener" href="https://www.bilibili.com/">Bilibili</a><br />
+<a target="_blank" rel="noopener" href="https://www.bilibili.com/">https://www.bilibili.com/</a><br />
+（可能是因为Markdown链接和Markdown脚注格式冲突，目前如果使用脚注格式会解释为链接，因此Markdown_basic中的脚注部分会变成指向脚注内容的网址，自然是不存在这个网址的，除非脚注内容指向了网址）</p>
+<h2 id="高级链接"><a class="markdownIt-Anchor" href="#高级链接"></a> 高级链接</h2>
+<p>对于链接我们还可以通过变量赋值来实现，变量赋值在文档末尾进行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用1作为网址变量：[Bilibili][1]</span><br><span class="line">[1]: https://www.bilibili.com/</span><br></pre></td></tr></table></figure>
-<p>使用1作为网址变量：[Bilibili][1]<br>  [1]: <a target="_blank" rel="noopener" href="https://www.bilibili.com/">https://www.bilibili.com/</a></p>
-<hr>
-<h1 id="12-Markdown图片"><a href="#12-Markdown图片" class="headerlink" title="12.Markdown图片"></a>12.Markdown图片</h1><p>Markdown中可以插入图片，插入时需要注明图片的路径,格式与链接相同，但是前面多一个感叹号<code>!</code>，可以支持gif、jpg、png等格式的图片。但是由于Markdown没有办法指定图片的高度和宽度，所以可以使用一般的<code>&lt;img&gt;</code>标签进行调整</p>
+<p>使用1作为网址变量：[Bilibili][1]<br />
+[1]: <a target="_blank" rel="noopener" href="https://www.bilibili.com/">https://www.bilibili.com/</a></p>
+<hr />
+<h1 id="12markdown图片"><a class="markdownIt-Anchor" href="#12markdown图片"></a> 12.Markdown图片</h1>
+<p>Markdown中可以插入图片，插入时需要注明图片的路径,格式与链接相同，但是前面多一个感叹号<code>!</code>，可以支持gif、jpg、png等格式的图片。但是由于Markdown没有办法指定图片的高度和宽度，所以可以使用一般的<code>&lt;img&gt;</code>标签进行调整</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">{% asset_img "2.png" "cool" %}</span><br><span class="line">&lt;img src=<span class="string">&quot;./Markdown2/2.png&quot;</span> width=<span class="string">&quot;50%&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>示例：  </p>
+<p>示例：</p>
 <img src="/2025/01/15/Markdown2/2.png" class="" title="cool">
 <img src="/2025/01/15/Markdown2/Markdown2"  width="50%">
-
-<hr>
-<h1 id="13-Markdown表格"><a href="#13-Markdown表格" class="headerlink" title="13.Markdown表格"></a>13.Markdown表格</h1><p>Markdown使用<code>|</code>来制作表格，使用<code>-</code>区分表头和其他行</p>
+<hr />
+<h1 id="13markdown表格"><a class="markdownIt-Anchor" href="#13markdown表格"></a> 13.Markdown表格</h1>
+<p>Markdown使用<code>|</code>来制作表格，使用<code>-</code>区分表头和其他行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| 第一列 | 第二列 |</span><br><span class="line">|-       |   -   |</span><br><span class="line">|学习    |  矩阵 |</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -216,173 +341,169 @@
 <th>第二列</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>学习</td>
 <td>矩阵</td>
 </tr>
-</tbody></table>
-<h2 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h2><ul>
+</tbody>
+</table>
+<h2 id="对齐方式"><a class="markdownIt-Anchor" href="#对齐方式"></a> 对齐方式</h2>
+<ul>
 <li><code>-:</code>设置标题和内容居右对齐</li>
 <li><code>:-</code>设置标题和内容居左对齐</li>
-<li><code>-:-</code>设置标题和内容居中对齐<br>在分隔表头和其他行的那一行进行操作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| 第一列 | 第二列 | 第三列 |</span><br><span class="line">|   -:  |   :-   |  :-:  |</span><br><span class="line">|学习    |  矩阵 | 狄拉克 |</span><br></pre></td></tr></table></figure>
+<li><code>-:-</code>设置标题和内容居中对齐<br />
+在分隔表头和其他行的那一行进行操作</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| 第一列 | 第二列 | 第三列 |</span><br><span class="line">|   -:  |   :-   |  :-:  |</span><br><span class="line">|学习    |  矩阵 | 狄拉克 |</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th align="right">第一列</th>
-<th align="left">第二列</th>
-<th align="center">第三列</th>
+<th style="text-align:right">第一列</th>
+<th style="text-align:left">第二列</th>
+<th style="text-align:center">第三列</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="right">学习</td>
-<td align="left">矩阵</td>
-<td align="center">狄拉克</td>
+<tbody>
+<tr>
+<td style="text-align:right">学习</td>
+<td style="text-align:left">矩阵</td>
+<td style="text-align:center">狄拉克</td>
 </tr>
-</tbody></table>
-</li>
-</ul>
+</tbody>
+</table>
 
-      
     </div>
     <footer class="article-footer">
-      <a data-url="https://suzuran109.github.io/2025/01/15/Markdown2/" data-id="cmq62qoi60004i8mb4xmi4bir" data-title="Markdown进阶" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+        <a class="article-category-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/" title="Markdown学习" data-aos="zoom-in">Markdown学习</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag" title="Markdown">Markdown</a></li></ul>
 
     </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2025/01/16/Markdown3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Markdown高级技巧
-        
+    <nav id="article-nav" class="article-nav-text-only" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+        <a href="/2025/01/16/Markdown3/" aria-label="前一篇: Markdown高级技巧" title="前一篇: Markdown高级技巧"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            Markdown高级技巧
+        </h3>
       </div>
-    </a>
-  
-  
-    <a href="/2025/01/05/physicalastro2/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Heasoft使用与CIAO软件包使用（一）</div>
-    </a>
-  
-</nav>
+    <div class="article-nav-link-wrap right">
+      <a href="/2025/01/05/physicalastro2/" aria-label="后一篇: Heasoft使用与CIAO软件包使用（一）"  title="后一篇: Heasoft使用与CIAO软件包使用（一）"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          Heasoft使用与CIAO软件包使用（一）
+      </h3>
+    </div>
+  </nav>
 
-  
 </article>
 
 
 </section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Astro/">Astro</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Hexo学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manim-Learning/">Manim_Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/">理论力学</a></li></ul>
-    </div>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
   </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-ray/" rel="tag">X-ray</a></li></ul>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2024-2026
+        &nbsp;
+      Suzuran
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/X-ray/" style="font-size: 10px;">X-ray</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/06/17/paper/">paper</a>
-          </li>
-        
-          <li>
-            <a href="/2025/03/11/manim-1/">manim_1</a>
-          </li>
-        
-          <li>
-            <a href="/2025/02/26/ai/">ai</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/16/Markdown3/">Markdown高级技巧</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/15/Markdown2/">Markdown进阶</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 Jianhong Cao<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
+      <div>
+        <span class="icon-brush"></span>
+        9.3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:50
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
   </div>
 </footer>
 
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8markdown%E5%88%97%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text"> 8.Markdown列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text"> 有序列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text"> 无序列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="toc-number">1.3.</span> <span class="toc-text"> 任务列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">1.4.</span> <span class="toc-text"> 列表的嵌套</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9markdown%E5%8C%BA%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text"> 9.Markdown区块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E5%8F%8A%E5%85%B6%E5%B5%8C%E5%A5%97"><span class="toc-number">2.1.</span> <span class="toc-text"> 区块及其嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9D%97%E5%92%8C%E5%88%97%E8%A1%A8%E5%B5%8C%E5%A5%97"><span class="toc-number">2.2.</span> <span class="toc-text"> 区块和列表嵌套</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10markdown%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text"> 10.Markdown代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text"> 代码区块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11markdown%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text"> 11.Markdown链接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%93%BE%E6%8E%A5"><span class="toc-number">4.1.</span> <span class="toc-text"> 高级链接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12markdown%E5%9B%BE%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text"> 12.Markdown图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13markdown%E8%A1%A8%E6%A0%BC"><span class="toc-number">6.</span> <span class="toc-text"> 13.Markdown表格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text"> 对齐方式</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.png" data-sizes="auto" alt="Suzuran" class="lazyload">
+  <div class="sidebar-author-name">Suzuran</div>
+  <div class="sidebar-description">本网站仅用于记录本人学习过程中的笔记以及复习</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">19</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Suzuran109 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
 </nav>
+
+    </div>
     
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
 
 
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
 
 
 
@@ -392,18 +513,89 @@
 
 
 
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Suzuran",
+          title: "Markdown进阶",
+          url: "https://suzuran109.github.io/2025/01/15/Markdown2/",
+          excerpt: "",
+          description: "",
+          stripContent: " 8.Markdown列表 Markdown 支持有序列表和无序列表，列表之间可以嵌套 所谓有序列表是指以数字为开头的，而无序列表是以符号为前缀标志 补充：还有一类任务列表，但目前对笔者用处不大、、、  有序列表 有序列表和Word的编号功能类似，以数字为前缀，格式为：数字+. 比如 1231. 第一项2. 第二项3. 第三项 示例：  第一项 第二项 第三项   无序列表 无序列表以星号*，加号+或减号-为前缀，不需要英文句号，显示为句子前面有一个点 · 123* 第一项+ 第二项- 第三项 ",
+          date: "Wed Jan 15 2025 22:12:45 GMT+0800",
+          updated: "Thu Jan 16 2025 14:34:44 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
 
   </div>
-<!-- hexo injector body_end start -->
-<div style="text-align:center;font-size:13px;color:#999;margin:10px 0;">
-  <span id="busuanzi_container_site_pv">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-  </span>
-  &nbsp;|&nbsp;
-  <span id="busuanzi_container_site_uv">
-    本站访客数 <span id="busuanzi_value_site_uv"></span> 人
-  </span>
 </div>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- hexo injector body_end end --></body>
-</html>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js" integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC+gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous" defer data-pjax></script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" defer onload="renderMathInElement(_$(&#39;article&#39;), {delimiters: [{left: &#39;$$&#39;, right: &#39;$$&#39;, display: true},{left: &#39;$&#39;, right: &#39;$&#39;, display: false}]});" data-pjax></script>
+
+  
+
+
+  </body>
+  </html>
