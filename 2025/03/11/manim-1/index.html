@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>manim_1 | 狐狸の学习小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本文章是基于bilibili up：乐正垂星 的manim教学视频编写，仅为本人学习过程。首先我们尝试一下这段代码1234567891011from manim import *class Try(Scene):  # 继承自Scene的类    def construct(self):  # 生成动画的代码        c &#x3D; Circle(fill_opacity&#x3D;1)  # 定义圆，内部不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="manim_1">
+<meta property="og:url" content="https://suzuran109.github.io/2025/03/11/manim-1/index.html">
+<meta property="og:site_name" content="狐狸の学习小窝">
+<meta property="og:description" content="本文章是基于bilibili up：乐正垂星 的manim教学视频编写，仅为本人学习过程。首先我们尝试一下这段代码1234567891011from manim import *class Try(Scene):  # 继承自Scene的类    def construct(self):  # 生成动画的代码        c &#x3D; Circle(fill_opacity&#x3D;1)  # 定义圆，内部不">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-11T13:30:32.000Z">
+<meta property="article:modified_time" content="2025-03-11T14:51:38.881Z">
+<meta property="article:author" content="Jianhong Cao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="狐狸の学习小窝" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狐狸の学习小窝</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://suzuran109.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-manim-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/03/11/manim-1/" class="article-date">
+  <time class="dt-published" datetime="2025-03-11T13:30:32.000Z" itemprop="datePublished">2025-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Manim-Learning/">Manim_Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      manim_1
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="本文章是基于bilibili-up：乐正垂星-的manim教学视频编写，仅为本人学习过程。"><a href="#本文章是基于bilibili-up：乐正垂星-的manim教学视频编写，仅为本人学习过程。" class="headerlink" title="本文章是基于bilibili up：乐正垂星 的manim教学视频编写，仅为本人学习过程。"></a>本文章是基于bilibili up：乐正垂星 的manim教学视频编写，仅为本人学习过程。</h2><h4 id="首先我们尝试一下这段代码"><a href="#首先我们尝试一下这段代码" class="headerlink" title="首先我们尝试一下这段代码"></a>首先我们尝试一下这段代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from manim import *</span><br><span class="line">class Try(Scene):  <span class="comment"># 继承自Scene的类</span></span><br><span class="line">    def construct(self):  <span class="comment"># 生成动画的代码</span></span><br><span class="line">        c = Circle(fill_opacity=1)  <span class="comment"># 定义圆，内部不透明度设置为1</span></span><br><span class="line">        s = Square(color=YELLOW , fill_opacity=1) <span class="comment"># 定义正方形，内部设置为黄色，内部不透明度为10</span></span><br><span class="line">        self.play(FadeIn(c)) <span class="comment"># 淡入输入圆形</span></span><br><span class="line">        self.wait()  <span class="comment"># 画面等待1秒钟</span></span><br><span class="line">        self.play(ReplacementTransform(c,s))  <span class="comment"># 把c转化为s</span></span><br><span class="line">        self.wait()  <span class="comment"># 等待1秒</span></span><br><span class="line">        self.play(FadeOut(s))  <span class="comment">#淡出</span></span><br><span class="line">        self.wait()</span><br></pre></td></tr></table></figure>
+
+
+<p>这里演示的是一段基于manim生成动画的代码，由这里我们可以看到三大类</p>
+<ul>
+<li><code>Scene</code>：给动画提供一个播放的场景</li>
+<li><code>Moject</code>：场景中的各种物体，如：圆、正方形等</li>
+<li><code>Animation</code>：作用在 <code>Moject</code> 之上，用这些物体制作一些动画</li>
+</ul>
+<p>[注]：命令行参数 <code>manim demo.py -p</code>，如果拥有多个 <code>Scene</code> 则可以把类的名字作为命令行参数，放在文件路径后面 <code>manim demo.py Try -p</code> ，若不想写类名则会询问渲染的 <code>Scene</code> 的序号 </p>
+<h2 id="1-Scene"><a href="#1-Scene" class="headerlink" title="1.Scene"></a>1.Scene</h2><p>Scene的几种用法：</p>
+<ul>
+<li>add ：针对 <code>Moject</code>  从场景中添加</li>
+<li>remove ：针对 <code>Moject</code> 从场景中移除</li>
+<li>play ：针对 <code>Animation</code> 播放一个或多个动画，同时传入多个可以同时播放</li>
+<li>wait ：让画面等待一段时间，默认是1秒，可传入参数改变等待的秒数</li>
+</ul>
+<h2 id="2-Animation"><a href="#2-Animation" class="headerlink" title="2.Animation"></a>2.Animation</h2><ul>
+<li>FadeIn()</li>
+<li>FadeOut()</li>
+<li>ReplaceTransform(a, b, run_time&#x3D;3, rate_func&#x3D;there_and_back) 若rate_func需要在FadeOut将参数改回a</li>
+</ul>
+<h2 id="3-Moject"><a href="#3-Moject" class="headerlink" title="3.Moject"></a>3.Moject</h2><p>可以设置很多参数，比如：</p>
+<ul>
+<li>Line(LEFT, RIGHT, path_arc&#x3D;0)</li>
+<li>Text(‘blue,red,yellow’, t2c&#x3D;{‘blue’:BLUE, ‘red’:RED, ‘yellow’:YELLOW})</li>
+<li>ParametricFunction(…)</li>
+<li>Circle(…)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://suzuran109.github.io/2025/03/11/manim-1/" data-id="cmq62qoib000vi8mb5rx0bo47" data-title="manim_1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/17/paper/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          paper
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/02/26/ai/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ai</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Astro/">Astro</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Hexo学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manim-Learning/">Manim_Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown%E5%AD%A6%E4%B9%A0/">Markdown学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A9%E6%96%87%E5%AE%9E%E9%AA%8C/">天文实验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/">理论力学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-ray/" rel="tag">X-ray</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/X-ray/" style="font-size: 10px;">X-ray</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/17/paper/">paper</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/11/manim-1/">manim_1</a>
+          </li>
+        
+          <li>
+            <a href="/2025/02/26/ai/">ai</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/16/Markdown3/">Markdown高级技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/Markdown2/">Markdown进阶</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 Jianhong Cao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<!-- hexo injector body_end start -->
+<div style="text-align:center;font-size:13px;color:#999;margin:10px 0;">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </span>
+  &nbsp;|&nbsp;
+  <span id="busuanzi_container_site_uv">
+    本站访客数 <span id="busuanzi_value_site_uv"></span> 人
+  </span>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- hexo injector body_end end --></body>
+</html>
