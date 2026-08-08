@@ -26,7 +26,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://suzuran109.github.io/2026/08/08/how-to-write-a-table-in-iras/RAN.jpg">
 <meta property="article:published_time" content="2026-08-08T00:45:27.000Z">
-<meta property="article:modified_time" content="2026-08-08T03:20:37.961Z">
+<meta property="article:modified_time" content="2026-08-08T10:39:02.886Z">
 <meta property="article:author" content="Suzuran">
 <meta property="article:tag" content="Infrared Astronomy">
 <meta name="twitter:card" content="summary">
@@ -132,7 +132,7 @@
     <div class="sidebar-wrap" data-aos="fade-up">
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#irsa%E7%9A%84tbl-format"><span class="toc-number">1.</span> <span class="toc-text"> IRSA的tbl format</span></a></li></ol>
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -206,13 +206,21 @@
     <div class="e-content article-entry" itemprop="articleBody">
         <p>（某人终于想起来要更新网站了）</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/astropy/astropy">Astropy</a> 作为天文研究领域常用的软件包，其中包括了坐标转换、图像分析、FITS读取等多项工具。</p>
-<p>IRSA（NASA/IPAC Infrared Science Archive）是天文工作中经常使用到的红外数据库，可以检索单源的数据也可以导入<code>tbl</code>文件进行批量检索。</p>
+<p><a target="_blank" rel="noopener" href="https://irsa.ipac.caltech.edu/applications/Gator/">IRSA</a>（NASA/IPAC Infrared Science Archive）是天文工作中经常使用到的红外数据库，可以检索单源的数据也可以导入<code>tbl</code>文件进行批量检索。</p>
 <p>鉴于本人科研经历，初入IRSA使用时会遇到<code>tbl</code>不会写导致<code>Multi-object Source</code>经常出错，本文基于本人本科毕业设计《活动星系核的中红外光变研究》总结一部分经验以供参考。😄</p>
 <!-- <figure>语法下照片无需另外添加文件夹路径，但是为了代码编写实时查看建议添加，上传时再删去 -->
 <figure>
   <img src="/2026/08/08/how-to-write-a-table-in-iras/RAN.jpg"  alt="ran" style="width:60%;">
   <figcaption><center><font size ='1'><p style="color: grey;">放个蓝蓝镇楼（）</p></font></center></figcaption>
 </figure>
+<hr />
+<h2 id="irsa的tbl-format"><a class="markdownIt-Anchor" href="#irsa的tbl-format"></a> IRSA的tbl format</h2>
+<p><a target="_blank" rel="noopener" href="https://irsa.ipac.caltech.edu/applications/DDGEN/Doc/ipac_tbl.html">IPAC Table Format</a>给出了<code>tbl</code>格式文件的编写规范。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\keyword = value                                                  Keywords (optional)</span><br><span class="line">\ Comment                                                         Comments (optional)</span><br><span class="line">|  column1  |  column2  | column3 |  column4 |    column5       | Column Names (required)</span><br><span class="line">|   double  |   double  |   int   |   real   |     char         | Data Types (standard)</span><br><span class="line">|   unit    |   unit    |   unit  |   unit   |     unit         | Data Units (optional)</span><br><span class="line">|   null    |   null    |   null  |   null   |     null         | Null Values (optional)</span><br><span class="line">  165.466279  -34.704730      5      11.27         K6Ve           Data Rows (1 required)</span><br></pre></td></tr></table></figure>
+<p>由于<code>Multi-object Source</code>需要用到天体坐标，在文章中的数据获取中我采取了如下表格样式，包含了源名称及其赤经赤纬。（需要注意的是由于不同观测设备的观测能力和适用波段，给出的坐标通常与真实值存在一定偏差，另外以<code>WISE</code>和<code>ZTF</code>为例，其分别是工作于红外波段和光学波段的设备，因此如果采用<code>Fermi</code>源则需要光学对应体坐标）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|source_id|    ra|   dec|</span><br><span class="line">|     char|double|double|</span><br><span class="line">|         |   deg|   deg|</span><br><span class="line">|     null|  null|  null|</span><br></pre></td></tr></table></figure>
+<p>IRSA需要的编码样式是ASCII，<code>Astropy</code>已经集成了包含编码在内的多项功能，只需要导入ASCII，里面包括了ipac样式，直接使用即可，见样例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from astropy.table import Table</span><br><span class="line">from astropy.coordinates import SkyCoord</span><br><span class="line">import astropy.units as u</span><br><span class="line">from astropy.io import ascii</span><br><span class="line"></span><br><span class="line">sources = []</span><br><span class="line">ra = []</span><br><span class="line">dec = []     #此处可以自行定义批量输入你需要批量检索的源的名称及其坐标</span><br><span class="line"></span><br><span class="line">tbl = Table(</span><br><span class="line">    [sources, ra, dec],</span><br><span class="line">    names=[&quot;source_id&quot;, &quot;ra&quot;, &quot;dec&quot;]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">tbl[&quot;ra&quot;].unit = &quot;deg&quot;</span><br><span class="line">tbl[&quot;dec&quot;].unit = &quot;deg&quot;</span><br><span class="line"></span><br><span class="line">ascii.write(</span><br><span class="line">    tbl,</span><br><span class="line">    &quot;name.tbl&quot;,</span><br><span class="line">    format=&quot;ipac&quot;,   #Astropy已经含有ipac样式直接引用即可</span><br><span class="line">    overwrite=True</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
     </div>
     <footer class="article-footer">
         <a class="article-category-link" href="/categories/Astro/" title="Astro" data-aos="zoom-in">Astro</a>
@@ -253,10 +261,10 @@
       </div>
       <div>
         <span class="icon-brush"></span>
-        9.5k
+        9.9k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:49
+        00:51
       </div>
       <div>
         <span class="icon-eye"></span>
@@ -278,7 +286,7 @@
   <div class="sidebar-wrap">
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#irsa%E7%9A%84tbl-format"><span class="toc-number">1.</span> <span class="toc-text"> IRSA的tbl format</span></a></li></ol>
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -369,7 +377,7 @@
           description: "",
           stripContent: "（某人终于想起来要更新网站了） Astropy 作为天文研究领域常用的软件包，其中包括了坐标转换、图像分析、FITS读取等多项工具。 IRSA（NASA/IPAC Infrared Science Archive）是天文工作中经常使用到的红外数据库，可以检索单源的数据也可以导入tbl文件进行批量检索。 鉴于本人科研经历，初入IRSA使用时会遇到tbl不会写导致Multi-object Source经常出错，本文基于本人本科毕业设计《活动星系核的中红外光变研究》总结一部分经验以供参考。😄    ",
           date: "Sat Aug 08 2026 08:45:27 GMT+0800",
-          updated: "Sat Aug 08 2026 11:20:37 GMT+0800",
+          updated: "Sat Aug 08 2026 18:39:02 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>
