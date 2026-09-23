@@ -1,0 +1,736 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="true"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_ex15nbittbh';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://suzuran109.github.io';window.REIMU_CONFIG.relative = '/';</script>
+  <title>
+    CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读） | 狐狸の学习小窝
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_ex15nbittbh.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="本文是对 arXiv:2609.19105《Characterization of the CSST Survey Camera CCDs: I. basic electro-optical performance》的精读记录，同时整理了整套探测器基础电光性能表征的方法与判据口径，供课题组内的红外&#x2F;光学焦面探测器验收与标定参考。 原文信息：罗遵、詹虎等（中国科学院国家天文台 空间天文与技术重点实验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）">
+<meta property="og:url" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/index.html">
+<meta property="og:site_name" content="狐狸の学习小窝">
+<meta property="og:description" content="本文是对 arXiv:2609.19105《Characterization of the CSST Survey Camera CCDs: I. basic electro-optical performance》的精读记录，同时整理了整套探测器基础电光性能表征的方法与判据口径，供课题组内的红外&#x2F;光学焦面探测器验收与标定参考。 原文信息：罗遵、詹虎等（中国科学院国家天文台 空间天文与技术重点实验">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig01-throughput.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig02-focal-plane.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig03-channel-structure.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig04-testbench-schematic.png">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig05-testbench-photo.png">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig06-ptc.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig07-quantum-yield.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig08-prc.png">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig09-dark-current.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig10-dark-anomaly.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig11-readout-noise.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig12-qe.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig13-qe-calibration.png">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig14-prnu-flatfields.png">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig15-prnu-vs-wavelength.png">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig16-cte-trailing.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig17-cte.jpg">
+<meta property="og:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig18-brighter-fatter.jpg">
+<meta property="article:published_time" content="2026-09-23T07:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-23T04:59:02.509Z">
+<meta property="article:author" content="Suzuran">
+<meta property="article:tag" content="Detectors">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/fig01-throughput.jpg">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+      <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/suzuran.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi ">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">加载中</div>
+    </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <span class="main-nav-link">首页</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/archives">
+          <span class="main-nav-link">归档</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/about">
+          <span class="main-nav-link">关于</span>
+        </a>
+        <a class="main-nav-link-wrap" href="/friend">
+          <span class="main-nav-link">友链</span>
+        </a>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+      <picture>
+      </picture>
+        <img  fetchpriority="high" src="/images/banner.webp" alt="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%99%E9%A1%B9%E5%B7%A5%E4%BD%9C%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text"> 一、这项工作在做什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%84%A6%E9%9D%A2%E5%B8%83%E5%B1%80%E4%B8%8E%E5%99%A8%E4%BB%B6%E5%91%BD%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text"> 二、焦面布局与器件命名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E7%A7%8D%E5%AD%90%E5%9E%8B%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text"> 五种子型的命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%99%A8%E4%BB%B6%E7%BB%93%E6%9E%8416-%E4%B8%AA%E8%AF%BB%E5%87%BA%E9%80%9A%E9%81%93"><span class="toc-number">2.2.</span> <span class="toc-text"> 单器件结构：16 个读出通道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%B5%8B%E8%AF%95%E5%8F%B0"><span class="toc-number">3.</span> <span class="toc-text"> 三、测试台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%83%E9%A1%B9%E6%B5%8B%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text"> 四、七项测量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-ptc-%E4%B8%8E%E8%BD%AC%E6%8D%A2%E5%A2%9E%E7%9B%8A"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 PTC 与转换增益</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E9%9D%9E%E7%BA%BF%E6%80%A7%E4%B8%8E%E6%BB%A1%E9%98%B1"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 非线性与满阱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E6%9A%97%E7%94%B5%E6%B5%81"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3 暗电流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E8%AF%BB%E5%87%BA%E5%99%AA%E5%A3%B0"><span class="toc-number">4.4.</span> <span class="toc-text"> 4.4 读出噪声</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-%E9%87%8F%E5%AD%90%E6%95%88%E7%8E%87"><span class="toc-number">4.5.</span> <span class="toc-text"> 4.5 量子效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#46-prnu%E4%B8%89%E7%B1%BB%E5%9B%BE%E6%A1%88%E4%B8%8E%E8%AF%AF%E5%B7%AE%E7%94%B3%E6%8A%A5"><span class="toc-number">4.6.</span> <span class="toc-text"> 4.6 PRNU：三类图案与误差申报</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#47-cte"><span class="toc-number">4.7.</span> <span class="toc-text"> 4.7 CTE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AE%A8%E8%AE%BAtable-2-%E4%B8%8E%E5%90%8E%E7%BB%AD%E8%AE%A1%E5%88%92"><span class="toc-number">5.</span> <span class="toc-text"> 五、总结与讨论：Table 2 与后续计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E4%BA%AE-%E8%83%96%E6%95%88%E5%BA%94"><span class="toc-number">5.1.</span> <span class="toc-text"> 5.1 亮-胖效应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-table-2%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%80%9F%E7%94%A8%E7%9A%84%E9%AA%8C%E6%94%B6%E8%A1%A8%E8%8C%83%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text"> 5.2 Table 2：可直接借用的验收表范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-%E5%85%B6%E4%BB%96%E6%95%88%E5%BA%94"><span class="toc-number">5.3.</span> <span class="toc-text"> 5.3 其他效应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AF%B9-80-cm-%E7%BA%A2%E5%A4%96%E6%9C%9B%E8%BF%9C%E9%95%9C-jk-%E7%9B%B8%E6%9C%BA%E7%9A%84%E7%A7%BB%E6%A4%8D%E8%A6%81%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text"> 六、对 80 cm 红外望远镜 J&#x2F;K 相机的移植要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E5%87%A0%E5%A4%84%E5%BE%85%E6%A0%B8%E5%AE%9E%E4%B8%8E%E8%AE%BA%E6%96%87%E6%9C%AA%E7%BB%99%E5%87%BA%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、几处待核实与论文未给出的地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E5%B0%8F%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text"> 八、小结</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.png" data-sizes="auto" alt="Suzuran" class="lazyload">
+  <div class="sidebar-author-name">Suzuran</div>
+  <div class="sidebar-description">本网站仅用于记录本人学习过程中的笔记以及复习</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">19</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">5</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Suzuran109 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-csst-ccd-characterization" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-09-23T07:00:00.000Z" itemprop="datePublished">2026-09-23</time>
+    <time style="display: none;" id="post-update-time">2026-09-23</time>
+  </span>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>本文是对 arXiv:2609.19105《Characterization of the CSST Survey Camera CCDs: I. basic electro-optical performance》的精读记录，同时整理了整套探测器基础电光性能表征的方法与判据口径，供课题组内的红外/光学焦面探测器验收与标定参考。</p>
+<p>原文信息：罗遵、詹虎等（中国科学院国家天文台 空间天文与技术重点实验室；中国科学院大学；北京大学科维理天文与天体物理研究所），<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2609.19105">arXiv:2609.19105v1</a> [<a target="_blank" rel="noopener" href="http://astro-ph.IM">astro-ph.IM</a>]，2026-09-16，22 页 17 图，投 RAA。</p>
+<hr />
+<h2 id="一-这项工作在做什么"><a class="markdownIt-Anchor" href="#一-这项工作在做什么"></a> 一、这项工作在做什么</h2>
+<p>CSST（中国空间站巡天望远镜）是 2 米口径宽视场望远镜，与中国空间站同轨，计划执行 17,500 deg² 的成像与无缝光谱巡天，覆盖 255–1000 nm，配置九个测光带（NUV、u、g、r、i、z、WV、WI、v）与三个光谱带（GU、GV、GI）。</p>
+<img src="/2026/09/23/csst-ccd-characterization/fig01-throughput.jpg" class="" title="九个测光带与三个光谱带的系统透过率">
+<center><font size='1' color="grey">Fig.1　九个测光带与三个光谱带的系统透过率（望远镜光学 + 相机）</font></center>
+<p>本文是该系列的第一篇，对 CSST 巡天相机（CSST-SC）的 31 片飞行型号 CCD 做地面实验室表征，<strong>只报告基础电光性能</strong>。所谓&quot;基础&quot;，论文界定得很明确：<strong>只用偏置帧、平场、暗帧三类最简单数据就能得到的那部分</strong>。</p>
+<p>它对应的是探测器的光→电转换与电荷处理性能，与&quot;光学性能&quot;（波前误差、PSF、畸变、杂散光，用干涉仪或星点投影测）分属两条线。</p>
+<p><strong>哪些不属于基础电光性能</strong>（需要专门成像装置，属后续论文）：串扰、像元内响应非均匀性、电荷扩散，另加辐照退化。测试台上有一段可拆挡管，拆掉后电动平移台可把成像测试装置推入光路——这条&quot;分支&quot;就是标题里那个&quot;I.&quot;的物理含义。</p>
+<p>摘要给出七项关键结果：</p>
+<ul>
+<li>满阱容量 $\ge 80\ \mathrm{ke^-}$（受测试电子学限制）</li>
+<li>$7\text{–}70\ \mathrm{ke^-}$ 范围内非线性 $&lt; 1.4\%$</li>
+<li>读出噪声中位数约 $3.6\ \mathrm{e^-}$</li>
+<li>工作温度 $-85\ ^\circ\mathrm{C}$ 下暗电流 $\le 0.02\ \mathrm{e^- \, pix^{-1} \, s^{-1}}$</li>
+<li>在 255–1000 nm 内量子效率高</li>
+<li>典型像元响应非均匀性（PRNU）$&lt; 1\%$</li>
+<li>$10\ \mathrm{ke^-}$ 平场水平下电荷转移效率（CTE）$&gt; 99.9994\%$</li>
+</ul>
+<p>这七项要分三类读：<strong>结果值</strong>（读出噪声、暗电流、PRNU、CTE）可直接引用；<strong>判据值</strong>（满阱、非线性）必须先知道定义才有意义；<strong>条件性表述</strong>（满阱&quot;受测试电子学限制&quot;、QE 只说&quot;高&quot;）都带限定语。</p>
+<hr />
+<h2 id="二-焦面布局与器件命名"><a class="markdownIt-Anchor" href="#二-焦面布局与器件命名"></a> 二、焦面布局与器件命名</h2>
+<p>焦面由 31 片 9k × 9k CCD 拼成，编号 CCD00–CCD30，来自两个厂商、五个子型。论文为每个波段选了在该波段量子效率最高的子型——这是因为<strong>没有一种器件能覆盖全波段</strong>。</p>
+<img src="/2026/09/23/csst-ccd-characterization/fig02-focal-plane.jpg" class="" title="CSST-SC焦面布局">
+<center><font size='1' color="grey">Fig.2　焦面布局。每片 CCD 上的标签为所属波段、内部编号与子型</font></center>
+<p>图注里有一处值得留意：<strong>三个无缝光谱波段的 CCD 与光栅，在焦面左右两侧彼此相对旋转了 2°</strong>。正文未提、也未给出理由。从无缝光谱的几何约束看，最可能是要让色散方向与探测器的读出通道边界相容（每条光谱若斜跨通道边界会引入增益不连续与伪影）；图注说的是&quot;左右两侧&quot;而非&quot;全部&quot;，也支持这是局部排布而非全局色散方向的考虑。引用时须分开讲：这是设计事实，原因属推断。</p>
+<h3 id="五种子型的命名"><a class="markdownIt-Anchor" href="#五种子型的命名"></a> 五种子型的命名</h3>
+<table>
+<thead>
+<tr>
+<th>代号</th>
+<th>厂商</th>
+<th>硅型</th>
+<th>涂层</th>
+<th>装机</th>
+<th>强项波段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>44NUV</td>
+<td>中电 44 所</td>
+<td>标准硅</td>
+<td>NUV 涂层</td>
+<td>是</td>
+<td>250–400 nm（QE 74–76%）</td>
+</tr>
+<tr>
+<td>44VIS</td>
+<td>中电 44 所</td>
+<td>标准硅</td>
+<td>VIS 涂层</td>
+<td>是</td>
+<td>400–700 nm（QE 86–94%）</td>
+</tr>
+<tr>
+<td>e2vNUV</td>
+<td>Teledyne e2v</td>
+<td>标准硅</td>
+<td>NUV 涂层</td>
+<td>否（只测不装）</td>
+<td>250–450 nm</td>
+</tr>
+<tr>
+<td>e2vVIS</td>
+<td>Teledyne e2v</td>
+<td>标准硅</td>
+<td>astro-multi 2</td>
+<td>是</td>
+<td>400–700 nm（QE 89–93%）</td>
+</tr>
+<tr>
+<td>e2vDD</td>
+<td>Teledyne e2v</td>
+<td><strong>深耗尽硅</strong></td>
+<td>astro-multi 2</td>
+<td>是</td>
+<td>700–1000 nm（850 nm 达 77–80%）</td>
+</tr>
+</tbody>
+</table>
+<p>读法：<code>44</code> 与 <code>e2v</code> 是并列的<strong>厂商代号</strong>，后缀 NUV/VIS/DD 指<strong>涂层或硅型</strong>。</p>
+<p><strong>标准硅 vs 深耗尽硅是理解全篇的钥匙。</strong> 标准硅感光层只有几到十几微米厚，而 850 nm 的光子在硅中要穿透 15–20 µm，未及收集就损失掉了，所以长波 QE 断崖下跌。深耗尽用高电阻率衬底加反向偏压，把耗尽区延伸到几十微米深，长波光子直接产生在耗尽区内、靠电场漂移收集，850 nm 因此能到 77–80%。代价是紫外：光子在表面产生、要穿过更厚的死层，e2vDD 在 250–400 nm 只有 31–42%，远低于 44NUV 的 74–76%。</p>
+<p><strong>深耗尽用紫外端的牺牲换近红外的翻身。</strong> 这一条还顺带解释了两处正文：为什么深耗尽的亮-胖效应更严重（衬底厚、电子收集路径长，与已积累电荷的横向相互作用时间更长），以及为什么相互作用系数 $a_{ij}$ 随波长下降（长波吸收更深、相互作用时间更短）。</p>
+<h3 id="单器件结构16-个读出通道"><a class="markdownIt-Anchor" href="#单器件结构16-个读出通道"></a> 单器件结构：16 个读出通道</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig03-channel-structure.jpg" class="" title="GM1201A与CCD290-99的芯片结构">
+<center><font size='1' color="grey">Fig.3　两类 CCD 的芯片结构。红色箭头为电荷转移方向，蓝色区域为读出寄存器</font></center>
+<p>单片 9216 × 9216 像元、像元 10 µm 见方、16 个读出通道、每通道含 27 个 prescan 像元。CCD290-99 每通道 4616 × 1152；GM1201A 的通道 1、8、9、16 为 4620 × 1154，其余为 4620 × 1152。两者差异是 CCD290-99 有 dummy 输出、GM1201A 没有。</p>
+<p><strong>这件事决定了全文的组织方式。</strong> 论文明确要求：<em>转换增益必须为每片 CCD 的每个通道单独标定</em>。16 个通道各有独立的读出电路，增益各不相同，所以电子单位的换算必须在通道一级做。这就是为什么后面所有结果都先按通道给出、再按子型汇总成区间。</p>
+<hr />
+<h2 id="三-测试台"><a class="markdownIt-Anchor" href="#三-测试台"></a> 三、测试台</h2>
+<img src="/2026/09/23/csst-ccd-characterization/fig04-testbench-schematic.png" class="" title="测试台示意图">
+<center><font size='1' color="grey">Fig.4a　测试台示意图</font></center>
+<img src="/2026/09/23/csst-ccd-characterization/fig05-testbench-photo.png" class="" title="测试台实物照片">
+<center><font size='1' color="grey">Fig.4b　测试台实物照片</font></center>
+<p>光路是：<strong>光源（激光驱动）→ 单色仪 → 快门 → 光纤 → 积分球 → 挡板 → 杜瓦窗口 → CCD</strong>。另有两条控制/监测通道。</p>
+<p><strong>通道一：时间基准。</strong> 积分球上挂监视光电二极管，配皮安计以 70 Hz 采样。指标是：单点噪声 $&lt; 0.2\%$，曝光长于 0.1 s 时平均电流噪声 $&lt; 0.1\%$。</p>
+<p><strong>这是全篇的精度天花板。</strong> 论文要报零点几个百分点量级的非线性，参考通道就必须比它更稳。反过来也成立：<strong>要测多小的非线性，参考通道就必须有多稳</strong>——这条原则可以直接搬进我们自己相机的测试规格。</p>
+<p><strong>通道二：温控。</strong> CCD 温度由<strong>加热其安装板</strong>来控制，稳定在 $-85\ ^\circ\mathrm{C}$，约 10 小时工作期内波动 $\pm 0.1\ ^\circ\mathrm{C}$；暗电流另测 $-95\ ^\circ\mathrm{C}$ 与 $-75\ ^\circ\mathrm{C}$ 两个温度点。</p>
+<p><strong>其余关键条件</strong>：积分球面内均匀性 $&lt; 2\%$（照明不均与器件 PRNU 在空间频率上重叠且无法完全解耦，装置越均匀解耦越干净）；背景 $&lt; 10^{-3}\ \mathrm{e^- \, pix^{-1} \, s^{-1}}$（比暗电流要求低两个数量级，才不污染暗电流测量）；读出参数用<strong>在轨默认设置</strong>（像元速率 150 kHz、行转移时间 200 µs、全帧读出约 39 s）。</p>
+<blockquote>
+<p>顺带算清一个容易误读的地方：150 kHz 是每通道串行寄存器的像元读出速率，读出一行 1152 个像元需 $1152&#x2F;150000 \approx 7.7\ \mathrm{ms}$，4616 行共约 35.5 s，加上并行转移与行开销即约 39 s。而 200 µs 是<strong>行转移时间</strong>，与串行像元读出交替进行，不是那 39 s 的组成部分——两个时钟不能相乘混算。</p>
+</blockquote>
+<p>论文有一句关键限定：<strong>非线性与满阱都受读出电路影响，最终结果必须在焦面接上真实飞行电子学之后重测</strong>。所以满阱&quot;受测试电子学限制&quot;、预期换飞行件后 $&gt; 90\ \mathrm{ke^-}$，这个外推只对读出侧的非线性合理，对像元侧的本征非线性不成立。</p>
+<hr />
+<h2 id="四-七项测量"><a class="markdownIt-Anchor" href="#四-七项测量"></a> 四、七项测量</h2>
+<h3 id="41-ptc-与转换增益"><a class="markdownIt-Anchor" href="#41-ptc-与转换增益"></a> 4.1 PTC 与转换增益</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig06-ptc.jpg" class="" title="五种子型的PTC">
+<center><font size='1' color="grey">Fig.5　五种子型首通道的 PTC（已作亮-胖改正）。虚线为 <0.8 倍满阱数据点的线性拟合</font></center>
+<p>PTC 是像元值方差对均值的关系。假设泊松统计，斜率为</p>
+<p>$$V &#x3D; \frac{\alpha}{G} F \quad \Longrightarrow \quad \text{斜率} &#x3D; \frac{V}{F} &#x3D; \frac{\alpha}{G}
+$$</p><p>其中 $V$ 是<strong>仅由光子散粒噪声引起的</strong>方差，$F$ 是平均信号，$\alpha$ 是量子产额（每个光子产生的平均光电子数），$G$ 是转换增益（单位 $\mathrm{e^-&#x2F;ADU}$）。</p>
+<p><strong>为什么斜率不等于 $1&#x2F;G$。</strong> 因为要得到 $G$ 必须已知 $\alpha$；而独立测 $\alpha$ 需要绝对电子数，那又需要 $G$——这是个闭环。所以 $\alpha &#x3D; 1$ 只能是<strong>物理前提</strong>，不能是测量结果。论文的做法是：<strong>在足够长的波长处标定增益</strong>（标准硅用 650 nm，e2vDD 用 850 nm），因为光子能量降低时 $\alpha$ 渐近趋于 1，之后量子产额由 PTC 斜率与增益的乘积给出。</p>
+<img src="/2026/09/23/csst-ccd-characterization/fig07-quantum-yield.jpg" class="" title="量子产额随波长的变化">
+<center><font size='1' color="grey">Fig.6　量子产额随波长的变化，红色虚线为 α = 1 的参考线</font></center>
+<p>$\alpha &gt; 1$ 的物理是：一个被吸收的光子激发出多个电子-空穴对。硅的带隙约 1.1 eV，若光子能量超过约 $2E_g$，激发出的&quot;热&quot;电子仍有足够动能通过<strong>碰撞电离</strong>再激发第二对。250 nm 的光子有 4.96 eV（约 4.5 倍 $E_g$），余量很大；400 nm 是 3.10 eV（约 2.8 倍），余量已经不多，再往长波走 $\alpha$ 迅速收敛到 1。</p>
+<p>论文还强调第二层依赖：<strong>量子产额受硅内电场强度影响</strong>，而电场强度取决于背照减薄与钝化工艺，因此它在不同子型间差异显著。强电场中光电子可在两次碰撞之间被电场加速、额外获取动能，相当于降低碰撞电离的有效阈值；而短波光子恰好被吸收在紧邻背面偏压区的最强场里，长波光子则进入场更弱的深处。<strong>两个机制同向叠加</strong>，所以 $\alpha$ 单调下降并趋于 1。图 6 中 44NUV 在 250 nm 处 $\alpha$ 最高达约 1.28。</p>
+<p><strong>必须用成对平场的差分图像。</strong> 单帧方差由散粒噪声、读出噪声与 PRNU 共同组成，而 PRNU（约 1%）在 $45\ \mathrm{ke^-}$ 平场下比散粒噪声（$1&#x2F;\sqrt{45000} \approx 0.47\%$）还大。两帧相减，跨帧不变的 PRNU、坏点、照明不均全部抵消；又因</p>
+<p>$$\mathrm{Var}(A-B) &#x3D; \mathrm{Var}(A) + \mathrm{Var}(B) &#x3D; 2\sigma^2
+$$</p><p>单帧的散粒噪声方差就是差分方差的一半——这正是论文里相关矩阵元素&quot;取中位数的一半&quot;的来源。此外还须用第 0 档零曝光帧扣掉读出噪声的方差贡献。</p>
+<p><strong>亮-胖效应：公式一行，改正好几段。</strong> 像元里积累的电荷产生的横向电场会把后续光电子推向邻像元，使高流量端 PTC 向下弯。论文按 Astier 等（2019）的处理，<strong>用相关矩阵元素之和代替方差</strong>，把被推到邻像元的电荷协方差加回来。经验是标准硅取三邻域、深耗尽 e2vDD 取五邻域（后者衬底厚、相互作用更强）。</p>
+<h3 id="42-非线性与满阱"><a class="markdownIt-Anchor" href="#42-非线性与满阱"></a> 4.2 非线性与满阱</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig08-prc.png" class="" title="五种子型的PRC">
+<center><font size='1' color="grey">Fig.7　五种子型的 PRC。横轴为归一化有效曝光时间，纵轴为扣去快门本底后的电子数</font></center>
+<p>非线性和满阱由<strong>同一批平场数据</strong>（即光子响应曲线 PRC）算出，不额外采数据。</p>
+<p>非线性定义中，每一步都要先修正&quot;有效曝光时间&quot;这个自变量，三项改正按影响从小到大：</p>
+<ul>
+<li><strong>光源强度漂移</strong>：$T_i &#x3D; (U_i&#x2F;\bar{U})\, t_i$，用监视二极管把每次曝光的实际光强归一到全序列均值；</li>
+<li><strong>快门时延</strong>：机械快门开合约 10 ms，短曝光时积分球总输出越来越非线性。做法是取 10 帧 30 ms（快门允许的最短曝光）的平场，把其平均信号 $F_0$ 与有效曝光时间 $T_0$ 从其他曝光中减掉；</li>
+<li><strong>采样率限制</strong>：皮安计最小采样间隔约 14 ms，所以 PRC 的低端无法用短曝光准确恢复（作者明确申报）。</li>
+</ul>
+<p>然后逐点算相对偏差，区间内的非线性取 $|NL_i|$ 的最大值：</p>
+<p>$$NL_i &#x3D; \frac{F_i - F_0}{f\,(T_i - T_0)} - 1
+$$</p><p><strong>取最大值而不是 RMS 是关键</strong>：非线性的物理形态是单调往一个方向偏，RMS 会把端点处的系统性偏差平均掉、给出虚假的乐观值；而在误差预算里非线性是<strong>系统项</strong>，不会因多次测量下降，必须用上界记账。</p>
+<p><strong>满阱容量的定义是本文最值得照抄的一条：</strong></p>
+<p>$$\text{满阱容量} &#x3D; NL\ \text{首次低于} -2\%\ \text{处的电子数}
+$$</p><p>不用饱和点的理由很直白：饱和之前响应已经相当非线性，那部分动态范围在科学上不可用。这样定义的好处是把&quot;满阱&quot;从一个器件物理参数变成了<strong>数据质量参数</strong>——满阱以内线性度是有保证的。</p>
+<p>结果是：$14\text{–}56\ \mathrm{ke^-}$ 内非线性 $&lt; 1\%$（0.03–0.96%），$7\text{–}70\ \mathrm{ke^-}$ 内 $&lt; 1.4\%$（要求 $\le 2\%$）；满阱 80–93 $\mathrm{ke^-}$。注意别混引两种口径：Table 2 里&quot;要求 $\ge 70\ \mathrm{ke^-}$“是要求，摘要里”$\ge 80\ \mathrm{ke^-}$&quot;是结果。</p>
+<p>作者的两条自我限定：① 最终结果必须用飞行电子学复测；② <strong>低信号端非线性更显著</strong>，达到亚百分比精度需要更精心设计的测试，另文报道。</p>
+<h3 id="43-暗电流"><a class="markdownIt-Anchor" href="#43-暗电流"></a> 4.3 暗电流</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig09-dark-current.jpg" class="" title="暗电流直方图与温度依赖">
+<center><font size='1' color="grey">Fig.8　a–e：五种子型在 178/188/198 K 的暗电流直方图；f：暗电流随温度的变化</font></center>
+<p>暗电流由<strong>中性体材料、耗尽材料、以及 Si–SiO₂ 界面</strong>处的少数载流子热产生引起——第三条（界面态）是背照 CCD 的重要来源，也是钝化工艺能压暗电流的原因。</p>
+<p>做法是暗帧积分 1000 s 以累积足够信号；$-85\ ^\circ\mathrm{C}$ 取 5 帧暗加 60 帧偏置，$-95$ 与 $-75\ ^\circ\mathrm{C}$ 各取 3 帧暗加 10 帧偏置；偏置帧在暗帧前后各取一次以监视偏置电平漂移；逐像元跨帧取中位数以去除宇宙线。</p>
+<p>结果：$-85\ ^\circ\mathrm{C}$ 下 $0.37\text{–}18 \times 10^{-3}\ \mathrm{e^- \, pix^{-1} \, s^{-1}}$，全部满足 $\le 0.02$，但<strong>器件间跨度超过一个数量级</strong>。$-95$ 与 $-85\ ^\circ\mathrm{C}$ 的差别在均值与分布上都不大，而 $-75\ ^\circ\mathrm{C}$ 显著增大，最差子型已贴到要求线——由此论证 <strong>$-85\ ^\circ\mathrm{C}$ 是性能与工程成本的平衡点</strong>。</p>
+<blockquote>
+<p><strong>自己验算一下。</strong> 暗电流近似 $I \propto T^3 \exp(-E_g&#x2F;kT)$。用 e2vVIS 在 188.15 K（取区间中点 $11.3\times10^{-3}$）与 198.15 K（$5.75\times10^{-2}$）的数据，比值为 5.1，解得 <strong>$E_g \approx 0.85\ \mathrm{eV}$</strong>。这个数字接近硅的带隙，说明测到的确实是<strong>本征热产生</strong>而非缺陷泄漏——若是缺陷主导，活化能会明显偏小。用同一关系把 188 K 外推到 178 K，暗电流只降到约 0.27 倍，与实测的 0.37–1.3 与 1.0–1.6（均 $10^{-3}$）同量级。<strong>这就定量解释了为什么从 $-85\ ^\circ\mathrm{C}$ 再往下压、收益很小却要多付制冷代价。</strong></p>
+</blockquote>
+<p>论文另发现两个器件效应，需要与真实暗电流区分：<strong>暗电流抬升斑</strong>（部分 e2v 器件读出寄存器附近，中心像素可超过 $0.1\ \mathrm{e^- \, pix^{-1} \, s^{-1}}$，成因未定）与<strong>放大器辉光</strong>（峰值出现在通道边缘或极近处）。</p>
+<img src="/2026/09/23/csst-ccd-characterization/fig10-dark-anomaly.jpg" class="" title="暗帧底部与通道剖面">
+<center><font size='1' color="grey">Fig.9　两片 e2v CCD 的暗帧底部 70 行与列平均剖面，红虚线为通道边界</font></center>
+<h3 id="44-读出噪声"><a class="markdownIt-Anchor" href="#44-读出噪声"></a> 4.4 读出噪声</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig11-readout-noise.jpg" class="" title="读出噪声的累积分布与全部通道结果">
+<center><font size='1' color="grey">Fig.10　a–e：六片 CCD 的噪声图累积分布（每色一条通道）；f：全部 CCD 与全部通道的读出噪声</font></center>
+<p>做法有三个细节都要照搬：数据来源是 $-85\ ^\circ\mathrm{C}$ 的<strong>偏置帧序列</strong>（不是暗帧）；逐像元算标准差，计算前<strong>去掉该像元时序中最高 4 个与最低 4 个值</strong>；<strong>通道读出噪声取该通道所有像元的中位数</strong>。</p>
+<p>这样设计的原因分别是：去掉极值抑制宇宙线与偏置波动；取中位数避免少数异常像元拉偏；用偏置帧则测到的是读出噪声本身，不含暗电流散粒噪声。</p>
+<p>结果全部 $\le 5\ \mathrm{e^-}$（要求），中位数约 $3.6\ \mathrm{e^-}$，各子型 3.0–4.9 $\mathrm{e^-}$。作者再次强调需用飞行电子学复测。</p>
+<h3 id="45-量子效率"><a class="markdownIt-Anchor" href="#45-量子效率"></a> 4.5 量子效率</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig12-qe.jpg" class="" title="五种子型的QE曲线">
+<center><font size='1' color="grey">Fig.12　五种子型的 QE 曲线，阴影为子型内范围</font></center>
+<p>QE 测量的难点不在仪器读数，而在**&quot;绝对通量&quot;这一环**。论文用传递标准的思路：监视二极管与标定二极管处在同一积分球照明下，两者电流的比值只取决于响应率与位置，一次测准即可反复使用。入射光子数为</p>
+<p>$$N_{\mathrm{ph}} &#x3D; \frac{I_{\mathrm{mon}} R_\lambda \lambda}{hc} \cdot \frac{I_{\mathrm{cal}}}{I_{\mathrm{mon,cal}}} \cdot \frac{A_{\mathrm{pix}}}{A_{\mathrm{phot}}} \cdot T_\lambda \, t_{\mathrm{exp}}
+$$</p><p>逐项看：$I_{\mathrm{mon}}$ 是成像时监视二极管的平均电流；$R_\lambda$（单位 $\mathrm{W\,A^{-1}}$）是标定二极管的响应率，作用是把电流换算成绝对光功率；$\lambda&#x2F;(hc)$ 把功率换成每秒光子数；$I_{\mathrm{cal}}&#x2F;I_{\mathrm{mon,cal}}$ 完成从监视电流到绝对通量的传递；$A_{\mathrm{pix}}&#x2F;A_{\mathrm{phot}}$ 把 $1\ \mathrm{cm^2}$ 上的通量缩到单个像元面积（$100\ \mu\mathrm{m^2}$）；$T_\lambda$ 是杜瓦窗口透过率；$t_{\mathrm{exp}}$ 是曝光时间。</p>
+<p><strong>两个容易忽略的点。</strong> 一是几何：标定二极管面积 $1\ \mathrm{cm^2}$，而 $N_e$ 取中心 $1000 \times 1000$ 像元 $&#x3D; 1\ \mathrm{cm^2}$——<strong>两端取样面积相同，面积比项才成立</strong>，这正是必须用激光位移传感器先测出焦面中心位置、移走杜瓦后把标定二极管放到同一位置的原因。二是窗口透过率 $T_\lambda$：标定二极管测的是窗口之前的光，CCD 收到的是穿过窗口之后的光，不乘 $T_\lambda$ 会把窗口损失算进 QE、导致系统性低估；而它随波长变化（石英或蓝宝石在紫外端明显下降），所以必须写成 $T_\lambda$ 而不是常数。</p>
+<img src="/2026/09/23/csst-ccd-characterization/fig13-qe-calibration.png" class="" title="QE标定过程">
+<center><font size='1' color="grey">Fig.11　QE 测量的标定过程：先测 CCD 在位时的监视电流，再移走杜瓦、把已标定光电二极管放到同一位置</font></center>
+<p>结果（Table 2 平均 QE）：250–400 nm 44NUV 达 74.1–75.7%（最高），e2vVIS 仅 34.8–39.3%；550–700 nm e2vDD 达 94.3–96.1%；800–900 nm e2vDD 77.4–79.5%；900–1000 nm e2vDD 仍有 38.6–40.9%，而 e2vVIS 只剩 19.1–20.4%。焦面为每个波段选择了 QE 最高的子型。</p>
+<blockquote>
+<p>顺带纠正一个常见误解：<strong>“$\alpha \approx 1$&quot;不等于&quot;QE 不受波长影响”</strong>。$\alpha$ 是内禀的电荷产生效率，QE 还要乘涂层透过率与电荷收集效率。所以 250 nm 处 $\alpha$ 可以高达 1.28，而 QE 仍只有 74%——那里涂层与收集的损失很大。论文原话：“QE 由涂层透过率、量子产额与电荷收集效率共同决定。”</p>
+</blockquote>
+<h3 id="46-prnu三类图案与误差申报"><a class="markdownIt-Anchor" href="#46-prnu三类图案与误差申报"></a> 4.6 PRNU：三类图案与误差申报</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig14-prnu-flatfields.png" class="" title="归一化平场">
+<center><font size='1' color="grey">Fig.13　归一化平场示例。第二行左一为 e2vNUV 300 nm 的砖墙图案（伴有照明梯度）；第二行右一为 e2vDD 850 nm 的同心环</font></center>
+<p>做法是每个 CCD 在两个波长各取 25 帧 $45\ \mathrm{ke^-}$ 平场；因为积分球照明在 CCD 上只有缓慢变化，把归一化平场除以它自身的四阶多项式拟合以去掉照明不均；再用 $5\sigma$ 裁剪，取标准差作为 PRNU。</p>
+<p><strong>为什么用 $45\ \mathrm{ke^-}$</strong>（论文未明说理由，逻辑如下）：光子噪声 $1&#x2F;\sqrt{45000} \approx 0.47\%$，读出噪声贡献约 $0.009\%$，<strong>让被测量的 PRNU（约 1%）成为主导项</strong>；同时它落在&quot;非线性 $\le 1\%$&quot;的 $14\text{–}56\ \mathrm{ke^-}$ 区间内，远离饱和与亮-胖影响的端点。往下走光子噪声会反超 PRNU，往上走非线性增大，两侧都有代价。</p>
+<p><strong>最值得学的态度是误差申报</strong>：论文明确写出，<strong>四阶多项式在扣照明不均的同时也把 CCD 自身大尺度 PRNU 部分扣掉了，导致 PRNU 被低估 0.05–0.3%</strong>。</p>
+<p>三类图案及其成因：</p>
+<ul>
+<li><strong>砖墙图案</strong>（CCD290-99，300 与 470 nm 显著，$&gt;400$ nm 迅速消失）：激光退火用脉冲激光逐块扫描背照表面，使表面薄层瞬时熔化再结晶以激活掺杂、修复离子注入损伤并钝化——它会留下<strong>周期性的非均匀印记</strong>，而 NUV 光子恰好只在这最表层几纳米内被吸收。长波光子穿透该层，图案随之消失。<strong>GM1201A 采用原子层沉积（ALD）工艺，逐层自限制生长，厚度精确、覆盖均匀，不产生砖墙图案</strong>——这是国产器件在该项上的实际优势。</li>
+<li><strong>同心环</strong>（e2vDD 850 nm）：既不是 fringing（出现在更长波长）也不是更细的&quot;年轮&quot;，论文判断为长波光子在前表面反射所致。</li>
+<li><strong>边缘窄特征</strong>：杜瓦内部杂散光；所有面板共有的中心偏亮：积分球照明不均。</li>
+</ul>
+<img src="/2026/09/23/csst-ccd-characterization/fig15-prnu-vs-wavelength.png" class="" title="PRNU随波长的变化">
+<center><font size='1' color="grey">Fig.14　PRNU 随波长的变化：GM1201A 在 300 nm 显著更低（其 ALD 工艺无砖墙图案）</font></center>
+<p>典型 PRNU $&lt; 1\%$。<strong>对测光的含义</strong>（§4 明确写出）：常规平场无法完全改正这些波长相关 PRNU，会带来不可忽略的光度误差；作者引用自家 Luo 等（2024），并计划在飞行件上取更多波长的平场以引入半物理模型重建砖墙图案。更长波长下的 fringing 将在未来论文表征。</p>
+<h3 id="47-cte"><a class="markdownIt-Anchor" href="#47-cte"></a> 4.7 CTE</h3>
+<img src="/2026/09/23/csst-ccd-characterization/fig16-cte-trailing.jpg" class="" title="overscan电荷拖尾剖面">
+<center><font size='1' color="grey">Fig.15　三个子型在 1 ke⁻ 与 10 ke⁻ 下的 overscan 电荷拖尾剖面（对数坐标）</font></center>
+<p>CTE 用扩展像元边缘响应（EPER）法测量。核心物理假设是：陷阱若持续遇到<strong>大小相近的密集电荷包</strong>，它释放一个电子后会立刻再俘获一个（净效果是一直饱和）；一旦电荷包进入 <strong>overscan 区</strong>（那里本征光电子为零），释放的电子不再有替代来源，俘获概率随之下降。所以只要 overscan 足够长，成像区被俘获的电子最终全部释放到 overscan：</p>
+<p>$$\mathrm{CTE} &#x3D; 1 - \frac{N_{\mathrm{trap}}}{N_{\mathrm{flat}}\, n_{\mathrm{trans}}} &#x3D; 1 - \frac{N_{\mathrm{trail}}}{N_{\mathrm{flat}}\, n_{\mathrm{trans}}}
+$$</p><p>其中 $n_{\mathrm{trans}}$ 并行 4616、串行 1152。操作上：每条 overscan 行（列）先离群裁剪再平均，成为拖尾剖面的一个像素；剖面<strong>末 50 像素的均值作为偏置</strong>；<strong>前 20 像素含 &gt;90% 的俘获电子</strong>，取它们求和即得 $N_{\mathrm{trail}}$。</p>
+<img src="/2026/09/23/csst-ccd-characterization/fig17-cte.jpg" class="" title="CTE结果">
+<center><font size='1' color="grey">Fig.16　五种子型在 1 ke⁻ 与 10 ke⁻ 下的 CTE</font></center>
+<p><strong>结论必须绑定信号水平。</strong> 陷阱在像元内均匀分布，因此陷阱密度恒定，$N_{\mathrm{trap}}$ 正比于电荷包占据的体积，而该体积随 $N_{\mathrm{flat}}^{\,\beta}$ 标度（$\beta \approx 0.5$），故</p>
+<p>$$1 - \mathrm{CTE} \propto N_{\mathrm{flat}}^{\,\beta - 1} &#x3D; N_{\mathrm{flat}}^{-0.5}
+$$</p><p><strong>信号越低，被俘获比例越大，CTE 越差。</strong> 结果印证：$10\ \mathrm{ke^-}$ 下串行与并行均 $&gt; 99.9994\%$（并行最好达 99.99999%）；$1\ \mathrm{ke^-}$ 下 e2vVIS 串行最低降到 99.99257%。串行拖尾比并行严重（LSSTCam 也一样）。</p>
+<p><strong>为什么报两个信号水平</strong>：一是覆盖实际使用的信号范围，两点还能验证 $\beta \approx 0.5$ 的幂律；二是 <strong>$1\ \mathrm{ke^-}$ 是辐照退化的灵敏探针</strong>——CTE 是空间 CCD 辐照退化最敏感的指标，而陷阱对低信号的影响远大于高信号（信号低十倍，$1-\mathrm{CTE}$ 约增大 $\sqrt{10} \approx 3$ 倍），用 $10\ \mathrm{ke^-}$ 作对照可把&quot;陷阱增加&quot;与&quot;工作点变化&quot;分开。三是与要求口径对应：<strong>Table 2 中 CTE 要求写的是&quot;$10\ \mathrm{ke^-}$ 串行/并行 $\ge 99.999\%$&quot;，而 $1\ \mathrm{ke^-}$ 那一行标注为 “Information only”（仅供参考）</strong>。所以不要把 $1\ \mathrm{ke^-}$ 的结果当成&quot;未达标&quot;。</p>
+<p><strong>温度通过指数支配一切。</strong> 陷阱俘获电子后靠热激发释放，特征时间常数为</p>
+<p>$$\tau_e \propto \frac{1}{\sigma_n v_{\mathrm{th}} N_c} \exp\!\left(\frac{\Delta E}{kT}\right)
+$$</p><p>能级深度 $\Delta E$ 决定量级（在指数上，主导），温度通过同一个指数放大它。取 $\Delta E &#x3D; 0.3\ \mathrm{eV}$（典型辐照诱生陷阱），从 300 K 降到 188 K，$\exp(\Delta E&#x2F;kT)$ 从约 $1.1\times10^5$ 增到约 $1.1\times10^8$——<strong>增大近三个数量级</strong>。而读出时标（约 7.7 ms 一行）是固定的，于是判据是：$\tau_e \ll$ 读出时标则无害，$\tau_e \gtrsim$ 读出时标则产生拖尾与电荷损失。这就是低温下 CTE 变差的原因，也解释了论文为什么把辐照退化留到后续（“To be continued”）。</p>
+<hr />
+<h2 id="五-总结与讨论table-2-与后续计划"><a class="markdownIt-Anchor" href="#五-总结与讨论table-2-与后续计划"></a> 五、总结与讨论：Table 2 与后续计划</h2>
+<h3 id="51-亮-胖效应"><a class="markdownIt-Anchor" href="#51-亮-胖效应"></a> 5.1 亮-胖效应</h3>
+<p>本文用相关矩阵元素之和代替方差来消除亮-胖引起的 PTC 非线性。LSSTCam 的做法更进一步：<strong>用平场相关矩阵拟合亮-胖模型，同时求出转换增益与相互作用系数 $a_{ij}$</strong>（Astier 等 2019）。作者引用 Broughton 等（2024）指出，<strong>该模型的改正可恢复&quot;与流量无关的 PSF&quot;</strong>——对弱透镜分析是必需项，对测光精度也有二阶影响。但精确测量相关矩阵的各个元素需要<strong>多个流量水平下的数百张平场</strong>，并配以细致的误差控制；本文只给出三片 CCD 在若干波长下的初步结果。</p>
+<img src="/2026/09/23/csst-ccd-characterization/fig18-brighter-fatter.jpg" class="" title="亮-胖相互作用系数">
+<center><font size='1' color="grey">Fig.17　亮-胖相互作用系数 a_ij 随离中心像元距离的变化，误差棒为相同距离各矩阵元的标准差</font></center>
+<p>三条结论：e2vDD 的 $a_{ij}$ 与 LSSTCam 深耗尽器件<strong>同量级</strong>；<strong>标准硅器件的 $a_{ij}$ 更低</strong>，因为其硅衬底更薄，新生成的光电子在被势阱收集前与像元内已有电荷发生相互作用的时间更短；<strong>$a_{ij}$ 随波长略微下降</strong>，因为长波光子在硅中吸收更深、留给相互作用的时间更短。</p>
+<p>注意 Fig.17 的横轴是 $\sqrt{i^2+j^2}$（离中心像元的距离），而 $a_{ij}$ 随该距离<strong>增大而下降</strong>，不是正比关系。</p>
+<h3 id="52-table-2可直接借用的验收表范式"><a class="markdownIt-Anchor" href="#52-table-2可直接借用的验收表范式"></a> 5.2 Table 2：可直接借用的验收表范式</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>条件</th>
+<th>要求</th>
+<th>结果（子型区间）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非线性</td>
+<td>14–56 / 7–70 ke⁻</td>
+<td>≤1% / ≤2%</td>
+<td>0.03–0.96% / 0.08–1.37%</td>
+</tr>
+<tr>
+<td>满阱</td>
+<td>—</td>
+<td>≥70 ke⁻</td>
+<td>80–93 ke⁻（受测试电子学限制）</td>
+</tr>
+<tr>
+<td>暗电流</td>
+<td>−85 ℃</td>
+<td>≤0.02 e⁻/pix/s</td>
+<td>0.37–18 ×10⁻³（跨一个数量级）</td>
+</tr>
+<tr>
+<td>读出噪声</td>
+<td>—</td>
+<td>≤5 e⁻</td>
+<td>中位数 ≈3.6 e⁻；各子型 3.0–4.9</td>
+</tr>
+<tr>
+<td>PRNU</td>
+<td>300/470/625/850 nm</td>
+<td>≤3%</td>
+<td>典型 &lt;1%；e2vNUV 300 nm 达 2.94%</td>
+</tr>
+<tr>
+<td>CTE</td>
+<td>10 ke⁻，串行/并行</td>
+<td>≥99.999%</td>
+<td>&gt;99.9994%（并行最好 99.99999%）</td>
+</tr>
+</tbody>
+</table>
+<p>三条设计要点：每一项都写明<strong>条件与单位</strong>；要求只给必要的那一档、结果给<strong>区间</strong>；用脚注标明&quot;仅供参考&quot;的项、未装机的子型、以及每个子型只在自己的适用波段内需满足要求。</p>
+<h3 id="53-其他效应"><a class="markdownIt-Anchor" href="#53-其他效应"></a> 5.3 其他效应</h3>
+<p>串扰、像元内响应非均匀性、电荷扩散、辐照退化均推到后续论文。PRNU 方面，VIS/NIR 的年轮图案与深耗尽器件的 fringing 已有其他研究建立模型，本文计划在飞行件上取更多波长平场以纳入。</p>
+<hr />
+<h2 id="六-对-80-cm-红外望远镜-jk-相机的移植要点"><a class="markdownIt-Anchor" href="#六-对-80-cm-红外望远镜-jk-相机的移植要点"></a> 六、对 80 cm 红外望远镜 J/K 相机的移植要点</h2>
+<p><strong>可直接照搬</strong></p>
+<ol>
+<li><strong>PTC 增益标定</strong>：成对平场差分方差 + 分块相关矩阵 + 扣读出噪声方差 + $&lt; 0.8$ 倍满阱拟合；均值取中位数；裁掉放大器附近行列。注意红外阵列的邻域选择需按 IPC 与电荷扩散的实际范围重新实验确定，不能照抄三或五。</li>
+<li><strong>非线性判据与满阱口径</strong>：取区间内 $|NL|$ 最大值；<strong>满阱 = $NL$ 首次低于 $-2\%$ 处</strong>。对 K 波段尤其重要，因为 HgCdTe 的满阱与非线性是亮源测光饱和的根源。</li>
+<li><strong>曝光时间三项改正</strong>：光强漂移归一化、快门时延相减、采样率对低端不可恢复的申报。我们单帧只有 20 s，快门时延的相对影响比论文大 10–50 倍，<strong>这一项必须做</strong>。</li>
+<li><strong>暗电流三点温度法</strong>：用于论证工作温度与制冷余量。</li>
+<li><strong>读出噪声统计口径</strong>：去 4 高 4 低 + 通道中位数。</li>
+<li><strong>PRNU 口径与误差申报</strong>：多项式扣照明不均 + $5\sigma$ 裁剪 + 标准差，并申报多项式导致的低估量。</li>
+<li><strong>Table 2 验收表范式</strong>，以及用<strong>区间而非标准差别</strong>呈现器件间散布。</li>
+</ol>
+<p><strong>不可照搬</strong>：CTE/EPER 与串并行拖尾（混合式红外阵列没有逐行逐列电荷转移，也就没有 CTE 概念）；亮-胖相关矩阵（红外主导耦合是 IPC 与电荷扩散）；砖墙图案与 NUV 量子产额结论；$-85\ ^\circ\mathrm{C}$、满阱 $80\ \mathrm{ke^-}$、读出噪声 $3.6\ \mathrm{e^-}$ 等绝对数值。</p>
+<p><strong>必须自补</strong>：fringing、persistence、IPC，以及暗电流与噪声的偏压/温度二维扫描——前四项论文都推到了未来论文，而 fringing 与 persistence 正是我们 K 波段最痛的项。</p>
+<p><strong>我们额外要做的一项（论文没有的）</strong>：<strong>J 与 K 必须各自独立标定增益波长、各自重做参考探测器的绝对定标</strong>。论文的参考二极管响应率与窗口透过率都是可见波段数据，我们的蓝宝石或石英窗口在 $1.25\ \mu\mathrm{m}$ 与 $2.2\ \mu\mathrm{m}$ 的透过率必须实测、不能由可见波段外推。</p>
+<p><strong>两个值得警惕的反向效应</strong></p>
+<ul>
+<li><strong>降温压暗电流，但会让余像变长。</strong> persistence 与 CTE 是同一套物理——缺陷能级俘获电荷后缓慢释放，时标由 $\tau_e \propto \exp(\Delta E&#x2F;kT)$ 控制。我们为压暗电流要降温，余像反而更长。这两项的取舍必须实测，不能只引硅 CCD 的经验。</li>
+<li><strong>背景限 ≠ 暗电流可忽略。</strong> J 相机暗电流约 $14\ \mathrm{e^- \, s^{-1} \, pix^{-1}}$、读出噪声约 $11\ \mathrm{e^-}$，20 s 单帧下暗电流累积约 $280\ \mathrm{e^-}$，其散粒噪声约 $16.7\ \mathrm{e^-}$，已超过读出噪声约 1.5 倍。所以必须分别测量读出噪声与暗电流，才能判断降噪的着力点在哪里。</li>
+</ul>
+<hr />
+<h2 id="七-几处待核实与论文未给出的地方"><a class="markdownIt-Anchor" href="#七-几处待核实与论文未给出的地方"></a> 七、几处待核实与论文未给出的地方</h2>
+<ul>
+<li><strong>视场口径不一致</strong>：若按 $0.15&#39;&#39;$/像元理解，31 片 9k×9k 覆盖约 $4.57\ \mathrm{deg^2}$，是论文所述 $1.1^\circ \times 1.2^\circ$（$1.32\ \mathrm{deg^2}$）的 3.5 倍。更可能是&quot;可用成像视场&quot;与&quot;焦面外接尺寸&quot;两种定义混用。可查 CSST Collaboration: Gong 等（2026）。同时可确认：2 m 口径在 0.6 µm 的衍射极限为 $0.0755&#39;&#39;$，所以 $0.15&#39;&#39;$ 是<strong>采样/像质口径而非衍射极限</strong>。</li>
+<li><strong>串行/并行与像元速率口径</strong>：150 kHz 与全帧 39 s 自洽（1152 像元/150 kHz ≈ 7.7 ms 一行 × 4616 行 ≈ 35.5 s），但行转移时间 200 µs 单独就是 0.92 s，两者不是同一件事，引用时须分别标注。</li>
+<li><strong>工作温度的来源</strong>：是&quot;先定温度再推暗电流要求&quot;还是&quot;先有科学要求再反推温度&quot;，论文未给出。从逻辑与 “operating temperature” 的措辞看更像后者（系统级交换）。</li>
+<li><strong>原文未给出</strong>：坏点与缺陷统计、串扰数值、像元内响应、电荷扩散、persistence、fringing、Fe55 测试、辐照后数据、低信号端非线性的定量结果。</li>
+</ul>
+<hr />
+<h2 id="八-小结"><a class="markdownIt-Anchor" href="#八-小结"></a> 八、小结</h2>
+<p>这篇论文的价值不在于产出天体物理结果，而在于把&quot;探测器表征&quot;写成了一份<strong>完整、可复现、可照抄的方法模板</strong>：只用偏置帧、平场、暗帧三类最普通的数据，就得到转换增益、量子产额、非线性、满阱、暗电流、读出噪声、QE、PRNU、CTE 九项结果，每一项都写明装置、判据、改正项与系统误差。</p>
+<p>它的缺口同样明确：硅 CCD、红外混合式阵列的物理不可迁移，而 fringing、persistence、IPC 被作者明确推到未来论文。但正因为缺口被写清楚，它作为模板反而更好用——我们知道哪里能抄、哪里必须自己补。</p>
+
+    </div>
+    <footer class="article-footer">
+        <a class="article-category-link" href="/categories/Astro/" title="Astro" data-aos="zoom-in">Astro</a>
+
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Detectors/" rel="tag" title="Detectors">Detectors</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" class="article-nav-text-only" aria-label="Article navigation" data-aos="fade-up">
+    <div class="article-nav-link-wrap right">
+      <a href="/2026/08/08/how-to-write-a-table-in-iras/" aria-label="后一篇: 怎么编写IRSA批量检索用的TABLE"  title="后一篇: 怎么编写IRSA批量检索用的TABLE"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          怎么编写IRSA批量检索用的TABLE
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2024-2026
+        &nbsp;
+      Suzuran
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        12k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        01:00
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi "></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%99%E9%A1%B9%E5%B7%A5%E4%BD%9C%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text"> 一、这项工作在做什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%84%A6%E9%9D%A2%E5%B8%83%E5%B1%80%E4%B8%8E%E5%99%A8%E4%BB%B6%E5%91%BD%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text"> 二、焦面布局与器件命名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E7%A7%8D%E5%AD%90%E5%9E%8B%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-number">2.1.</span> <span class="toc-text"> 五种子型的命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%99%A8%E4%BB%B6%E7%BB%93%E6%9E%8416-%E4%B8%AA%E8%AF%BB%E5%87%BA%E9%80%9A%E9%81%93"><span class="toc-number">2.2.</span> <span class="toc-text"> 单器件结构：16 个读出通道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%B5%8B%E8%AF%95%E5%8F%B0"><span class="toc-number">3.</span> <span class="toc-text"> 三、测试台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%83%E9%A1%B9%E6%B5%8B%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text"> 四、七项测量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-ptc-%E4%B8%8E%E8%BD%AC%E6%8D%A2%E5%A2%9E%E7%9B%8A"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 PTC 与转换增益</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E9%9D%9E%E7%BA%BF%E6%80%A7%E4%B8%8E%E6%BB%A1%E9%98%B1"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 非线性与满阱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E6%9A%97%E7%94%B5%E6%B5%81"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3 暗电流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E8%AF%BB%E5%87%BA%E5%99%AA%E5%A3%B0"><span class="toc-number">4.4.</span> <span class="toc-text"> 4.4 读出噪声</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-%E9%87%8F%E5%AD%90%E6%95%88%E7%8E%87"><span class="toc-number">4.5.</span> <span class="toc-text"> 4.5 量子效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#46-prnu%E4%B8%89%E7%B1%BB%E5%9B%BE%E6%A1%88%E4%B8%8E%E8%AF%AF%E5%B7%AE%E7%94%B3%E6%8A%A5"><span class="toc-number">4.6.</span> <span class="toc-text"> 4.6 PRNU：三类图案与误差申报</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#47-cte"><span class="toc-number">4.7.</span> <span class="toc-text"> 4.7 CTE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AE%A8%E8%AE%BAtable-2-%E4%B8%8E%E5%90%8E%E7%BB%AD%E8%AE%A1%E5%88%92"><span class="toc-number">5.</span> <span class="toc-text"> 五、总结与讨论：Table 2 与后续计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E4%BA%AE-%E8%83%96%E6%95%88%E5%BA%94"><span class="toc-number">5.1.</span> <span class="toc-text"> 5.1 亮-胖效应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-table-2%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%80%9F%E7%94%A8%E7%9A%84%E9%AA%8C%E6%94%B6%E8%A1%A8%E8%8C%83%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text"> 5.2 Table 2：可直接借用的验收表范式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-%E5%85%B6%E4%BB%96%E6%95%88%E5%BA%94"><span class="toc-number">5.3.</span> <span class="toc-text"> 5.3 其他效应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%AF%B9-80-cm-%E7%BA%A2%E5%A4%96%E6%9C%9B%E8%BF%9C%E9%95%9C-jk-%E7%9B%B8%E6%9C%BA%E7%9A%84%E7%A7%BB%E6%A4%8D%E8%A6%81%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text"> 六、对 80 cm 红外望远镜 J&#x2F;K 相机的移植要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E5%87%A0%E5%A4%84%E5%BE%85%E6%A0%B8%E5%AE%9E%E4%B8%8E%E8%AE%BA%E6%96%87%E6%9C%AA%E7%BB%99%E5%87%BA%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-number">7.</span> <span class="toc-text"> 七、几处待核实与论文未给出的地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E5%B0%8F%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text"> 八、小结</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.png" data-sizes="auto" alt="Suzuran" class="lazyload">
+  <div class="sidebar-author-name">Suzuran</div>
+  <div class="sidebar-description">本网站仅用于记录本人学习过程中的笔记以及复习</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">19</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">9</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">5</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Suzuran109 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Suzuran",
+          title: "CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）",
+          url: "https://suzuran109.github.io/2026/09/23/csst-ccd-characterization/",
+          excerpt: "",
+          description: "",
+          stripContent: "本文是对 arXiv:2609.19105《Characterization of the CSST Survey Camera CCDs: I. basic electro-optical performance》的精读记录，同时整理了整套探测器基础电光性能表征的方法与判据口径，供课题组内的红外/光学焦面探测器验收与标定参考。 原文信息：罗遵、詹虎等（中国科学院国家天文台 空间天文与技术重点实验室；中国科学院大学；北京大学科维理天文与天体物理研究所），arXiv:2609.19105v1 [a",
+          date: "Wed Sep 23 2026 15:00:00 GMT+0800",
+          updated: "Wed Sep 23 2026 12:59:02 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+
+  </div>
+</div>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js" integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC+gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous" defer data-pjax></script>
+
+    
+<script src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" defer onload="renderMathInElement(_$(&#39;article&#39;), {delimiters: [{left: &#39;$$&#39;, right: &#39;$$&#39;, display: true},{left: &#39;$&#39;, right: &#39;$&#39;, display: false}]});" data-pjax></script>
+
+  
+
+
+  </body>
+  </html>
