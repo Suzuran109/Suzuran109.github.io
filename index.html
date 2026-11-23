@@ -135,7 +135,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">19</div>
+    <div class="sidebar-state-number">20</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -143,7 +143,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">7</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -186,7 +186,7 @@
     <div class="widget-wrap" data-aos="fade-up">
       <h3 class="widget-title">标签</h3>
       <div class="widget">
-        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Detectors/" rel="tag" title="Detectors">Detectors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag" title="Hexo">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Infrared-Astronomy/" rel="tag" title="Infrared Astronomy">Infrared Astronomy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag" title="Markdown">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-ray/" rel="tag" title="X-ray">X-ray</a></li></ul>
+        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Detectors/" rel="tag" title="Detectors">Detectors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag" title="Hexo">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Infrared-Astronomy/" rel="tag" title="Infrared Astronomy">Infrared Astronomy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag" title="Markdown">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/X-ray/" rel="tag" title="X-ray">X-ray</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iSpec/" rel="tag" title="iSpec">iSpec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%92%E6%98%9F%E5%85%89%E8%B0%B1/" rel="tag" title="恒星光谱">恒星光谱</a></li></ul>
       </div>
     </div>
   </div>
@@ -196,6 +196,9 @@
       <h3 class="widget-title">最新文章</h3>
       <div class="widget">
         <ul>
+            <li>
+              <a href="/2026/11/23/ispec-stellar-spectrum/" title="用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度">用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度</a>
+            </li>
             <li>
               <a href="/2026/09/23/csst-ccd-characterization/" title="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）">CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）</a>
             </li>
@@ -208,9 +211,6 @@
             <li>
               <a href="/2025/01/16/Markdown3/" title="Markdown高级技巧">Markdown高级技巧</a>
             </li>
-            <li>
-              <a href="/2025/01/15/Markdown2/" title="Markdown进阶">Markdown进阶</a>
-            </li>
         </ul>
       </div>
     </div>
@@ -222,8 +222,30 @@
 
           <section id="main" aria-label="Main content">      <div class="post-wrapper">
   <div class="post-wrap left" data-aos="fade-up">
-      <a class="post-link" href="/2026/09/23/csst-ccd-characterization/" aria-label="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）" title="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）"></a>
+      <a class="post-link" href="/2026/11/23/ispec-stellar-spectrum/" aria-label="用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度" title="用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度"></a>
     <div class="post-cover left">
+        <img data-src="/images/banner.webp" data-sizes="auto" alt="用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度" class="lazyload">
+    </div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span><span class="icon-calendar"></span>2026-11-23</span>
+        <span><span class="icon-pencil"></span>1.5k 字</span>
+        <span><span class="icon-clock"></span>6 分钟</span>
+      </div>
+      <h2 class="post-title">用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度</h2>
+      <article class="post-article">
+          这次课上拿到了一条叫 e3_2 的恒星光谱。课件第 25 页把它标作 Magellan/MIKE 第二个观测夜的合并谱，红端分辨率约为 28,000。我的目标是从这条谱里读出三个结果：恒星沿视线移动得多快，大气参数是多少，以及镁和铝相对于铁是否富集。下面按我在 iSpec 图形界面里操作的顺序记录。
+
+ 一、打开光谱，先把连续谱放到 1 附近
+我在 Windows 下双击自己为 WSL 环境配置的 Start-iSpec.cmd 启动 iSpec。已经打开 iSpec 的话，直接从 Files → Open spectra 开始。我的原始文本只有波长和流量两列，导入前已把波长从 Å 换为 nm
+      </article>
+    </div>
+  </div>
+</div>
+      <div class="post-wrapper">
+  <div class="post-wrap right" data-aos="fade-up">
+      <a class="post-link" href="/2026/09/23/csst-ccd-characterization/" aria-label="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）" title="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）"></a>
+    <div class="post-cover right">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="CSST巡天相机CCD基础电光性能表征（arXiv:2609.19105 精读）" class="lazyload">
     </div>
     <div class="post-info">
@@ -243,9 +265,9 @@
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap right" data-aos="fade-up">
+  <div class="post-wrap left" data-aos="fade-up">
       <a class="post-link" href="/2026/08/08/how-to-write-a-table-in-iras/" aria-label="怎么编写IRSA批量检索用的TABLE" title="怎么编写IRSA批量检索用的TABLE"></a>
-    <div class="post-cover right">
+    <div class="post-cover left">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="怎么编写IRSA批量检索用的TABLE" class="lazyload">
     </div>
     <div class="post-info">
@@ -273,9 +295,9 @@ IPAC Table Format给
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap left" data-aos="fade-up">
+  <div class="post-wrap right" data-aos="fade-up">
       <a class="post-link" href="/2025/03/11/manim-1/" aria-label="manim_1" title="manim_1"></a>
-    <div class="post-cover left">
+    <div class="post-cover right">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="manim_1" class="lazyload">
     </div>
     <div class="post-info">
@@ -294,9 +316,9 @@ IPAC Table Format给
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap right" data-aos="fade-up">
+  <div class="post-wrap left" data-aos="fade-up">
       <a class="post-link" href="/2025/01/16/Markdown3/" aria-label="Markdown高级技巧" title="Markdown高级技巧"></a>
-    <div class="post-cover right">
+    <div class="post-cover left">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="Markdown高级技巧" class="lazyload">
     </div>
     <div class="post-info">
@@ -365,9 +387,9 @@ IPAC Table Format给
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap left" data-aos="fade-up">
+  <div class="post-wrap right" data-aos="fade-up">
       <a class="post-link" href="/2025/01/15/Markdown2/" aria-label="Markdown进阶" title="Markdown进阶"></a>
-    <div class="post-cover left">
+    <div class="post-cover right">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="Markdown进阶" class="lazyload">
     </div>
     <div class="post-info">
@@ -411,9 +433,9 @@ Markdown 支持有序列表和无序列表，列表之间可以嵌套
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap right" data-aos="fade-up">
+  <div class="post-wrap left" data-aos="fade-up">
       <a class="post-link" href="/2025/01/05/physicalastro2/" aria-label="Heasoft使用与CIAO软件包使用（一）" title="Heasoft使用与CIAO软件包使用（一）"></a>
-    <div class="post-cover right">
+    <div class="post-cover left">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="Heasoft使用与CIAO软件包使用（一）" class="lazyload">
     </div>
     <div class="post-info">
@@ -439,9 +461,9 @@ Markdown 支持有序列表和无序列表，列表之间可以嵌套
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap left" data-aos="fade-up">
+  <div class="post-wrap right" data-aos="fade-up">
       <a class="post-link" href="/2024/12/27/xray/" aria-label="xray" title="xray"></a>
-    <div class="post-cover left">
+    <div class="post-cover right">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="xray" class="lazyload">
     </div>
     <div class="post-info">
@@ -475,9 +497,9 @@ spectral model fitti
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap right" data-aos="fade-up">
+  <div class="post-wrap left" data-aos="fade-up">
       <a class="post-link" href="/2024/12/26/theoretical-mechanics-test/" aria-label="理论力学考试题" title="理论力学考试题"></a>
-    <div class="post-cover right">
+    <div class="post-cover left">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="理论力学考试题" class="lazyload">
     </div>
     <div class="post-info">
@@ -509,9 +531,9 @@ spectral model fitti
   </div>
 </div>
       <div class="post-wrapper">
-  <div class="post-wrap left" data-aos="fade-up">
+  <div class="post-wrap right" data-aos="fade-up">
       <a class="post-link" href="/2024/12/07/gildassoft/" aria-label="Gildas_soft" title="Gildas_soft"></a>
-    <div class="post-cover left">
+    <div class="post-cover right">
         <img data-src="/images/banner.webp" data-sizes="auto" alt="Gildas_soft" class="lazyload">
     </div>
     <div class="post-info">
@@ -529,35 +551,6 @@ spectral model fitti
 1class #直接输入class即可直接进入Gildas环境
  Step1.单个谱线数据处理
 1234567891011121314151617181920212223242526272829file in G000.31.30m #输入谱线文件，由于G000.31.30m就在当前工作目录，相对路径即可find #将G000.31.30m文件内所存储的数
-      </article>
-    </div>
-  </div>
-</div>
-      <div class="post-wrapper">
-  <div class="post-wrap right" data-aos="fade-up">
-      <a class="post-link" href="/2024/12/06/physical-astro/" aria-label="physical_astro" title="physical_astro"></a>
-    <div class="post-cover right">
-        <img data-src="/images/banner.webp" data-sizes="auto" alt="physical_astro" class="lazyload">
-    </div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span><span class="icon-calendar"></span>2024-12-06</span>
-        <span><span class="icon-pencil"></span>86 字</span>
-        <span><span class="icon-clock"></span>1 分钟</span>
-      </div>
-      <h2 class="post-title">physical_astro</h2>
-      <article class="post-article">
-           射电观测数据处理——分子谱线、分子谱线成图
- 系统：Windows、Linux or Unix
- 软件：Gildas / Class
-数据处理过程、数据处理结果、、、
- X射线观测数据处理——图像、光谱、光变
- 系统：Linux、Unix
- 软件：CIAO、SAS、HEASoft
- 光学观测数据处理——测光数据处理
- 系统：Linux或Unix
- 软件：IRAF
-
       </article>
     </div>
   </div>
@@ -585,10 +578,10 @@ spectral model fitti
       </div>
       <div>
         <span class="icon-brush"></span>
-        12k
+        13.5k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        01:00
+        01:06
       </div>
       <div>
         <span class="icon-eye"></span>
@@ -616,7 +609,7 @@ spectral model fitti
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">19</div>
+    <div class="sidebar-state-number">20</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -624,7 +617,7 @@ spectral model fitti
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">7</div>
   </div>
 </div>
 <div class="sidebar-social" >
