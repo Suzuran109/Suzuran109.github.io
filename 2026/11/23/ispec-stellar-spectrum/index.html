@@ -17,19 +17,19 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="这次课上拿到了一条叫 e3_2 的恒星光谱。课件第 25 页把它标作 Magellan&#x2F;MIKE 第二个观测夜的合并谱，红端分辨率约为 28,000。我的目标是从这条谱里读出三个结果：恒星沿视线移动得多快，大气参数是多少，以及镁和铝相对于铁是否富集。下面按我在 iSpec 图形界面里操作的顺序记录。   一、打开光谱，先把连续谱放到 1 附近 我在 Windows 下双击自己为 WSL 环境配置的">
+    <meta name="description" content="本教程以 Magellan&#x2F;MIKE 的合并光谱 e3_2 为例，在 iSpec 图形界面中测量视向速度，用铁线等值宽度求恒星参数，再测量镁和铝相对于铁的丰度。示例光谱的红端分辨率约为 28,000。   一、打开光谱，先把连续谱放到 1 附近 启动 iSpec，选择 Files → Open spectra 打开目标光谱。使用本文示例的 Windows + WSL 配置时，可双击配套的 Star">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度">
 <meta property="og:url" content="https://suzuran109.github.io/2026/11/23/ispec-stellar-spectrum/index.html">
 <meta property="og:site_name" content="狐狸の学习小窝">
-<meta property="og:description" content="这次课上拿到了一条叫 e3_2 的恒星光谱。课件第 25 页把它标作 Magellan&#x2F;MIKE 第二个观测夜的合并谱，红端分辨率约为 28,000。我的目标是从这条谱里读出三个结果：恒星沿视线移动得多快，大气参数是多少，以及镁和铝相对于铁是否富集。下面按我在 iSpec 图形界面里操作的顺序记录。   一、打开光谱，先把连续谱放到 1 附近 我在 Windows 下双击自己为 WSL 环境配置的">
+<meta property="og:description" content="本教程以 Magellan&#x2F;MIKE 的合并光谱 e3_2 为例，在 iSpec 图形界面中测量视向速度，用铁线等值宽度求恒星参数，再测量镁和铝相对于铁的丰度。示例光谱的红端分辨率约为 28,000。   一、打开光谱，先把连续谱放到 1 附近 启动 iSpec，选择 Files → Open spectra 打开目标光谱。使用本文示例的 Windows + WSL 配置时，可双击配套的 Star">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://suzuran109.github.io/2026/11/23/ispec-stellar-spectrum/03spline1.png">
 <meta property="og:image" content="https://suzuran109.github.io/2026/11/23/ispec-stellar-spectrum/05rv2.png">
 <meta property="og:image" content="https://suzuran109.github.io/2026/11/23/ispec-stellar-spectrum/07fixed1.png">
 <meta property="og:image" content="https://suzuran109.github.io/2026/11/23/ispec-stellar-spectrum/10params2.png">
 <meta property="article:published_time" content="2026-11-23T04:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-23T15:49:59.078Z">
+<meta property="article:modified_time" content="2026-11-23T15:54:10.014Z">
 <meta property="article:author" content="Suzuran">
 <meta property="article:tag" content="iSpec">
 <meta property="article:tag" content="恒星光谱">
@@ -136,7 +136,7 @@
     <div class="sidebar-wrap" data-aos="fade-up">
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%89%93%E5%BC%80%E5%85%89%E8%B0%B1%E5%85%88%E6%8A%8A%E8%BF%9E%E7%BB%AD%E8%B0%B1%E6%94%BE%E5%88%B0-1-%E9%99%84%E8%BF%91"><span class="toc-number">1.</span> <span class="toc-text"> 一、打开光谱，先把连续谱放到 1 附近</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%B5%8B%E8%A7%86%E5%90%91%E9%80%9F%E5%BA%A6%E5%86%8D%E6%8A%8A%E8%B0%B1%E7%BA%BF%E7%A7%BB%E5%9B%9E%E9%9D%99%E6%AD%A2%E6%B3%A2%E9%95%BF"><span class="toc-number">2.</span> <span class="toc-text"> 二、测视向速度，再把谱线移回静止波长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%94%A8%E9%93%81%E7%BA%BF%E6%B1%82%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> 三、用铁线求恒星参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%8D%A2%E5%9B%9E%E5%AE%8C%E6%95%B4%E7%BA%BF%E8%A1%A8%E8%AF%BB%E5%87%BA-mgfe-%E5%92%8C-alfe"><span class="toc-number">4.</span> <span class="toc-text"> 四、换回完整线表，读出 [Mg&#x2F;Fe] 和 [Al&#x2F;Fe]</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%89%93%E5%BC%80%E5%85%89%E8%B0%B1%E5%85%88%E6%8A%8A%E8%BF%9E%E7%BB%AD%E8%B0%B1%E6%94%BE%E5%88%B0-1-%E9%99%84%E8%BF%91"><span class="toc-number">1.</span> <span class="toc-text"> 一、打开光谱，先把连续谱放到 1 附近</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%B5%8B%E8%A7%86%E5%90%91%E9%80%9F%E5%BA%A6%E5%86%8D%E6%8A%8A%E8%B0%B1%E7%BA%BF%E7%A7%BB%E5%9B%9E%E9%9D%99%E6%AD%A2%E6%B3%A2%E9%95%BF"><span class="toc-number">2.</span> <span class="toc-text"> 二、测视向速度，再把谱线移回静止波长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%94%A8%E9%93%81%E7%BA%BF%E6%B1%82%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> 三、用铁线求恒星参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E8%BD%BD%E5%85%A5%E5%AE%8C%E6%95%B4%E4%B8%B0%E5%BA%A6%E7%BA%BF%E7%AA%97%E8%AF%BB%E5%87%BA-mgfe-%E5%92%8C-alfe"><span class="toc-number">4.</span> <span class="toc-text"> 四、载入完整丰度线窗，读出 [Mg&#x2F;Fe] 和 [Al&#x2F;Fe]</span></a></li></ol>
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -208,32 +208,32 @@
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <p>这次课上拿到了一条叫 <code>e3_2</code> 的恒星光谱。课件第 25 页把它标作 Magellan/MIKE 第二个观测夜的合并谱，红端分辨率约为 28,000。我的目标是从这条谱里读出三个结果：恒星沿视线移动得多快，大气参数是多少，以及镁和铝相对于铁是否富集。下面按我在 iSpec 图形界面里操作的顺序记录。</p>
+        <p>本教程以 Magellan/MIKE 的合并光谱 <code>e3_2</code> 为例，在 iSpec 图形界面中测量视向速度，用铁线等值宽度求恒星参数，再测量镁和铝相对于铁的丰度。示例光谱的红端分辨率约为 28,000。</p>
 <hr />
 <h2 id="一-打开光谱先把连续谱放到-1-附近"><a class="markdownIt-Anchor" href="#一-打开光谱先把连续谱放到-1-附近"></a> 一、打开光谱，先把连续谱放到 1 附近</h2>
-<p>我在 Windows 下双击自己为 WSL 环境配置的 <code>Start-iSpec.cmd</code> 启动 iSpec。已经打开 iSpec 的话，直接从 <strong>Files → Open spectra</strong> 开始。我的原始文本只有波长和流量两列，导入前已把波长从 Å 换为 nm，整理为 <code>waveobs、flux、err</code> 三列。误差列用 0 占位。若同时打开了示例谱，要看图例里的 <strong>[A]</strong> 是否标在目标谱旁。</p>
-<p>进入 <strong>Operations → Wavelength range reduction</strong>，保留 480–675 nm。这一段已经覆盖后面要用的铁、镁、铝线。再进 <strong>Operations → Fit continuum… → Splines</strong>，滤波顺序选 median+max，两个窗口分别填 0.05 和 1.0 nm。这条谱没有逐像素误差，所以我取消了按误差加权。拟合线应当沿着谱线之间的上包络走；如果它跟着较深的吸收谷往下弯，先调整窗口再继续。</p>
+<p>启动 iSpec，选择 <strong>Files → Open spectra</strong> 打开目标光谱。使用本文示例的 Windows + WSL 配置时，可双击配套的 <code>Start-iSpec.cmd</code> 启动。原始文件只有波长和流量两列，导入前将波长从 Å 换算为 nm，并整理成 <code>waveobs</code>、<code>flux</code>、<code>err</code> 三列。示例没有逐像素误差，<code>err</code> 用 0 占位。若同时打开了多条光谱，检查图例中的 <strong>[A]</strong> 是否标在目标谱旁。</p>
+<p>进入 <strong>Operations → Wavelength range reduction</strong>，保留 480–675 nm。这一段已经覆盖后面要用的铁、镁、铝线。再进 <strong>Operations → Fit continuum… → Splines</strong>，滤波顺序选 median+max，两个窗口分别填 0.05 和 1.0 nm。这条谱没有逐像素误差，因此取消按误差加权。拟合线应当沿着谱线之间的上包络走；如果它跟着较深的吸收谷往下弯，先调整窗口再继续。</p>
 <p><img src="/2026/11/23/ispec-stellar-spectrum/03spline1.png" alt="图 1　连续谱拟合设置。两个窗口的单位都是 nm。" /></p>
 <center><font size='1' color="grey">图 1　连续谱拟合设置。两个窗口的单位都是 nm。</font></center>
 <p>点 <strong>Operations → Continuum normalization</strong>。现在吸收线附近的连续谱大致在 1，线中心比 1 低。</p>
 <h2 id="二-测视向速度再把谱线移回静止波长"><a class="markdownIt-Anchor" href="#二-测视向速度再把谱线移回静止波长"></a> 二、测视向速度，再把谱线移回静止波长</h2>
-<p>在 <strong>Parameters → Determine velocity relative to… → Atomic line mask</strong> 中，我选用 Narval.Sun 掩模，在 −350 到 +350 km/s 内以 0.5 km/s 的步长搜索。iSpec 会将掩模相对光谱逐步移动；吸收线对得最齐的位置，在这张交叉相关图上表现为一个谷。</p>
+<p>在 <strong>Parameters → Determine velocity relative to… → Atomic line mask</strong> 中选用 Narval.Sun 掩模，在 −350 到 +350 km/s 内以 0.5 km/s 的步长搜索。iSpec 会将掩模相对光谱逐步移动；吸收线对得最齐的位置，在这张交叉相关图上表现为一个谷。</p>
 <p><img src="/2026/11/23/ispec-stellar-spectrum/05rv2.png" alt="图 2　读主谷的中心速度，注意保留正负号。" /></p>
 <center><font size='1' color="grey">图 2　读主谷的中心速度，注意保留正负号。</font></center>
-<p>我读到 <strong>+3.80 km/s</strong>，峰位的形式拟合误差为 0.04 km/s。点 <strong>Cancel</strong> 可以退出结果窗，刚算出的速度已经存在当前会话里；在这个结果窗点 OK 会再算一次。回到 <strong>Operations → Correct velocity relative to… → Atomic line mask</strong>，保留 +3.80，选 <strong>Spectra</strong>，应用一次校正。</p>
-<p>这里有两个参考系要分清。<strong>若输入波长已做日心改正，+3.80 km/s 就是日心视向速度。</strong> 这份文本没有注明波长参考系，所以我在报告中保留了这个假设。把谱线移到恒星静止系只是为了随后对准实验室线表；这一步本身无法补出日心改正。</p>
+<p>示例光谱的主谷中心为 <strong>+3.80 km/s</strong>，中心速度的形式拟合误差为 0.04 km/s。点 <strong>Cancel</strong> 可以退出结果窗，刚算出的速度已经存在当前会话里；在这个结果窗点 OK 会再算一次。回到 <strong>Operations → Correct velocity relative to… → Atomic line mask</strong>，保留 +3.80，选 <strong>Spectra</strong>，应用一次校正。</p>
+<p><strong>只有在输入波长已做过日心改正的前提下，+3.80 km/s 才能作为该星的日心视向速度。</strong> 示例文件没有注明波长参考系，因此可先记录为“输入波长标尺下的视向速度”。上一步将谱线移至恒星静止系，便于和实验室波长逐线匹配。</p>
 <h2 id="三-用铁线求恒星参数"><a class="markdownIt-Anchor" href="#三-用铁线求恒星参数"></a> 三、用铁线求恒星参数</h2>
-<p>我第一次点 <strong>Fit lines</strong> 时，屏幕上明明已有成排的橙色 Fe 标签，却弹出 <em>Please, execute a general continuum fit first</em>。橙色标记说明线窗加载成功了；提示框说的是另一件事：上一步做速度校正时，程序清除了连续谱模型。</p>
+<p>如果 <strong>Fit lines</strong> 弹出 <em>Please, execute a general continuum fit first</em>，先检查连续谱模型。图上的橙色 Fe 标签表示铁线窗口已加载。执行速度校正后，iSpec 会清除先前拟合的连续谱模型。</p>
 <p><strong>在已经归一化、做完速度校正的谱上，选 Operations → Fit continuum… → Fixed value，填 1.0。</strong> 等左下角出现 <em>Continuum fitted.</em> 再拟合谱线。若还没做过归一化，则先回到第一步。</p>
 <p><img src="/2026/11/23/ispec-stellar-spectrum/07fixed1.png" alt="图 3　为校正后的归一化谱重新指定连续谱高度。" /></p>
 <center><font size='1' color="grey">图 3　为校正后的归一化谱重新指定连续谱高度。</font></center>
 <p>从 <strong>Files → Open line regions</strong> 打开 iSpec 的 <code>input/regions/42000_GES/spectrum_synth_good_for_params_all_extended.txt</code>。在 <strong>Operations → Fit lines</strong> 选择 GES 原子线表，允许调整线心，匹配容差取 0.005 nm。线窗规定每条线在哪一段测量，拟合后才有等值宽度（EW）。可以选底部的 <strong>Stats → Lines</strong>，点选单条线查看。</p>
-<p>接着选 <strong>Parameters → Determine parameters with equivalent widths</strong>。我用 SPECTRUM、MARCS.GES 模型和 Grevesse (2007) 太阳丰度，从 5000 K、log g = 2.5、[M/H] = −0.7、微湍流 1.5 km/s 开始，放开温度、重力和微湍流。检查结果时，我看铁丰度是否还随激发能或谱线强度系统变化，以及中性铁和一次电离铁给出的丰度是否接近。</p>
+<p>接着选 <strong>Parameters → Determine parameters with equivalent widths</strong>。选择 SPECTRUM、MARCS.GES 模型和 Grevesse (2007) 太阳丰度，从 5000 K、log g = 2.5、[M/H] = −0.7、微湍流 1.5 km/s 开始，放开温度、重力和微湍流。计算结束后，检查铁丰度是否还随激发能或谱线强度系统变化，以及中性铁和一次电离铁给出的丰度是否接近。</p>
 <p><img src="/2026/11/23/ispec-stellar-spectrum/10params2.png" alt="图 4　上方是两幅铁线平衡图，中间白色列表列出结果，底部输入框仍显示初值。" /></p>
 <center><font size='1' color="grey">图 4　上方是两幅铁线平衡图，中间白色列表列出结果，底部输入框仍显示初值。</font></center>
 <p>最后保留 <strong>138 条 Fe I、8 条 Fe II</strong>，两组丰度中位数相差约 0.01 dex。有效温度为 <strong>5061 K</strong>，<strong>log g = 2.99</strong>（cgs），<strong>[Fe/H] = −0.48 dex</strong>，微湍流为 <strong>1.82 km/s</strong>。换线窗前可以从 <strong>Files → Export fitted lines as…</strong> 保存铁线的拟合表。</p>
-<h2 id="四-换回完整线表读出-mgfe-和-alfe"><a class="markdownIt-Anchor" href="#四-换回完整线表读出-mgfe-和-alfe"></a> 四、换回完整线表，读出 [Mg/Fe] 和 [Al/Fe]</h2>
-<p>这次我直接用 iSpec 在同一 42000_GES 目录下提供的丰度文件：</p>
+<h2 id="四-载入完整丰度线窗读出-mgfe-和-alfe"><a class="markdownIt-Anchor" href="#四-载入完整丰度线窗读出-mgfe-和-alfe"></a> 四、载入完整丰度线窗，读出 [Mg/Fe] 和 [Al/Fe]</h2>
+<p>通过 <strong>Files → Open line regions</strong> 加载同一 <code>42000_GES</code> 目录下的丰度线窗文件。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">limited_but_with_missing_elements_spectrum_synth_good_for_abundances_all_extended.txt</span><br></pre></td></tr></table></figure>
 <p>原表有 548 个窗口，其中有 9 条 Mg I 和 2 条 Al I。打开后要<strong>再做一次 Fit lines</strong>。本次有 451 条谱线成功匹配，其中镁线 7 条、铝线 2 条。然后在 <strong>Parameters → Determine abundances with equivalent widths</strong> 输入刚得到的恒星参数，模型的 α 增强取 +0.19 dex。结果列表向下滚动，读各元素的 <strong>median abundance in [X/Fe]</strong>。</p>
 <table>
@@ -260,8 +260,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>镁线之间的差异值得单独看。</strong> 518.3604 nm 的强线测得 EW 约 239 mÅ，给出 [Mg/Fe] = −1.15 dex；571.1088 nm 的线却给出 +0.17 dex。用高斯轮廓拟合强线时，线翼和连续谱的位置都会影响 EW。因此我把七条线的离散度和中位数一起报出。铝的两条线在 669.6023 和 669.8673 nm，分别给出 +0.56 和 +0.79 dex。这里的结果都采用 LTE 假设。</p>
-<p>做完整个练习，我会分别保存静止系光谱、拟合线表和丰度统计。<strong>Save spectrum as…</strong> 保存光谱，<strong>Export fitted lines as…</strong> 保存逐线拟合结果。这样碰到某个元素的丰度偏高或偏低，还能回到具体波长，检查究竟是哪一条线影响了结果。</p>
+<p><strong>检查逐线丰度。</strong> 518.3604 nm 的强线测得 EW 约 239 mÅ，给出 [Mg/Fe] = −1.15 dex；571.1088 nm 的线却给出 +0.17 dex。用高斯轮廓拟合强线时，线翼和连续谱的位置都会影响 EW。报告镁丰度时，应同时给出七条线的中位数和线间标准差。铝的两条线在 669.6023 和 669.8673 nm，分别给出 +0.56 和 +0.79 dex。这里的结果都采用 LTE 假设。</p>
+<p>最后在 <strong>Files</strong> 菜单中用 <strong>Save spectrum as…</strong> 保存静止系光谱，用 <strong>Export fitted lines as…</strong> 导出逐线拟合表，并单独记录各元素的丰度中位数、线间标准差和线数。复查某个元素时，可按拟合表中的波长定位到原谱，核对线心和两侧连续谱。</p>
 <p><a target="_blank" rel="noopener" href="https://www.blancocuaresma.com/s/iSpec/manual/usage/velocities">iSpec 官方手册：速度测量</a> · <a target="_blank" rel="noopener" href="https://www.blancocuaresma.com/s/iSpec/manual/usage/atmospheric_parameters">铁线与大气参数</a> · <a target="_blank" rel="noopener" href="https://www.blancocuaresma.com/s/iSpec/manual/usage/chemical_abundances">元素丰度</a></p>
 
     </div>
@@ -304,7 +304,7 @@
       </div>
       <div>
         <span class="icon-brush"></span>
-        13.5k
+        13.4k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         01:06
@@ -329,7 +329,7 @@
   <div class="sidebar-wrap">
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%89%93%E5%BC%80%E5%85%89%E8%B0%B1%E5%85%88%E6%8A%8A%E8%BF%9E%E7%BB%AD%E8%B0%B1%E6%94%BE%E5%88%B0-1-%E9%99%84%E8%BF%91"><span class="toc-number">1.</span> <span class="toc-text"> 一、打开光谱，先把连续谱放到 1 附近</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%B5%8B%E8%A7%86%E5%90%91%E9%80%9F%E5%BA%A6%E5%86%8D%E6%8A%8A%E8%B0%B1%E7%BA%BF%E7%A7%BB%E5%9B%9E%E9%9D%99%E6%AD%A2%E6%B3%A2%E9%95%BF"><span class="toc-number">2.</span> <span class="toc-text"> 二、测视向速度，再把谱线移回静止波长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%94%A8%E9%93%81%E7%BA%BF%E6%B1%82%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> 三、用铁线求恒星参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%8D%A2%E5%9B%9E%E5%AE%8C%E6%95%B4%E7%BA%BF%E8%A1%A8%E8%AF%BB%E5%87%BA-mgfe-%E5%92%8C-alfe"><span class="toc-number">4.</span> <span class="toc-text"> 四、换回完整线表，读出 [Mg&#x2F;Fe] 和 [Al&#x2F;Fe]</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%89%93%E5%BC%80%E5%85%89%E8%B0%B1%E5%85%88%E6%8A%8A%E8%BF%9E%E7%BB%AD%E8%B0%B1%E6%94%BE%E5%88%B0-1-%E9%99%84%E8%BF%91"><span class="toc-number">1.</span> <span class="toc-text"> 一、打开光谱，先把连续谱放到 1 附近</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%B5%8B%E8%A7%86%E5%90%91%E9%80%9F%E5%BA%A6%E5%86%8D%E6%8A%8A%E8%B0%B1%E7%BA%BF%E7%A7%BB%E5%9B%9E%E9%9D%99%E6%AD%A2%E6%B3%A2%E9%95%BF"><span class="toc-number">2.</span> <span class="toc-text"> 二、测视向速度，再把谱线移回静止波长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%94%A8%E9%93%81%E7%BA%BF%E6%B1%82%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> 三、用铁线求恒星参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E8%BD%BD%E5%85%A5%E5%AE%8C%E6%95%B4%E4%B8%B0%E5%BA%A6%E7%BA%BF%E7%AA%97%E8%AF%BB%E5%87%BA-mgfe-%E5%92%8C-alfe"><span class="toc-number">4.</span> <span class="toc-text"> 四、载入完整丰度线窗，读出 [Mg&#x2F;Fe] 和 [Al&#x2F;Fe]</span></a></li></ol>
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -418,9 +418,9 @@
           url: "https://suzuran109.github.io/2026/11/23/ispec-stellar-spectrum/",
           excerpt: "",
           description: "",
-          stripContent: "这次课上拿到了一条叫 e3_2 的恒星光谱。课件第 25 页把它标作 Magellan/MIKE 第二个观测夜的合并谱，红端分辨率约为 28,000。我的目标是从这条谱里读出三个结果：恒星沿视线移动得多快，大气参数是多少，以及镁和铝相对于铁是否富集。下面按我在 iSpec 图形界面里操作的顺序记录。   一、打开光谱，先把连续谱放到 1 附近 我在 Windows 下双击自己为 WSL 环境配置的 Start-iSpec.cmd 启动 iSpec。已经打开 iSpec 的话，直接从 Files ",
+          stripContent: "本教程以 Magellan/MIKE 的合并光谱 e3_2 为例，在 iSpec 图形界面中测量视向速度，用铁线等值宽度求恒星参数，再测量镁和铝相对于铁的丰度。示例光谱的红端分辨率约为 28,000。   一、打开光谱，先把连续谱放到 1 附近 启动 iSpec，选择 Files → Open spectra 打开目标光谱。使用本文示例的 Windows + WSL 配置时，可双击配套的 Start-iSpec.cmd 启动。原始文件只有波长和流量两列，导入前将波长从 Å 换算为 nm，并整理成",
           date: "Mon Nov 23 2026 12:00:00 GMT+0800",
-          updated: "Mon Nov 23 2026 23:49:59 GMT+0800",
+          updated: "Mon Nov 23 2026 23:54:10 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>

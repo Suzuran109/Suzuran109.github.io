@@ -229,15 +229,15 @@
     <div class="post-info">
       <div class="post-meta">
         <span><span class="icon-calendar"></span>2026-11-23</span>
-        <span><span class="icon-pencil"></span>1.5k 字</span>
+        <span><span class="icon-pencil"></span>1.4k 字</span>
         <span><span class="icon-clock"></span>6 分钟</span>
       </div>
       <h2 class="post-title">用 iSpec 分析一条恒星光谱：从视向速度到镁、铝丰度</h2>
       <article class="post-article">
-          这次课上拿到了一条叫 e3_2 的恒星光谱。课件第 25 页把它标作 Magellan/MIKE 第二个观测夜的合并谱，红端分辨率约为 28,000。我的目标是从这条谱里读出三个结果：恒星沿视线移动得多快，大气参数是多少，以及镁和铝相对于铁是否富集。下面按我在 iSpec 图形界面里操作的顺序记录。
+          本教程以 Magellan/MIKE 的合并光谱 e3_2 为例，在 iSpec 图形界面中测量视向速度，用铁线等值宽度求恒星参数，再测量镁和铝相对于铁的丰度。示例光谱的红端分辨率约为 28,000。
 
  一、打开光谱，先把连续谱放到 1 附近
-我在 Windows 下双击自己为 WSL 环境配置的 Start-iSpec.cmd 启动 iSpec。已经打开 iSpec 的话，直接从 Files → Open spectra 开始。我的原始文本只有波长和流量两列，导入前已把波长从 Å 换为 nm
+启动 iSpec，选择 Files → Open spectra 打开目标光谱。使用本文示例的 Windows + WSL 配置时，可双击配套的 Start-iSpec.cmd 启动。原始文件只有波长和流量两列，导入前将波长从 Å 换算为 nm，并整理成 waveobs、flux、err 三列。示例没有逐像素误差，err 用 0 占位。若同时打开了多条
       </article>
     </div>
   </div>
@@ -578,7 +578,7 @@ spectral model fitti
       </div>
       <div>
         <span class="icon-brush"></span>
-        13.5k
+        13.4k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         01:06
